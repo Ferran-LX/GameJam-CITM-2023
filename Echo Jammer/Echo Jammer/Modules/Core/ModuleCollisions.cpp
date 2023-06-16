@@ -117,6 +117,7 @@ Update_Status ModuleCollisions::PreUpdate() {
 			c2 = colliders[k];
 
 			if (matrix[c1->type][c2->type] && c1->Intersects(c2->rect)) {
+				// Check Module* listeners first
 				for (uint i = 0; i < MAX_LISTENERS; ++i)
 					if (c1->listeners[i] != nullptr)
 						c1->listeners[i]->OnCollision(c1, c2);
@@ -124,6 +125,15 @@ Update_Status ModuleCollisions::PreUpdate() {
 				for (uint i = 0; i < MAX_LISTENERS; ++i)
 					if (c2->listeners[i] != nullptr)
 						c2->listeners[i]->OnCollision(c2, c1);
+
+				// Check function callbacks
+				for (uint i = 0; i < MAX_LISTENERS; ++i)
+					if (c1->listenerFunctions[i] != nullptr)
+						c1->listenerFunctions[i](c1, c2);
+
+				for (uint i = 0; i < MAX_LISTENERS; ++i)
+					if (c2->listenerFunctions[i] != nullptr)
+						c2->listenerFunctions[i](c2, c1);
 			}
 		}
 	}
@@ -190,6 +200,19 @@ bool ModuleCollisions::CleanUp() {
 }
 
 Collider* ModuleCollisions::AddCollider(SDL_Rect rect, Collider::Type type, Module* listener) {
+	Collider* ret = nullptr;
+
+	for (uint i = 0; i < MAX_COLLIDERS; ++i) {
+		if (colliders[i] == nullptr) {
+			ret = colliders[i] = new Collider(rect, type, listener);
+			break;
+		}
+	}
+
+	return ret;
+}
+
+Collider* ModuleCollisions::AddCollider(SDL_Rect rect, Collider::Type type, void(*listener)(Collider*, Collider*)) {
 	Collider* ret = nullptr;
 
 	for (uint i = 0; i < MAX_COLLIDERS; ++i) {
