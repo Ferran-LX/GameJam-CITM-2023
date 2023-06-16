@@ -1,3 +1,5 @@
+*.bin
+
 # Prerequisites
 *.d
 
@@ -14,7 +16,7 @@
 # Compiled Dynamic libraries
 *.so
 *.dylib
-*.dll
+
 
 # Fortran module files
 *.mod
@@ -24,9 +26,34 @@
 *.lai
 *.la
 *.a
-*.lib
 
 # Executables
 *.exe
 *.out
 *.app
+
+#extres
+*.vsidx
+*.lock
+*.suo
+*.db
+*.db-shm
+*.db-wal
+*.opendb
+*.ipch
+*.user
+*.tlog
+*.log
+*.recipe
+*.ilk
+*.idb
+*.txt
+*.pdb
+*.ap
+*.aps
+*.rc
+/Jovani adventures 1 - La batidora/Jovani adventures 1 - La batidora/resource.h
+*.res
+*.hpp
+*.filters
+*.vcxproj
