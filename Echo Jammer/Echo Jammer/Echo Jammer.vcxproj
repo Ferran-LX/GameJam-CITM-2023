@@ -164,7 +164,6 @@
     <ClInclude Include="Modules\Core\ModuleTextures.h" />
     <ClInclude Include="Modules\Core\ModuleWindow.h" />
     <ClInclude Include="Modules\Gameplay\ModuleEnemies.h" />
-    <ClInclude Include="Modules\Gameplay\ModuleInsertCoin.h" />
     <ClInclude Include="Modules\Gameplay\ModulePlayer.h" />
     <ClInclude Include="Modules\Gameplay\SceneEscoger.h" />
     <ClInclude Include="Modules\Gameplay\SceneIntro.h" />
@@ -197,7 +196,6 @@
     <ClCompile Include="Modules\Core\ModuleTextures.cpp" />
     <ClCompile Include="Modules\Core\ModuleWindow.cpp" />
     <ClCompile Include="Modules\Gameplay\ModuleEnemies.cpp" />
-    <ClCompile Include="Modules\Gameplay\ModuleInsertCoin.cpp" />
     <ClCompile Include="Modules\Gameplay\ModulePlayer.cpp" />
     <ClCompile Include="Modules\Gameplay\SceneEscoger.cpp" />
     <ClCompile Include="Modules\Gameplay\SceneIntro.cpp" />
