@@ -4,6 +4,10 @@ Collider::Collider(SDL_Rect rectangle, Type type, Module* listener) : rect(recta
 	listeners[0] = listener;
 }
 
+Collider::Collider(SDL_Rect rectangle, Type type, void(*listener)(Collider*, Collider*)) : rect(rectangle), type(type) {
+	listenerFunctions[0] = listener;
+}
+
 void Collider::SetPos(int x, int y) {
 	rect.x = x;
 	rect.y = y;
@@ -25,6 +29,19 @@ void Collider::AddListener(Module* listener) {
 
 		//Simple security check to avoid adding the same listener twice
 		else if (listeners[i] == listener)
+			break;
+	}
+}
+
+void Collider::AddListener(void(*listenerFunc)(Collider*, Collider*)) {
+	for (int i = 0; i < MAX_LISTENERS; ++i) {
+		if (listenerFunctions[i] == nullptr) {
+			listenerFunctions[i] = listenerFunc;
+			break;
+		}
+
+		//Simple security check to avoid adding the same listener twice
+		else if (listenerFunctions[i] == listenerFunc)
 			break;
 	}
 }
