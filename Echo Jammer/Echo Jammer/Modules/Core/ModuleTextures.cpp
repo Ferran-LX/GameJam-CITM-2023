@@ -1,11 +1,10 @@
 #include "ModuleTextures.h"
 
 #include "../../Application/Application.h"
-#include "ModuleRender.h"
 
-#include "../../../SDLs/SDL/include/SDL.h"
-#include "../../../SDLs/SDL_Image/include/SDL_image.h"
-//#pragma comment( lib, "SDL_image/libx86/SDL2_image.lib" )
+#include "ModuleRender.h"
+#include <SDL.h>
+#include <SDL_image.h>
 
 ModuleTextures::ModuleTextures(bool startEnabled) : Module(startEnabled) {
 	for (uint i = 0; i < MAX_TEXTURES; ++i)

@@ -3,7 +3,7 @@
 #include "../../Application/Application.h"
 #include "ModuleRender.h"
 
-#include "../../../SDLs/SDL/include/SDL_render.h"
+#include <SDL_render.h>
 
 ModuleFadeToBlack::ModuleFadeToBlack(bool startEnabled) : Module(startEnabled) {
 	screenRect = { 0, 0, SCREEN_WIDTH * SCREEN_SIZE, SCREEN_HEIGHT * SCREEN_SIZE };

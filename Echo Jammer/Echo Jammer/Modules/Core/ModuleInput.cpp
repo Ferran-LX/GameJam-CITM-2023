@@ -2,7 +2,7 @@
 #include "../../Application/Application.h"
 #include "ModuleInput.h"
 
-#include "../../../SDLs/SDL/include/SDL.h"
+#include <SDL.h>
 
 ModuleInput::ModuleInput(bool startEnabled) : Module(startEnabled)
 {

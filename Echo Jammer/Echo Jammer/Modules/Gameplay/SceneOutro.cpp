@@ -23,9 +23,9 @@ bool SceneOutro::Start() {
 
 	startTime = SDL_GetTicks();
 
-	ArrayImagesOutro[0] = App->textures->Load(FI_Outroimage_0.c_str());
+	/*ArrayImagesOutro[0] = App->textures->Load(FI_Outroimage_0.c_str());
 	ArrayImagesOutro[1] = App->textures->Load(FI_Outroimage_1.c_str());
-	ArrayImagesOutro[2] = App->textures->Load(FI_Outroimage_2.c_str());
+	ArrayImagesOutro[2] = App->textures->Load(FI_Outroimage_2.c_str());*/
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
@@ -70,7 +70,7 @@ Update_Status SceneOutro::PostUpdate() {
 	if (currentTime >= 7000) {
 
 		App->fade->FadeToBlack(this, (Module*)App->sceneStart, 60);
-		
+
 	}
 
 

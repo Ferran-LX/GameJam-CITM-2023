@@ -8,7 +8,7 @@
 #include "../../Application/FileNames.h"
 #include "../Gameplay/SceneLevel1.h"
 
-#include "../../../SDLs/SDL/include/SDL_timer.h"
+#include <SDL_timer.h>
 
 
 

@@ -2,7 +2,7 @@
 #define __MODULE_FONTS_H__
 
 #include "../../Modules/Module.h"
-#include "../../../SDLs/SDL/include/SDL_pixels.h"
+#include <SDL_pixels.h>
 
 #define MAX_FONTS 10
 #define MAX_FONT_CHARS 256

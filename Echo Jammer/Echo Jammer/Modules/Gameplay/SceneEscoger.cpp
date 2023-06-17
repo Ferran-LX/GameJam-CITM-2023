@@ -22,11 +22,11 @@ bool SceneEscoger::Start() {
 	//Carga de texturas(imagenes)
 
 
-	ArrayImagesEscoger[0] = App->textures->Load(FI_choseplayer_1.c_str());
+	/*ArrayImagesEscoger[0] = App->textures->Load(FI_choseplayer_1.c_str());
 	ArrayImagesEscoger[1] = App->textures->Load(FI_choseplayer_2.c_str());
 	ArrayImagesEscoger[2] = App->textures->Load(FI_choseplayer_3.c_str());
 	ArrayImagesEscoger[3] = App->textures->Load(FI_choseplayer_4.c_str());
-	App->audio->PlayMusic(FA_Music_Selection.c_str(), 1.0f);
+	App->audio->PlayMusic(FA_Music_Selection.c_str(), 1.0f);*/
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 

@@ -10,7 +10,6 @@
 #include "../../Modules/Core/ModuleFadeToBlack.h"
 #include "../../Utils/p2Point.h"
 #include "../../Utils/Animation.h"
-#include "../Gameplay/ModuleInsertCoin.h"
 #include "../../Modules/Core/ModuleCollisions.h"
 #include "../../Modules/Gameplay/ModuleEnemies.h"
 
@@ -31,49 +30,49 @@ bool SceneIntro::Start() {
 	//Carga de texturas(imagenes)
 	// 
 	//Carga imagenes carpeta Intro
-	ArrayImagesIntro[0] = App->textures->Load(FI_Introimage_1.c_str());
-	ArrayImagesIntro[1] = App->textures->Load(FI_Introimage_2.c_str());
-	ArrayImagesIntro[2] = App->textures->Load(FI_Introimage_3.c_str());
-	ArrayImagesIntro[3] = App->textures->Load(FI_Introimage_4.c_str());
-	//carga de la vaina
-	ArrayImagesIntro[4] = App->textures->Load(FI_Introimage_5.c_str());//fuegos
+	//ArrayImagesIntro[0] = App->textures->Load(FI_Introimage_1.c_str());
+	//ArrayImagesIntro[1] = App->textures->Load(FI_Introimage_2.c_str());
+	//ArrayImagesIntro[2] = App->textures->Load(FI_Introimage_3.c_str());
+	//ArrayImagesIntro[3] = App->textures->Load(FI_Introimage_4.c_str());
+	////carga de la vaina
+	//ArrayImagesIntro[4] = App->textures->Load(FI_Introimage_5.c_str());//fuegos
 
-	fuegos.PushBack({ 281, 286, 30, 76 });
-	fuegos.PushBack({ 326, 285, 30, 76 });
-	fuegos.PushBack({ 232, 285, 30, 76 });
-	fuegos.speed = 0.2f;
-	currentAnim = &fuegos;
-	///////////////
-	ArrayImagesIntro[5] = App->textures->Load(FI_Introimage_6.c_str());
-	ArrayImagesIntro[6] = App->textures->Load(FI_Introimage_7.c_str());
-	ArrayImagesIntro[7] = App->textures->Load(FI_Introimage_8.c_str());
-	ArrayImagesIntro[8] = App->textures->Load(FI_Introimage_9.c_str());
-	ArrayImagesIntro[9] = App->textures->Load(FI_Introimage_10.c_str());
-	ArrayImagesIntro[10] = App->textures->Load(FI_Introimage_11.c_str());
-	ArrayImagesIntro[11] = App->textures->Load(FI_Introimage_12.c_str());
-	ArrayImagesIntro[12] = App->textures->Load(FI_Introimage_13.c_str());
-	ArrayImagesIntro[13] = App->textures->Load(FI_Introimage_14.c_str());
-	ArrayImagesIntro[14] = App->textures->Load(FI_Introimage_15.c_str());
-	ArrayImagesIntro[15] = App->textures->Load(FI_Introimage_16.c_str());
-	ArrayImagesIntro[16] = App->textures->Load(FI_Introimage_17.c_str());
-	ArrayImagesIntro[17] = App->textures->Load(FI_Introimage_18.c_str());
-	//Carga imagenes carpeta sprites-lluc-intro
-	ArrayImagesIntro2[0] = App->textures->Load(FI_Introimage_19.c_str());
-	ArrayImagesIntro2[1] = App->textures->Load(FI_Introimage_20.c_str());
-	ArrayImagesIntro2[2] = App->textures->Load(FI_Introimage_21.c_str());
-	ArrayImagesIntro2[3] = App->textures->Load(FI_Introimage_22.c_str());
-	ArrayImagesIntro2[4] = App->textures->Load(FI_Introimage_23.c_str());
-	ArrayImagesIntro2[5] = App->textures->Load(FI_Introimage_24.c_str());
-	ArrayImagesIntro2[6] = App->textures->Load(FI_Introimage_25.c_str());
-	ArrayImagesIntro2[7] = App->textures->Load(FI_Introimage_26.c_str());
-	ArrayImagesIntro2[8] = App->textures->Load(FI_Introimage_27.c_str());
-	ArrayImagesIntro2[9] = App->textures->Load(FI_Introimage_28.c_str());
-	ArrayImagesIntro2[10] = App->textures->Load(FI_Introimage_29.c_str());
-	ArrayImagesIntro2[11] = App->textures->Load(FI_Introimage_30.c_str());
-	ArrayImagesIntro2[12] = App->textures->Load(FI_Introimage_31.c_str());
-	ArrayImagesIntro2[13] = App->textures->Load(FI_Introimage_32.c_str());
-	ArrayImagesIntro2[14] = App->textures->Load(FI_Introimage_33.c_str());
-	ArrayImagesIntro2[15] = App->textures->Load(FI_Introimage_34.c_str());
+	//fuegos.PushBack({ 281, 286, 30, 76 });
+	//fuegos.PushBack({ 326, 285, 30, 76 });
+	//fuegos.PushBack({ 232, 285, 30, 76 });
+	//fuegos.speed = 0.2f;
+	//currentAnim = &fuegos;
+	/////////////////
+	//ArrayImagesIntro[5] = App->textures->Load(FI_Introimage_6.c_str());
+	//ArrayImagesIntro[6] = App->textures->Load(FI_Introimage_7.c_str());
+	//ArrayImagesIntro[7] = App->textures->Load(FI_Introimage_8.c_str());
+	//ArrayImagesIntro[8] = App->textures->Load(FI_Introimage_9.c_str());
+	//ArrayImagesIntro[9] = App->textures->Load(FI_Introimage_10.c_str());
+	//ArrayImagesIntro[10] = App->textures->Load(FI_Introimage_11.c_str());
+	//ArrayImagesIntro[11] = App->textures->Load(FI_Introimage_12.c_str());
+	//ArrayImagesIntro[12] = App->textures->Load(FI_Introimage_13.c_str());
+	//ArrayImagesIntro[13] = App->textures->Load(FI_Introimage_14.c_str());
+	//ArrayImagesIntro[14] = App->textures->Load(FI_Introimage_15.c_str());
+	//ArrayImagesIntro[15] = App->textures->Load(FI_Introimage_16.c_str());
+	//ArrayImagesIntro[16] = App->textures->Load(FI_Introimage_17.c_str());
+	//ArrayImagesIntro[17] = App->textures->Load(FI_Introimage_18.c_str());
+	////Carga imagenes carpeta sprites-lluc-intro
+	//ArrayImagesIntro2[0] = App->textures->Load(FI_Introimage_19.c_str());
+	//ArrayImagesIntro2[1] = App->textures->Load(FI_Introimage_20.c_str());
+	//ArrayImagesIntro2[2] = App->textures->Load(FI_Introimage_21.c_str());
+	//ArrayImagesIntro2[3] = App->textures->Load(FI_Introimage_22.c_str());
+	//ArrayImagesIntro2[4] = App->textures->Load(FI_Introimage_23.c_str());
+	//ArrayImagesIntro2[5] = App->textures->Load(FI_Introimage_24.c_str());
+	//ArrayImagesIntro2[6] = App->textures->Load(FI_Introimage_25.c_str());
+	//ArrayImagesIntro2[7] = App->textures->Load(FI_Introimage_26.c_str());
+	//ArrayImagesIntro2[8] = App->textures->Load(FI_Introimage_27.c_str());
+	//ArrayImagesIntro2[9] = App->textures->Load(FI_Introimage_28.c_str());
+	//ArrayImagesIntro2[10] = App->textures->Load(FI_Introimage_29.c_str());
+	//ArrayImagesIntro2[11] = App->textures->Load(FI_Introimage_30.c_str());
+	//ArrayImagesIntro2[12] = App->textures->Load(FI_Introimage_31.c_str());
+	//ArrayImagesIntro2[13] = App->textures->Load(FI_Introimage_32.c_str());
+	//ArrayImagesIntro2[14] = App->textures->Load(FI_Introimage_33.c_str());
+	//ArrayImagesIntro2[15] = App->textures->Load(FI_Introimage_34.c_str());
 
 	
 
@@ -101,7 +100,7 @@ Update_Status SceneIntro::Update() {
 
 	if (App->input->keys[SDL_SCANCODE_LSHIFT] == Key_State::KEY_DOWN)
 	{
-		tokenFx = App->audio->LoadFx(FA_Fx_token.c_str());
+		//tokenFx = App->audio->LoadFx(FA_Fx_token.c_str());
 	};
 	////Update path positions
 	//fuegos.Update();
@@ -160,7 +159,7 @@ Update_Status SceneIntro::PostUpdate() {
 		App->render->Blit(ArrayImagesIntro2[7], -x1 + 200, -20, NULL);//holalluc
 		if(play)
 			{
-			App->audio->PlayMusic(FA_Music_introTitle.c_str());
+			//App->audio->PlayMusic(FA_Music_introTitle.c_str());
 			play = false;
 			}
 		//Abaix

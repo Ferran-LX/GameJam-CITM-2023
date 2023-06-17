@@ -4,7 +4,7 @@
 #include "../../Modules/Module.h"
 #include "../../Application/Globals.h"
 
-#include "../../../SDLs/SDL/include/SDL_scancode.h"
+#include <SDL_scancode.h>
 
 #define MAX_KEYS 256
 #define MAX_PADS 4

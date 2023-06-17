@@ -2,9 +2,8 @@
 
 #include "../../Application/Application.h"
 
-#include "../../../SDLs/SDL/include/SDL.h"
-#include "../../../SDLs/SDL_Mixer/include/SDL_mixer.h"
-//#pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
+#include <SDL.h>
+#include <SDL_mixer.h>
 
 ModuleAudio::ModuleAudio(bool startEnabled) : Module(startEnabled) {
 	for (uint i = 0; i < MAX_FX; ++i)

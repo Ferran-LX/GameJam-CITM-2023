@@ -26,7 +26,7 @@ bool ScenePantallaLose::Start() {
 
 	startTime = SDL_GetTicks();
 
-	ArrayImagesContinue[0] = App->textures->Load(FI_continue_1.c_str());
+	/*ArrayImagesContinue[0] = App->textures->Load(FI_continue_1.c_str());
 	ArrayImagesContinue[1] = App->textures->Load(FI_continue_2.c_str());
 	ArrayImagesContinue[2] = App->textures->Load(FI_continue_3.c_str());
 	ArrayImagesContinue[3] = App->textures->Load(FI_continue_4.c_str());
@@ -34,7 +34,7 @@ bool ScenePantallaLose::Start() {
 	ArrayImagesContinue[5] = App->textures->Load(FI_continue_6.c_str());
 	ArrayImagesContinue[6] = App->textures->Load(FI_continue_7.c_str());
 	ArrayImagesContinue[7] = App->textures->Load(FI_continue_8.c_str());
-	ArrayImagesContinue[8] = App->textures->Load(FI_continue_9.c_str());
+	ArrayImagesContinue[8] = App->textures->Load(FI_continue_9.c_str());*/
 
 	return ret;
 }

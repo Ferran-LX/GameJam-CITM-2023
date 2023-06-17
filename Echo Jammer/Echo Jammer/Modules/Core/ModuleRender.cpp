@@ -5,7 +5,7 @@
 #include "../../Modules/Core/ModuleTextures.h"
 #include "../../Modules/Core/ModuleInput.h"
 
-#include "../../../SDLs/SDL/include/SDL_render.h"
+#include <SDL_render.h>
 
 ModuleRender::ModuleRender(bool startEnabled) : Module(startEnabled) {
 }

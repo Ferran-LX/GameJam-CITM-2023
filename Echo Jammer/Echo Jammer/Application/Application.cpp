@@ -1,6 +1,6 @@
 #include "Application.h"
 #include <iostream>
-#include "../../SDLs/SDL/include/SDL.h"
+#include <SDL.h>
 
 #include "../Modules/Module.h"
 #include "../Modules/Core/ModuleWindow.h"
@@ -13,7 +13,6 @@
 #include "../Modules/Core/ModuleFonts.h"
 #include "../Modules/Core/ModuleRender.h"
 #include "../Modules/Core/ModuleHUD.h"
-#include "../Modules/Gameplay/ModuleInsertCoin.h"
 #include "../Modules/Gameplay/ModulePlayer.h"
 #include "../Modules/Gameplay/SceneIntro.h"
 #include "../Modules/Gameplay/SceneLevel1.h"
@@ -56,7 +55,6 @@ Application::Application() {
 
 	modules.push_back(fonts = new ModuleFonts(true));
 	modules.push_back(hud = new ModuleHUD(true));
-	modules.push_back(insertCoins = new ModuleInsertCoin(true));
 	modules.push_back(scenePantallaLose = new ScenePantallaLose(false));
 	modules.push_back(sceneOutro = new SceneOutro(false));
 
@@ -105,13 +103,7 @@ Update_Status Application::Update() {
 				ret = modules[i]->IsEnabled() ? modules[i]->PostUpdate() : Update_Status::UPDATE_CONTINUE;
 				ret = modules[9]->PostUpdate(); // Foreground
 			}
-		}
-		else if (dynamic_cast<ModuleInsertCoin*>(modules[i]))
-		{
-			if (modules[6]->IsEnabled()) { // start
-				ret = modules[i]->IsEnabled() ? modules[i]->PostUpdate() : Update_Status::UPDATE_CONTINUE;
-			}
-		}
+		}	
 		else
 			ret = modules[i]->IsEnabled() ? modules[i]->PostUpdate() : Update_Status::UPDATE_CONTINUE;
 

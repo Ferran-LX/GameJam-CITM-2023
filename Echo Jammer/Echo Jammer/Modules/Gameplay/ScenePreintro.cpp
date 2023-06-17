@@ -8,7 +8,6 @@
 #include "../../Modules/Core/ModuleAudio.h"
 #include "../../Modules/Core/ModuleInput.h"
 #include "../../Modules/Core/ModuleFadeToBlack.h"
-#include "../Gameplay/ModuleInsertCoin.h"
 
 ScenePreintro::ScenePreintro(bool startEnabled) : Module(startEnabled) {
 }
@@ -22,7 +21,7 @@ bool ScenePreintro::Start() {
 	bool ret = true;
 	startTime = SDL_GetTicks();
 
-	ArrayImagesPreintro[0] = App->textures->Load(FI_Introimage_35.c_str());
+	//ArrayImagesPreintro[0] = App->textures->Load(FI_Introimage_35.c_str());
 
 	//App->render->camera.x = 0;
 	//App->render->camera.y = 0;
@@ -42,7 +41,7 @@ Update_Status ScenePreintro::Update() {
 
 	if (App->input->keys[SDL_SCANCODE_LSHIFT] == Key_State::KEY_DOWN)
 	{
-		tokenFx = App->audio->LoadFx(FA_Fx_token.c_str());
+		//tokenFx = App->audio->LoadFx(FA_Fx_token.c_str());
 	};
 
 

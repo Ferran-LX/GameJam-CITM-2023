@@ -10,7 +10,6 @@
 #include "../../Modules/Core/ModuleCollisions.h"
 #include "../../Modules/Core/ModuleFadeToBlack.h"
 #include "../../Modules/Core/ModuleFonts.h"
-#include "../../Modules/Gameplay/SceneLevel1.h"
 #include "../../Modules/Gameplay/ScenePantallaLose.h"
 #include "../../Modules/Gameplay/ModuleEnemies.h"
 
@@ -91,10 +90,10 @@ bool ModulePlayer::Start() {
 
 	bool ret = true;
 
-	texture = App->textures->Load(FI_spritePlayer_1.c_str());
+	//texture = App->textures->Load(FI_spritePlayer_1.c_str());
 	currentAnimation = &idleAnim;
 
-	explosionjugadorFx = App->audio->LoadFx(FA_Fx_explosionJ.c_str()); ;
+	//explosionjugadorFx = App->audio->LoadFx(FA_Fx_explosionJ.c_str()); ;
 
 	position.x = 183;
 	position.y = 3665;
@@ -113,7 +112,7 @@ if (!stopGame) {
 	GamePad& pad = App->input->pads[0];
 	
 	// Moving the player with the camera scroll
-	App->player->position.y += App->sceneLevel_1->velocitatNivell;
+	//App->player->position.y += App->sceneLevel_1->velocitatNivell;
 	if (App->input->keys[SDL_SCANCODE_F1] == KEY_DOWN || pad.l1==true)
 		godMode = !godMode;
 
@@ -321,7 +320,7 @@ if (!stopGame) {
 		// LOSE CONDITION
 		if (lives == 0 || App->input->keys[SDL_SCANCODE_F4] == Key_State::KEY_DOWN || pad.l2 == true)
 		{
-			App->sceneLevel_1->stopGame = true;
+			//App->sceneLevel_1->stopGame = true;
 			App->player->stopGame = true;
 			App->enemies->stopGame = true;
 			App->scenePantallaLose->Enable();

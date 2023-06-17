@@ -1,7 +1,7 @@
 #ifndef __COLLIDER_H__
 #define __COLLIDER_H__
 
-#include "../../SDLs/SDL/include/SDL_rect.h"
+#include <SDL_rect.h>
 
 #define MAX_LISTENERS 5
 

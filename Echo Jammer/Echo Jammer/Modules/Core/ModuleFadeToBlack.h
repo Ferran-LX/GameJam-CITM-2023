@@ -3,7 +3,7 @@
 
 #include "../../Application/Application.h"
 #include "../../Modules/Module.h"
-#include "../../../SDLs/SDL/include/SDL_rect.h"
+#include <SDL_rect.h>
 
 class ModuleFadeToBlack : public Module {
 
