@@ -4,29 +4,31 @@
 #include "../../Modules/Gameplay/ModuleEnemies.h"
 #include "../../Utils/EnemyStateMachine.h"
 #include "TransitionConditionsBasic.h"
+#include "../../Utils/Collider.h"
 
 EnemyBasic::EnemyBasic(int x_, int y_) : Enemy(x_, y_, Enemy_Type::BASIC)
 {
-	SetSpeed(5);
+	_speed = 5;
+	_aggro = 0;
+	_aggroMax = 50;
+	_attackRange = 5;
+	_visionRange = 10;
+	_searchRange = 15;
 	InitStateMachine();
 }
 
 EnemyBasic::~EnemyBasic()
 {
-	delete _stateMachine;
 }
 
 void EnemyBasic::InitStateMachine()
 {
-	//Funció lambda, explicació breu
-	// [] - conté les variables capturades (o sigui, les que es poden utilitzar a la funció lambda)
-	// posar-hi '&' significa acces de només lectura a tot l'scope de la funció on es troba la definició de la lambda
-	// especificar el nom dona accés a la variable amb aquell nom (es poden separar per comes)
-	// -> bool es el valor que retorna la funció lambda
-	// () - permet posar paràmetres, però en aquesta implementació no n'hi ha ja que s'utilitza de wrapper
+	// Explicació de funcions lambda
+	// https://www.geeksforgeeks.org/lambda-expression-in-c/s
 
 	ModulePlayer* player = App->player;
-	_stateMachine = new EnemyStateMachine();
+	if (_stateMachine == nullptr) _stateMachine = new EnemyStateMachine();
+
 	_stateMachine->AddTransition(Enemy_State::PATRULLANT, Enemy_State::PERSEGUINT,
 		[this, &player]() -> bool { return Transitions_Basic::Patrulla_Perseguir(*this, player->position); });
 
@@ -48,12 +50,4 @@ void EnemyBasic::InitStateMachine()
 	_stateMachine->AddTransition(Enemy_State::ATACANT, Enemy_State::JOC_FINALITZAT,
 		[&player]() -> bool { return Transitions_Basic::Atacar_Final(*player); });
 
-}
-
-void EnemyBasic::Update()
-{
-}
-
-void EnemyBasic::OnCollision(Collider* collider)
-{
 }

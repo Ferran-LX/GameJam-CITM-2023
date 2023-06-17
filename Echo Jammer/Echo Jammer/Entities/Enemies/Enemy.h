@@ -10,9 +10,9 @@
 
 struct SDL_Texture;
 struct Collider;
+struct EnemyStateMachine;
 enum Enemy_Type;
 enum Enemy_State;
-struct EnemyStateMachine;
 
 class Enemy {
 protected:
@@ -30,7 +30,7 @@ public:
 	// Implementacio de la FSM per cadascun dels enemics
 	virtual void InitStateMachine();
 
-	// Called from inhering enemies' Udpate
+	// Called from inhering enemies' Uppate
 	// Updates animation and collider position
 	virtual void Update();
 
@@ -45,7 +45,7 @@ public:
 
 #pragma region Setters
 
-	void SetTexture(SDL_Texture* nTexture);
+	void SetTexture(SDL_Texture* nTexture) { _texture = nTexture; }
 
 	// Elimina el collider actual i n'assigna un de nou
 	void SetCollider(Collider* nCollider);
@@ -114,21 +114,21 @@ protected:
 	// Original spawn position. Stored for movement calculations
 	iPoint _spawnPos;
 
-	int _speed;
+	int _speed = 0;
 
-	int _aggro;
+	int _aggro = 0;
 
-	int _aggroMax;
+	int _aggroMax = 50;
 
-	int _attackRange;
+	int _attackRange = 0;
 
-	int _visionRange;
+	int _visionRange = 0;
 
-	int _searchRange;
+	int _searchRange = 0;
 
 	Enemy_State _currState;
 
-	EnemyStateMachine* _stateMachine;
+	EnemyStateMachine* _stateMachine = nullptr;
 
 };
 

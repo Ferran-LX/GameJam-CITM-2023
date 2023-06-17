@@ -13,9 +13,5 @@ public:
 
     void InitStateMachine() override;
 
-    void Update() override;
-
-    void OnCollision(Collider* collider) override;
-
 
 };

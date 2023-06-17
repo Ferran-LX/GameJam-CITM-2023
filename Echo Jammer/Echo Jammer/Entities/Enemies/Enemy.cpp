@@ -5,16 +5,25 @@
 #include "../../Modules/Core/ModuleParticles.h"
 #include "../../Modules/Core/ModuleAudio.h"
 #include "../../Modules/Core/ModuleRender.h"
+#include "../../Modules/Gameplay/ModuleEnemies.h"
 
 Enemy::Enemy(int x_, int y_, Enemy_Type type_) : position(x_, y_), type(type_)
 {
 	_speed = 0;
+	_aggro = 0;
+	_aggroMax = 50;
+	_attackRange = 0;
+	_visionRange = 0;
+	_searchRange = 0;
+	_currState = Enemy_State::PATRULLANT;
 	_spawnPos = position;
 }
 
 Enemy::~Enemy() {
 	if (_collider != nullptr) 
 		_collider->pendingToDelete = true;
+
+	delete _stateMachine;
 }
 
 void Enemy::InitStateMachine() {}
@@ -33,10 +42,6 @@ void Enemy::Draw() {
 }
 
 void Enemy::OnCollision(Collider* collider) {
-	/*App->particles->AddParticle(App->particles->explosion2, position.x, position.y);*/
-	//App->audio->PlayFx(destroyedFx);
-
-	SetToDelete();
 }
 
 void Enemy::SetToDelete() {
@@ -46,11 +51,6 @@ void Enemy::SetToDelete() {
 		_collider->pendingToDelete = true;
 }
 
-//void Enemy::SetSpeed(int nSpeed)
-//{
-//	_speed = nSpeed;
-//}
-
 void Enemy::SetCollider(Collider* nCollider)
 {
 	if (_collider != nullptr && _collider != nCollider)
@@ -58,17 +58,3 @@ void Enemy::SetCollider(Collider* nCollider)
 
 	_collider = nCollider;
 }
-
-//const Collider* Enemy::GetCollider() const {
-//	return _collider;
-//}
-
-void Enemy::SetTexture(SDL_Texture* nTexture)
-{
-	_texture = nTexture;
-}
-
-//const SDL_Texture* Enemy::GetTexture() const
-//{
-//	return _texture;
-//}
