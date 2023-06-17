@@ -7,6 +7,9 @@
 #include "../../Modules/Core/ModuleAudio.h"
 
 #include "../../Entities/Enemies/Enemy.h"
+#include "../../Entities/Enemies/EnemyBasic.h"
+#include "../../Entities/Enemies/TransitionConditionsBasic.h"
+#include "../../Utils/EnemyStateMachine.h"
 
 
 #define SPAWN_MARGIN 100
@@ -15,13 +18,25 @@
 ModuleEnemies::ModuleEnemies(bool startEnabled) : Module(startEnabled) {
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 		enemies[i] = nullptr;
+	_stateMachine = new EnemyStateMachine();
 }
 
 ModuleEnemies::~ModuleEnemies() {
+	delete _stateMachine;
+}
+
+bool ModuleEnemies::Init()
+{
+	//Transicions robot bàsic
+	EnemyStateTransition transition;
+	transition.target = Enemy_State::PERSEGUINT;
+	transition.condition = [&]() -> bool {return Transitions_Basic::Patrulla_Perseguir()}
+	
+
+	return true;
 }
 
 bool ModuleEnemies::Start() {
-	enemyDestroyedFx = App->audio->LoadFx(FA_Fx_explosion.c_str());
 	return true;
 }
 
@@ -76,7 +91,7 @@ bool ModuleEnemies::CleanUp() {
 	return true;
 }
 
-bool ModuleEnemies::AddEnemy(Enemy_Type type, int x, int y, int wave)
+bool ModuleEnemies::AddEnemy(Enemy_Type type, int x, int y)
 {
 	bool ret = false;
 
@@ -85,7 +100,6 @@ bool ModuleEnemies::AddEnemy(Enemy_Type type, int x, int y, int wave)
 			spawnQueue[i].type = type;
 			spawnQueue[i].x = x;
 			spawnQueue[i].y = y;
-			spawnQueue[i].wave = wave;
 
 			ret = true;
 			break;
@@ -96,6 +110,8 @@ bool ModuleEnemies::AddEnemy(Enemy_Type type, int x, int y, int wave)
 }
 
 void ModuleEnemies::HandleEnemiesSpawn() {
+	// TODO cambiar logica de spawn
+
 	// Iterate all the enemies queue
 	for (uint i = 0; i < MAX_ENEMIES; ++i) {
 		if (spawnQueue[i].type != Enemy_Type::NO_TYPE) {
@@ -130,6 +146,8 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info) {
 	for (uint i = 0; i < MAX_ENEMIES; ++i) {
 		if (enemies[i] == nullptr) {
 			switch (info.type) {
+			case Enemy_Type::BASIC: enemies[i] = new EnemyBasic(info.x, info.y); break;
+
 			//	// props
 			//case Enemy_Type::CHEST_BLUE:enemies[i] = new Enemy_CHESS(info.x, info.y);break;
 			//case Enemy_Type::Bluebook:enemies[i] = new Enemy_Bluebook(info.x, info.y);break;
@@ -167,7 +185,7 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info) {
 			//case Enemy_Type::BOSS: enemies[i] = new Boss_BreathDragon(info.x, info.y, info.wave); break;
 			}
 
-			enemies[i]->destroyedFx = enemyDestroyedFx;
+			//enemies[i]->destroyedFx = enemyDestroyedFx;
 
 			break;
 		}

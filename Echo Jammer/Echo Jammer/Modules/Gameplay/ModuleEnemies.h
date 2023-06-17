@@ -7,42 +7,32 @@
 
 enum class Enemy_Type {
 	NO_TYPE,
-	ANGEL,
-	BOMB,
-	GOLD,
-	COIN,
-	CHEST_BLUE,
-	Bluebook,
-	CHEST_GREEN,
-	Greenbook,
-	CHEST_RED,
-	Redbook,
-	REDWIZARD,
-	DRAGON,
-	RED_BALL,
-	TANK,
-	BIGTANK,
-	FLYTANK,
-	TURTLE,
-	MINIDRAGON,
-	REDBAT,
-	BOSS,
-	STAGE,
-	FLAG,
-	NUM1,
-	WARL,
-	WARR,
-	FLECH,
-	STAGECLEAR,
+	BASIC,
+	SPEEDY,
+	BIG,
+	INVISIBLE,
+
+	ENEMY_TYPE_COUNT
+};
+
+enum Enemy_State {
+	PATRULLANT,
+	PERSEGUINT,
+	ATACANT,
+	CERCANT,
+	BLOQUEJAT,
+	CANSAT,
+	JOC_FINALITZAT,
+
+	MAX_STATES
 };
 
 struct EnemySpawnpoint {
 	Enemy_Type type = Enemy_Type::NO_TYPE;
 	int x, y;
-	int wave;
-	int miem;
 };
 
+struct EnemyStateMachine;
 class Enemy;
 struct SDL_Texture;
 
@@ -56,6 +46,10 @@ public:
 	~ModuleEnemies();
 
 	bool stopGame = false;
+
+	// Called when the application is initialized
+	// Prepares the FSM for each enemy type
+	bool Init() override;
 
 	// Called when the module is activated
 	// Loads the necessary textures for the enemies
@@ -77,12 +71,13 @@ public:
 	// Destroys all active enemies left in the array
 	bool CleanUp() override;
 
+	// Deprecated. Use function callbacks instead
 	// Called when an enemi collider hits another collider
 	// The enemy is destroyed and an explosion particle is fired
 	void OnCollision(Collider* c1, Collider* c2) override;
 
 	// Add an enemy into the queue to be spawned later
-	bool AddEnemy(Enemy_Type type, int x, int y, int wave);
+	bool AddEnemy(Enemy_Type type, int x, int y);
 
 	// Iterates the queue and checks for camera position
 	void HandleEnemiesSpawn();
@@ -106,10 +101,10 @@ private:
 	// The enemies sprite sheet
 	SDL_Texture* texture = nullptr;
 
-	// The audio fx for destroying an enemy
-	int enemyDestroyedFx = 0;
+	// State machine for each robot type. Accessed as _stateMachine[Enemy_Type][Enemy_State][transitionIndex]
+	EnemyStateMachine* _stateMachine;
 
-	
+
 };
 
 #endif // __MODULE_ENEMIES_H__

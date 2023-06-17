@@ -6,35 +6,35 @@
 #include "../../Modules/Core/ModuleAudio.h"
 #include "../../Modules/Core/ModuleRender.h"
 
-Enemy::Enemy(int x, int y) : position(x, y) {
-	spawnPos = position;
+Enemy::Enemy(int x_, int y_, Enemy_Type type_) : position(x_, y_), type(type_)
+{
+	_speed = 0;
+	_spawnPos = position;
 }
 
 Enemy::~Enemy() {
-	if (collider != nullptr) 
-		collider->pendingToDelete = true;
+	if (_collider != nullptr) 
+		_collider->pendingToDelete = true;
 }
 
-const Collider* Enemy::GetCollider() const {
-	return collider;
-}
+void Enemy::InitStateMachine() {}
 
 void Enemy::Update() {
-	if (currentAnim != nullptr) 
-		currentAnim->Update();
+	if (_currentAnim != nullptr) 
+		_currentAnim->Update();
 
-	if (collider != nullptr) 
-		collider->SetPos(position.x, position.y);
+	if (_collider != nullptr) 
+		_collider->SetPos(position.x, position.y);
 }
 
 void Enemy::Draw() {
-	if (currentAnim != nullptr) 
-		App->render->Blit(texture, position.x, position.y, &(currentAnim->GetCurrentFrame()));
+	if (_currentAnim != nullptr) 
+		App->render->Blit(_texture, position.x, position.y, &(_currentAnim->GetCurrentFrame()));
 }
 
 void Enemy::OnCollision(Collider* collider) {
 	/*App->particles->AddParticle(App->particles->explosion2, position.x, position.y);*/
-	App->audio->PlayFx(destroyedFx);
+	//App->audio->PlayFx(destroyedFx);
 
 	SetToDelete();
 }
@@ -42,6 +42,33 @@ void Enemy::OnCollision(Collider* collider) {
 void Enemy::SetToDelete() {
 	pendingToDelete = true;
 
-	if (collider != nullptr) 
-		collider->pendingToDelete = true;
+	if (_collider != nullptr) 
+		_collider->pendingToDelete = true;
 }
+
+//void Enemy::SetSpeed(int nSpeed)
+//{
+//	_speed = nSpeed;
+//}
+
+void Enemy::SetCollider(Collider* nCollider)
+{
+	if (_collider != nullptr && _collider != nCollider)
+		_collider->pendingToDelete = true;
+
+	_collider = nCollider;
+}
+
+//const Collider* Enemy::GetCollider() const {
+//	return _collider;
+//}
+
+void Enemy::SetTexture(SDL_Texture* nTexture)
+{
+	_texture = nTexture;
+}
+
+//const SDL_Texture* Enemy::GetTexture() const
+//{
+//	return _texture;
+//}

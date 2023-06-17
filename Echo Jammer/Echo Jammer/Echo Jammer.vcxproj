@@ -151,6 +151,8 @@
     <ClInclude Include="Application\FileNames.h" />
     <ClInclude Include="Application\Globals.h" />
     <ClInclude Include="Application\MemLeaks.h" />
+    <ClInclude Include="Entities\Enemies\TransitionConditionsBasic.h" />
+    <ClInclude Include="Utils\EnemyStateMachine.h" />
     <ClInclude Include="Entities\Enemies\Enemy.h" />
     <ClInclude Include="Entities\Particle.h" />
     <ClInclude Include="Modules\Core\ModuleAudio.h" />
@@ -174,6 +176,7 @@
     <ClInclude Include="Modules\Gameplay\ScenePreintro.h" />
     <ClInclude Include="Modules\Gameplay\SceneStart.h" />
     <ClInclude Include="Modules\Module.h" />
+    <ClInclude Include="Entities\Enemies\EnemyBasic.h" />
     <ClInclude Include="Utils\Animation.h" />
     <ClInclude Include="Utils\Collider.h" />
     <ClInclude Include="Utils\p2Point.h" />
@@ -183,6 +186,7 @@
     <ClCompile Include="Application\Application.cpp" />
     <ClCompile Include="Application\Globals.cpp" />
     <ClCompile Include="Application\Main.cpp" />
+    <ClCompile Include="Utils\EnemyStateMachine.cpp" />
     <ClCompile Include="Entities\Enemies\Enemy.cpp" />
     <ClCompile Include="Entities\Particle.cpp" />
     <ClCompile Include="Modules\Core\ModuleAudio.cpp" />
@@ -206,6 +210,7 @@
     <ClCompile Include="Modules\Gameplay\ScenePreintro.cpp" />
     <ClCompile Include="Modules\Gameplay\SceneStart.cpp" />
     <ClCompile Include="Modules\Module.cpp" />
+    <ClCompile Include="Entities\Enemies\EnemyBasic.cpp" />
     <ClCompile Include="Utils\Collider.cpp" />
     <ClCompile Include="Utils\Path.cpp" />
   </ItemGroup>
