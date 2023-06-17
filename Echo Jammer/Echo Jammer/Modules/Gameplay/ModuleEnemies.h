@@ -47,10 +47,6 @@ public:
 
 	bool stopGame = false;
 
-	// Called when the application is initialized
-	// Prepares the FSM for each enemy type
-	bool Init() override;
-
 	// Called when the module is activated
 	// Loads the necessary textures for the enemies
 	bool Start() override;
