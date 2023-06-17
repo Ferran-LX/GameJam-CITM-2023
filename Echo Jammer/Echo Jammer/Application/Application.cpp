@@ -14,15 +14,7 @@
 #include "../Modules/Core/ModuleRender.h"
 #include "../Modules/Core/ModuleHUD.h"
 #include "../Modules/Gameplay/ModulePlayer.h"
-#include "../Modules/Gameplay/SceneIntro.h"
-#include "../Modules/Gameplay/SceneLevel1.h"
-#include "../Modules/Gameplay/SceneLevel1_Foreground.h"
-#include "../Modules/Gameplay/SceneStart.h"
-#include "../Modules/Gameplay/ScenePantallaLose.h"
 #include "../Modules/Gameplay/ModuleEnemies.h"
-#include "../Modules/Gameplay/SceneEscoger.h"
-#include "../Modules/Gameplay/SceneOutro.h"
-#include "../Modules/Gameplay/ScenePreintro.h"
 
 int start_time = SDL_GetTicks();
 int last_frame_time = start_time;
@@ -39,14 +31,7 @@ Application::Application() {
 	modules.push_back(input = new ModuleInput(true));
 	modules.push_back(textures = new ModuleTextures(true));
 	modules.push_back(audio = new ModuleAudio(true));
-	modules.push_back(scenePreintro = new ScenePreintro(true));
-
-	modules.push_back(sceneIntro = new SceneIntro(false));
-	modules.push_back(sceneStart = new SceneStart(false));
-	modules.push_back(sceneEscoger = new SceneEscoger(false));
-	modules.push_back(sceneLevel_1 = new SceneLevel1(false));
-	modules.push_back(sceneLevel_1_foreground = new SceneLevel1_Foreground(true));
-
+	
 	modules.push_back(enemies = new ModuleEnemies(false));
 	modules.push_back(player = new ModulePlayer(false));
 	modules.push_back(particles = new ModuleParticles(true));
@@ -55,9 +40,7 @@ Application::Application() {
 
 	modules.push_back(fonts = new ModuleFonts(true));
 	modules.push_back(hud = new ModuleHUD(true));
-	modules.push_back(scenePantallaLose = new ScenePantallaLose(false));
-	modules.push_back(sceneOutro = new SceneOutro(false));
-
+	
 	modules.push_back(render = new ModuleRender(true));
 
 	sizeVector = modules.size();

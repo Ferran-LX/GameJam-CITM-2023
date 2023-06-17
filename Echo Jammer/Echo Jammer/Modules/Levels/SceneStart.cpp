@@ -22,8 +22,8 @@ bool SceneStart::Start() {
 
 	//Carga de texturas(imagenes)
 
-	ArrayImagesStart[0] = App->textures->Load(FI_Start_1.c_str());
-	ArrayImagesStart[1] = App->textures->Load(FI_Start_2.c_str());
+	/*ArrayImagesStart[0] = App->textures->Load(FI_Start_1.c_str());
+	ArrayImagesStart[1] = App->textures->Load(FI_Start_2.c_str());*/
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
@@ -44,7 +44,7 @@ Update_Status SceneStart::Update() {
 		if (coins > 0)
 		{
 			LOG("Game start!")
-			App->fade->FadeToBlack(this, (Module*)App->sceneEscoger, 60);
+		//	App->fade->FadeToBlack(this, (Module*)App->sceneEscoger, 60);
 			coins--;
 		}
 		else
@@ -54,7 +54,7 @@ Update_Status SceneStart::Update() {
 	}
 	if (App->input->keys[SDL_SCANCODE_LSHIFT] == Key_State::KEY_DOWN)
 	{
-		tokenFx = App->audio->LoadFx(FA_Fx_token.c_str());
+		//tokenFx = App->audio->LoadFx(FA_Fx_token.c_str());
 	}
 	return Update_Status::UPDATE_CONTINUE;
 }

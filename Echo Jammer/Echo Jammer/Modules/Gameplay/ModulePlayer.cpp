@@ -10,7 +10,6 @@
 #include "../../Modules/Core/ModuleCollisions.h"
 #include "../../Modules/Core/ModuleFadeToBlack.h"
 #include "../../Modules/Core/ModuleFonts.h"
-#include "../../Modules/Gameplay/ScenePantallaLose.h"
 #include "../../Modules/Gameplay/ModuleEnemies.h"
 
 #include <stdio.h>
@@ -311,20 +310,7 @@ if (!stopGame) {
 		}
 	}
 
-	// WIN CONDITION
-		if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN || pad.r2 == true)
-		{
-			App->fade->FadeToBlack((Module*)App->sceneLevel_1, (Module*)App->sceneOutro, 60); //Menu start no intro
-		}
-
-		// LOSE CONDITION
-		if (lives == 0 || App->input->keys[SDL_SCANCODE_F4] == Key_State::KEY_DOWN || pad.l2 == true)
-		{
-			//App->sceneLevel_1->stopGame = true;
-			App->player->stopGame = true;
-			App->enemies->stopGame = true;
-			App->scenePantallaLose->Enable();
-		}
+	
 
 }
 	return Update_Status::UPDATE_CONTINUE;

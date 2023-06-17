@@ -6,7 +6,6 @@
 
 #include "../../Application/Application.h"
 #include "../../Application/FileNames.h"
-#include "../Gameplay/SceneLevel1.h"
 
 #include <SDL_timer.h>
 
@@ -22,7 +21,7 @@ ModuleParticles::~ModuleParticles() {
 
 bool ModuleParticles::Start() {
 	LOG("Loading particles");
-	texture = App->textures->Load(FI_particles_.c_str());
+	//texture = App->textures->Load(FI_particles_.c_str());
 
 	// Laser particle
 	laser1.anim.PushBack({ 1732, 727, 47, 67 });

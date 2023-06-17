@@ -33,7 +33,6 @@ void Enemy::Draw() {
 }
 
 void Enemy::OnCollision(Collider* collider) {
-	/*App->particles->AddParticle(App->particles->explosion2, position.x, position.y);*/
 	App->audio->PlayFx(destroyedFx);
 
 	SetToDelete();

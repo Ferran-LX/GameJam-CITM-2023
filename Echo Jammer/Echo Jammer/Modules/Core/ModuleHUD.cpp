@@ -33,8 +33,8 @@ bool ModuleHUD::Start() {
 
 	LOG("Loading HUD textures");
 	bool ret = true;
-	textureFont = App->textures->Load(FI_HUD_font1.c_str());
-	textureIcons = App->textures->Load(FI_Iconos.c_str());
+	/*textureFont = App->textures->Load(FI_HUD_font1.c_str());
+	textureIcons = App->textures->Load(FI_Iconos.c_str());*/
 
 	return ret;
 }

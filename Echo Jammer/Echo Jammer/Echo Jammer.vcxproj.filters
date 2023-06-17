@@ -41,28 +41,16 @@
     <ClInclude Include="Modules\Gameplay\ModulePlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Modules\Gameplay\SceneEscoger.h">
+    <ClInclude Include="Modules\Levels\SceneEscoger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Modules\Gameplay\SceneIntro.h">
+    <ClInclude Include="Modules\Levels\SceneIntro.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Modules\Gameplay\SceneLevel1.h">
+    <ClInclude Include="Modules\Levels\ScenePreintro.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Modules\Gameplay\SceneLevel1_Foreground.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Modules\Gameplay\SceneOutro.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Modules\Gameplay\ScenePantallaLose.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Modules\Gameplay\ScenePreintro.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Modules\Gameplay\SceneStart.h">
+    <ClInclude Include="Modules\Levels\SceneStart.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Modules\Core\ModuleWindow.h">
@@ -124,28 +112,16 @@
     <ClCompile Include="Modules\Gameplay\ModulePlayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Modules\Gameplay\SceneEscoger.cpp">
+    <ClCompile Include="Modules\Levels\SceneEscoger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Modules\Gameplay\SceneIntro.cpp">
+    <ClCompile Include="Modules\Levels\SceneIntro.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Modules\Gameplay\SceneLevel1.cpp">
+    <ClCompile Include="Modules\Levels\ScenePreintro.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Modules\Gameplay\SceneLevel1_Foreground.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Modules\Gameplay\SceneOutro.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Modules\Gameplay\ScenePantallaLose.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Modules\Gameplay\ScenePreintro.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Modules\Gameplay\SceneStart.cpp">
+    <ClCompile Include="Modules\Levels\SceneStart.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Modules\Module.cpp">

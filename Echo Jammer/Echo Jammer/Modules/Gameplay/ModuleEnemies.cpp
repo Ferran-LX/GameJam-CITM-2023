@@ -21,7 +21,7 @@ ModuleEnemies::~ModuleEnemies() {
 }
 
 bool ModuleEnemies::Start() {
-	enemyDestroyedFx = App->audio->LoadFx(FA_Fx_explosion.c_str());
+	//enemyDestroyedFx = App->audio->LoadFx(FA_Fx_explosion.c_str());
 	return true;
 }
 

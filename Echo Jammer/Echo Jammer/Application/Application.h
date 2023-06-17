@@ -18,16 +18,9 @@ class ModuleFadeToBlack;
 class ModuleFonts;
 class ModuleRender;
 class ModuleHUD;
-class ModuleInsertCoin;
 
-class ScenePreintro;
-class SceneIntro;
 class SceneStart;
-class SceneEscoger;
-class SceneLevel1;
-class SceneLevel1_Foreground;
-class ScenePantallaLose;
-class SceneOutro;
+class SceneIntro;
 
 class Application {
 
@@ -66,16 +59,9 @@ public:
 	ModuleFonts* fonts = nullptr;
 	ModuleRender* render = nullptr;
 	ModuleHUD* hud = nullptr;
-	ModuleInsertCoin* insertCoins = nullptr;
 
-	ScenePreintro* scenePreintro = nullptr;
 	SceneIntro* sceneIntro = nullptr;
 	SceneStart* sceneStart = nullptr;
-	SceneEscoger* sceneEscoger = nullptr;
-	SceneLevel1* sceneLevel_1 = nullptr;
-	SceneLevel1_Foreground* sceneLevel_1_foreground = nullptr;
-	ScenePantallaLose* scenePantallaLose = nullptr;
-	SceneOutro* sceneOutro = nullptr;
 
 private:
 	int sizeVector = 0;
