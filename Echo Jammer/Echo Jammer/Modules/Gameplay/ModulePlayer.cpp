@@ -36,51 +36,51 @@ bool ModulePlayer::Start()
 #pragma region IDLE
 	// IDLE NORTH
 	for (int i = 0; i < numFrames - 8; i++)
-		idleNorthAnim.PushBack({ 128 * i, 128 * 7, 128, 128 });
+		idleNorthAnim.PushBack({ 128 * i, 128 * 11, 128, 128 });
 	idleNorthAnim.loop = true;
-	idleNorthAnim.speed = 0.5f;
+	idleNorthAnim.speed = 0.2f;
 
 	// IDLE NORTH - EAST
 	for (int i = 0; i < numFrames - 8; i++)
-		idleNorthEastAnim.PushBack({ 128 * i, 128 * 3, 128, 128 });
+		idleNorthEastAnim.PushBack({ 128 * i, 128 * 11, 128, 128 });
 	idleNorthEastAnim.loop = true;
-	idleNorthEastAnim.speed = 0.5f;
+	idleNorthEastAnim.speed = 0.2f;
 
 	// IDLE EAST
 	for (int i = 0; i < numFrames - 8; i++)
-		idleEastAnim.PushBack({ 128 * i, 128 * 5, 128, 128 });
+		idleEastAnim.PushBack({ 128 * i, 128 * 9, 128, 128 });
 	idleEastAnim.loop = true;
-	idleEastAnim.speed = 0.4f;
+	idleEastAnim.speed = 0.2f;
 
 	// IDLE SOUTH - EAST
 	for (int i = 0; i < numFrames - 8; i++)
-		idleSouthEastAnim.PushBack({ 128 * i, 128 * 2, 128, 128 });
+		idleSouthEastAnim.PushBack({ 128 * i, 128 * 10, 128, 128 });
 	idleSouthEastAnim.loop = true;
-	idleSouthEastAnim.speed = 0.5f;
+	idleSouthEastAnim.speed = 0.2f;
 
 	// IDLE SOUTH
 	for (int i = 0; i < numFrames - 8; i++)
-		idleSouthAnim.PushBack({ 128 * i, 128 * 6, 128, 128 });
+		idleSouthAnim.PushBack({ 128 * i, 128 * 10, 128, 128 });
 	idleSouthAnim.loop = true;
-	idleSouthAnim.speed = 0.5f;
+	idleSouthAnim.speed = 0.2f;
 
 	// IDLE SOUTH - WEAST
 	for (int i = 0; i < numFrames - 8; i++)
-		idleSouthWeastAnim.PushBack({ 128 * i, 128 * 2, 128, 128 });
+		idleSouthWeastAnim.PushBack({ 128 * i, 128 * 10, 128, 128 });
 	idleSouthWeastAnim.loop = true;
-	idleSouthWeastAnim.speed = 0.5f;
+	idleSouthWeastAnim.speed = 0.2f;
 
 	// IDLE WEAST
 	for (int i = 0; i < numFrames - 8; i++)
-		weastAnim.PushBack({ 128 * i, 128 * 4, 128, 128 });
-	weastAnim.loop = true;
-	weastAnim.speed = 0.4f;
+		idleWeastAnim.PushBack({ 128 * i, 128 * 8, 128, 128 });
+	idleWeastAnim.loop = true;
+	idleWeastAnim.speed = 0.2f;
 
 	// IDLE NORTH - WEAST
 	for (int i = 0; i < numFrames - 8; i++)
-		northWeastAnim.PushBack({ 128 * i, 128 * 0, 128, 128 });
-	northWeastAnim.loop = true;
-	northWeastAnim.speed = 0.4f;
+		idleNorthWeastAnim.PushBack({ 128 * i, 128 * 11, 128, 128 });
+	idleNorthWeastAnim.loop = true;
+	idleNorthWeastAnim.speed = 0.2f;
 
 #pragma endregion
 
@@ -94,7 +94,7 @@ bool ModulePlayer::Start()
 
 	// NORTH - EAST
 	for (int i = 0; i < numFrames; i++)
-		northEastAnim.PushBack({ 128 * i, 128 * 3, 128, 128 });
+		northEastAnim.PushBack({ 128 * i, 128 * 5, 128, 128 });
 	northEastAnim.loop = true;
 	northEastAnim.speed = 0.5f;
 
@@ -106,7 +106,7 @@ bool ModulePlayer::Start()
 
 	// SOUTH - EAST
 	for (int i = 0; i < numFrames; i++)
-		southEastAnim.PushBack({ 128 * i, 128 * 2, 128, 128 });
+		southEastAnim.PushBack({ 128 * i, 128 * 6, 128, 128 });
 	southEastAnim.loop = true;
 	southEastAnim.speed = 0.5f;
 
@@ -118,7 +118,7 @@ bool ModulePlayer::Start()
 
 	// SOUTH - WEAST
 	for (int i = 0; i < numFrames; i++)
-		southWeastAnim.PushBack({ 128 * i, 128 * 2, 128, 128 });
+		southWeastAnim.PushBack({ 128 * i, 128 * 7, 128, 128 });
 	southWeastAnim.loop = true;
 	southWeastAnim.speed = 0.5f;
 
@@ -130,7 +130,7 @@ bool ModulePlayer::Start()
 
 	// NORTH - WEAST
 	for (int i = 0; i < numFrames; i++)
-		northWeastAnim.PushBack({ 128 * i, 128 * 0, 128, 128 });
+		northWeastAnim.PushBack({ 128 * i, 128 * 4, 128, 128 });
 	northWeastAnim.loop = true;
 	northWeastAnim.speed = 0.4f;
 
