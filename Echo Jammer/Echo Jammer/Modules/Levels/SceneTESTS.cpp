@@ -36,7 +36,7 @@ bool SceneTESTS::Start()
 
 Update_Status SceneTESTS::Update() {
 	
-	LOG("Player POSX:%d POSY:%d", App->player->position.x, App->player->position.y);
+	//LOG("Player POSX:%d POSY:%d", App->player->position.x, App->player->position.y);
 	return Update_Status::UPDATE_CONTINUE;
 }
 
