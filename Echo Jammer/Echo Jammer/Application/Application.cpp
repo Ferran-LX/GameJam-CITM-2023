@@ -18,8 +18,8 @@
 
 #include "../Modules/Levels/SceneTESTS.h"
 
-int start_time = SDL_GetTicks();
-int last_frame_time = start_time;
+int _start_time = SDL_GetTicks();
+int last_frame_time = _start_time;
 int frame_counter = 0;
 int elapsed_time = 0;
 int fps = 0;
@@ -103,10 +103,10 @@ Update_Status Application::Update() {
 	}
 
 	frame_counter++;
-	if (SDL_GetTicks() - start_time > 1000) {
-		fps = frame_counter * 1000 / (SDL_GetTicks() - start_time);
+	if (SDL_GetTicks() - _start_time > 1000) {
+		fps = frame_counter * 1000 / (SDL_GetTicks() - _start_time);
 		std::cout << "FPS: " << fps << std::endl;
-		start_time = SDL_GetTicks();
+		_start_time = SDL_GetTicks();
 		frame_counter = 0;
 	}
 

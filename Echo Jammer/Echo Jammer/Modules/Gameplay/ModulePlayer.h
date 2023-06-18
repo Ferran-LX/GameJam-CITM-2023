@@ -21,48 +21,39 @@ public:
 	Update_Status PostUpdate() override;
 	void OnCollision(Collider* c1, Collider* c2) override;
 
-	int numFrames = 36; // Frames que tiene cada fila
-
 	int lives = 3;
 	bool godMode = false;
-	int start_time;
 	bool alive = true;
+	iPoint position;
 	bool stopGame = false;
-	iPoint position;	
-
 	int speed = 4;
-
-	Directions actualDirection;
 	SDL_Texture* texture = nullptr;
-	Animation* currentAnimation = nullptr;
-
-	Animation northAnim;
-	Animation northEastAnim;
-	Animation eastAnim;
-	Animation southEastAnim;
-	Animation southAnim;
-	Animation southWeastAnim;
-	Animation weastAnim;
-	Animation northWeastAnim;
-
-	Animation idleNorthAnim;	
-	Animation idleNorthEastAnim;
-	Animation idleEastAnim;
-	Animation idleSouthEastAnim;
-	Animation idleSouthAnim;
-	Animation idleSouthWeastAnim;
-	Animation idleWeastAnim;
-	Animation idleNorthWeastAnim;
-
-	// The player's collider
 	Collider* collider = nullptr;
-	Collider* colliderblue = nullptr;
 
+private:
+	int _numFrames = 36; // Frames que tiene cada fila
+	int _start_time;
+	Directions _actualDirection;
 
-	// A countdown to when the player gets destroyed. After a while, the game exits
-	uint destroyedCountdown = 120;
+	Animation* _currentAnimation = nullptr;
 
-	bool debugGamepadInfo = false;
+	Animation _northAnim;
+	Animation _northEastAnim;
+	Animation _eastAnim;
+	Animation _southEastAnim;
+	Animation _southAnim;
+	Animation _southWeastAnim;
+	Animation _weastAnim;
+	Animation _northWeastAnim;
+
+	Animation _idleNorthAnim;
+	Animation _idleNorthEastAnim;
+	Animation _idleEastAnim;
+	Animation _idleSouthEastAnim;
+	Animation _idleSouthAnim;
+	Animation _idleSouthWeastAnim;
+	Animation _idleWeastAnim;
+	Animation _idleNorthWeastAnim;
 };
 
 #endif 
