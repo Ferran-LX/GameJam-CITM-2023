@@ -15,6 +15,7 @@
 #include "../Modules/Core/ModuleHUD.h"
 #include "../Modules/Gameplay/ModulePlayer.h"
 #include "../Modules/Gameplay/ModuleEnemies.h"
+#include "../Modules/Levels/SceneTestArea.h"
 
 int start_time = SDL_GetTicks();
 int last_frame_time = start_time;
@@ -37,6 +38,8 @@ Application::Application() {
 	modules.push_back(particles = new ModuleParticles(true));
 	modules.push_back(collisions = new ModuleCollisions(false));
 	modules.push_back(fade = new ModuleFadeToBlack(true));
+
+	modules.push_back(sceneTest = new SceneTestArea(true));
 
 	modules.push_back(fonts = new ModuleFonts(true));
 	modules.push_back(hud = new ModuleHUD(true));

@@ -152,6 +152,7 @@
     <ClInclude Include="Application\Globals.h" />
     <ClInclude Include="Application\MemLeaks.h" />
     <ClInclude Include="Entities\Enemies\TransitionConditionsBasic.h" />
+    <ClInclude Include="Modules\Levels\SceneTestArea.h" />
     <ClInclude Include="Utils\EnemyStateMachine.h" />
     <ClInclude Include="Entities\Enemies\Enemy.h" />
     <ClInclude Include="Entities\Particle.h" />
@@ -182,6 +183,7 @@
     <ClCompile Include="Application\Application.cpp" />
     <ClCompile Include="Application\Globals.cpp" />
     <ClCompile Include="Application\Main.cpp" />
+    <ClCompile Include="Modules\Levels\SceneTestArea.cpp" />
     <ClCompile Include="Utils\EnemyStateMachine.cpp" />
     <ClCompile Include="Entities\Enemies\Enemy.cpp" />
     <ClCompile Include="Entities\Particle.cpp" />

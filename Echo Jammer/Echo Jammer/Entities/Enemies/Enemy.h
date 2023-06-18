@@ -11,7 +11,7 @@
 struct SDL_Texture;
 struct Collider;
 struct EnemyStateMachine;
-enum Enemy_Type;
+enum class Enemy_Type;
 enum Enemy_State;
 
 class Enemy {

@@ -6,6 +6,7 @@
 #include "../../Modules/Core/ModuleAudio.h"
 #include "../../Modules/Core/ModuleRender.h"
 #include "../../Modules/Gameplay/ModuleEnemies.h"
+#include "../../Utils/EnemyStateMachine.h"
 
 Enemy::Enemy(int x_, int y_, Enemy_Type type_) : position(x_, y_), type(type_)
 {

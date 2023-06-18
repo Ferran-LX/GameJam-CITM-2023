@@ -35,14 +35,14 @@ void EnemyBasic::InitStateMachine()
 	_stateMachine->AddTransition(Enemy_State::PERSEGUINT, Enemy_State::CERCANT,
 		[this, &player]() -> bool { return Transitions_Basic::Perseguir_Cerca(*this, player->position); });
 
+	_stateMachine->AddTransition(Enemy_State::PERSEGUINT, Enemy_State::ATACANT,
+		[this, &player]() -> bool { return Transitions_Basic::Perseguir_Atacar(*this, player->position); });
+
 	_stateMachine->AddTransition(Enemy_State::CERCANT, Enemy_State::PERSEGUINT,
 		[this, &player]() -> bool { return Transitions_Basic::Cerca_Perseguir(*this, player->position); });
 
 	_stateMachine->AddTransition(Enemy_State::CERCANT, Enemy_State::PATRULLANT,
 		[this]() -> bool { return Transitions_Basic::Cerca_Patrulla(*this); });
-
-	_stateMachine->AddTransition(Enemy_State::PERSEGUINT, Enemy_State::ATACANT,
-		[this, &player]() -> bool { return Transitions_Basic::Perseguir_Atacar(*this, player->position); });
 
 	_stateMachine->AddTransition(Enemy_State::ATACANT, Enemy_State::PERSEGUINT,
 		[&player]() -> bool { return Transitions_Basic::Atacar_Perseguir(*player); });
