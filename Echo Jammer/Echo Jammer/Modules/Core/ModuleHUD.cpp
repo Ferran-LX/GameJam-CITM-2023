@@ -71,26 +71,26 @@ Update_Status ModuleHUD::Update()
 }
 
 Update_Status ModuleHUD::PostUpdate() {
-	// ICONES
-	App->render->Blit(textureIcons, posIconVides.x-20, posIconVides.y, &tamanyIconaVida);
-	PaintSentence("x", {posContadorVides.x - 20, posContadorVides.y});
-	PaintSentence(std::to_string(App->player->lives), { posContadorVides.x, posContadorVides.y });
+	//// ICONES
+	//App->render->Blit(textureIcons, posIconVides.x-20, posIconVides.y, &tamanyIconaVida);
+	//PaintSentence("x", {posContadorVides.x - 20, posContadorVides.y});
+	//PaintSentence(std::to_string(App->player->lives), { posContadorVides.x, posContadorVides.y });
 
-	App->render->Blit(textureIcons, posIconBombes.x-20, posIconBombes.y, &tamanyIconaBombes);
-	PaintSentence("x", {posContadorBombes.x - 20, posContadorBombes.y});
-	PaintSentence(std::to_string(App->player->bombs), { posContadorBombes.x, posContadorBombes.y });
+	//App->render->Blit(textureIcons, posIconBombes.x-20, posIconBombes.y, &tamanyIconaBombes);
+	//PaintSentence("x", {posContadorBombes.x - 20, posContadorBombes.y});
+	//PaintSentence(std::to_string(App->player->bombs), { posContadorBombes.x, posContadorBombes.y });
 
-	// TEXTOS
-	PaintSentence(player1, { posPlayer1.x, posPlayer1.y });
-	PaintSentence(std::to_string(App->player->score), { posScore1.x, posScore1.y });
+	//// TEXTOS
+	//PaintSentence(player1, { posPlayer1.x, posPlayer1.y });
+	//PaintSentence(std::to_string(App->player->score), { posScore1.x, posScore1.y });
 
-	PaintSentence(player2, { posPlayer2.x, posPlayer2.y });
-	PaintSentence("0", {posScore2.x, posScore2.y});
+	//PaintSentence(player2, { posPlayer2.x, posPlayer2.y });
+	//PaintSentence("0", {posScore2.x, posScore2.y});
 
-	PaintSentence(hlScore, { posHlScrore.x, posHlScrore.y });
-	PaintSentence(std::to_string(655000), { posScoreHl.x, posScoreHl.y });
+	//PaintSentence(hlScore, { posHlScrore.x, posHlScrore.y });
+	//PaintSentence(std::to_string(655000), { posScoreHl.x, posScoreHl.y });
 
-	//PaintSentence("LOADING...", { 150,550 });
+	////PaintSentence("LOADING...", { 150,550 });
 
 
 	return Update_Status::UPDATE_CONTINUE;

@@ -110,6 +110,12 @@
     <ClInclude Include="Entities\Enemies\TransitionConditionsBasic.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Utils\Directions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Modules\Levels\SceneTESTS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Utils\Collider.cpp">
@@ -190,5 +196,16 @@
     <ClCompile Include="Utils\EnemyStateMachine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Modules\Levels\SceneTESTS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="_Assets\Imagenes\enemy_01.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Imagenes\main_character\spritesheet_character.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

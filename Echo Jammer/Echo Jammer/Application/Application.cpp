@@ -17,6 +17,8 @@
 #include "../Modules/Gameplay/ModuleEnemies.h"
 #include "../Modules/Levels/SceneTestArea.h"
 
+#include "../Modules/Levels/SceneTESTS.h"
+
 int start_time = SDL_GetTicks();
 int last_frame_time = start_time;
 int frame_counter = 0;
@@ -32,6 +34,8 @@ Application::Application() {
 	modules.push_back(input = new ModuleInput(true));
 	modules.push_back(textures = new ModuleTextures(true));
 	modules.push_back(audio = new ModuleAudio(true));
+
+	modules.push_back(sceneTests = new SceneTESTS(true));
 	
 	modules.push_back(enemies = new ModuleEnemies(false));
 	modules.push_back(player = new ModulePlayer(false));

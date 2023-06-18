@@ -11,6 +11,9 @@
 
 #pragma region IMAGES -> FI
 
+const std::string FI_Player_moveset = "_Assets/Imagenes/main_character/spritesheet_character.png";
+const std::string FI_Fondo_Test = "_Assets/Imagenes/FondoTest.png";
+
 // Enemy textures
 const std::string FI_Enemy_Basic = "_Assets/Sprites/spritesheet_enemy_basic.png";
 

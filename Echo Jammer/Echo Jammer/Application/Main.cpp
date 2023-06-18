@@ -1,6 +1,15 @@
 #include "Application.h"
 #include "MemLeaks.h"
 
+#include "Globals.h"
+#include "MemLeaks.h"
+
+#include "../../SDLs/SDL/include/SDL.h"
+
+#include "../Modules/Core/ModuleRender.h"
+#include "../../SDLs/SDL_Image/include/SDL_image.h"
+#include <iostream>
+
 enum class Main_States {
 	MAIN_CREATION,
 	MAIN_START,

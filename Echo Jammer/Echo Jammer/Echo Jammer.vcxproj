@@ -152,6 +152,8 @@
     <ClInclude Include="Application\Globals.h" />
     <ClInclude Include="Application\MemLeaks.h" />
     <ClInclude Include="Entities\Enemies\TransitionConditionsBasic.h" />
+    <ClInclude Include="Modules\Levels\SceneTESTS.h" />
+    <ClInclude Include="Utils\Directions.h" />
     <ClInclude Include="Modules\Levels\SceneTestArea.h" />
     <ClInclude Include="Utils\EnemyStateMachine.h" />
     <ClInclude Include="Entities\Enemies\Enemy.h" />
@@ -183,6 +185,7 @@
     <ClCompile Include="Application\Application.cpp" />
     <ClCompile Include="Application\Globals.cpp" />
     <ClCompile Include="Application\Main.cpp" />
+    <ClCompile Include="Modules\Levels\SceneTESTS.cpp" />
     <ClCompile Include="Modules\Levels\SceneTestArea.cpp" />
     <ClCompile Include="Utils\EnemyStateMachine.cpp" />
     <ClCompile Include="Entities\Enemies\Enemy.cpp" />
@@ -207,6 +210,10 @@
     <ClCompile Include="Entities\Enemies\EnemyBasic.cpp" />
     <ClCompile Include="Utils\Collider.cpp" />
     <ClCompile Include="Utils\Path.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="_Assets\Imagenes\enemy_01.png" />
+    <Image Include="_Assets\Imagenes\main_character\spritesheet_character.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

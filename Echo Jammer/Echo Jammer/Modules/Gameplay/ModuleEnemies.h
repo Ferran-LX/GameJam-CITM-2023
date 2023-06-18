@@ -6,7 +6,7 @@
 
 #define MAX_ENEMIES 200
 
-enum class Enemy_Type {
+enum Enemy_Type {
 	NO_TYPE,
 	BASIC,
 	SPEEDY,
