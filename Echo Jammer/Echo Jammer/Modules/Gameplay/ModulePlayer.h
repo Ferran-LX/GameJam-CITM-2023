@@ -29,13 +29,13 @@ public:
 	bool alive = true;
 	bool stopGame = false;
 	iPoint position;	
+
 	int speed = 4;
 
 	Directions actualDirection;
 	SDL_Texture* texture = nullptr;
 	Animation* currentAnimation = nullptr;
 
-	Animation idleAnim;
 	Animation northAnim;
 	Animation northEastAnim;
 	Animation eastAnim;
@@ -44,6 +44,15 @@ public:
 	Animation southWeastAnim;
 	Animation weastAnim;
 	Animation northWeastAnim;
+
+	Animation idleNorthAnim;	
+	Animation idleNorthEastAnim;
+	Animation idleEastAnim;
+	Animation idleSouthEastAnim;
+	Animation idleSouthAnim;
+	Animation idleSouthWeastAnim;
+	Animation idleWeastAnim;
+	Animation idleNorthWeastAnim;
 
 	// The player's collider
 	Collider* collider = nullptr;

@@ -1,5 +1,5 @@
 #pragma once
-enum Directions
+enum class Directions
 {
 	// Sentit del rellotge
 	NORTH,
