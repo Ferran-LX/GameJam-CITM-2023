@@ -3,10 +3,12 @@
 
 #include "../../Modules/Module.h"
 #include "../../Utils/Animation.h"
+#include "../../Utils/Directions.h"
+#include "../../Utils/p2Point.h"
 
 #define MAX_ENEMIES 200
 
-enum Enemy_Type {
+enum class Enemy_Type {
 	NO_TYPE,
 	BASIC,
 	SPEEDY,
@@ -26,15 +28,6 @@ enum Enemy_State {
 	JOC_FINALITZAT,
 
 	MAX_STATES
-};
-
-enum Enemy_Direction {
-	NORTH,
-	SOUTH,
-	EAST,
-	WEST,
-
-	MAX_DIRS
 };
 
 struct EnemySpawnpoint {
@@ -91,6 +84,9 @@ public:
 	// Destroys any enemies that have moved outside the camera limits
 	void HandleEnemiesDespawn();
 
+	// Retorna true si l'enemic veu el punt especificat
+	bool CheckLineOfSight(const Enemy& e, const iPoint& p);
+
 
 private:
 	// Spawns a new enemy using the data from the queue
@@ -112,10 +108,10 @@ private:
 
 	// Animation sets
 
-	Animation _animBasic[Enemy_State::MAX_STATES][Enemy_Direction::MAX_DIRS];
-	Animation _animSpeedy[Enemy_State::MAX_STATES][Enemy_Direction::MAX_DIRS];
-	Animation _animBig[Enemy_State::MAX_STATES][Enemy_Direction::MAX_DIRS];
-	Animation _animInvis[Enemy_State::MAX_STATES][Enemy_Direction::MAX_DIRS];
+	Animation _animBasic[Enemy_State::MAX_STATES][Directions::DIRECTIONS_TOTAL];
+	Animation _animSpeedy[Enemy_State::MAX_STATES][Directions::DIRECTIONS_TOTAL];
+	Animation _animBig[Enemy_State::MAX_STATES][Directions::DIRECTIONS_TOTAL];
+	Animation _animInvis[Enemy_State::MAX_STATES][Directions::DIRECTIONS_TOTAL];
 
 
 };

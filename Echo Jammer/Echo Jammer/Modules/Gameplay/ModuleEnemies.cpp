@@ -19,10 +19,10 @@ ModuleEnemies::ModuleEnemies(bool startEnabled) : Module(startEnabled) {
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 		enemies[i] = nullptr;
 
-	_animBasic[Enemy_State::PATRULLANT][Enemy_Direction::NORTH].PushBack({ 0,0,128,128 });
-	_animBasic[Enemy_State::PATRULLANT][Enemy_Direction::SOUTH].PushBack({ 0,0,128,128 });
-	_animBasic[Enemy_State::PATRULLANT][Enemy_Direction::WEST].PushBack({ 0,0,128,128 });
-	_animBasic[Enemy_State::PATRULLANT][Enemy_Direction::EAST].PushBack({ 0,0,128,128 });
+	_animBasic[Enemy_State::PATRULLANT][Directions::DIRECTIONS_TOTAL].PushBack({ 0,0,128,128 });
+	_animBasic[Enemy_State::PATRULLANT][Directions::DIRECTIONS_TOTAL].PushBack({ 0,0,128,128 });
+	_animBasic[Enemy_State::PATRULLANT][Directions::DIRECTIONS_TOTAL].PushBack({ 0,0,128,128 });
+	_animBasic[Enemy_State::PATRULLANT][Directions::DIRECTIONS_TOTAL].PushBack({ 0,0,128,128 });
 }
 
 ModuleEnemies::~ModuleEnemies() {
@@ -146,6 +146,13 @@ void ModuleEnemies::HandleEnemiesDespawn() {
 	}
 }
 
+bool ModuleEnemies::CheckLineOfSight(const Enemy& e, const iPoint& p)
+{
+	bool ret = true;
+
+	return ret;
+}
+
 
 void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info) {
 	// Find an empty slot in the enemies array
@@ -156,7 +163,7 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info) {
 				enemies[i] = new EnemyBasic(info.x, info.y);
 				enemies[i]->SetTexture(_textureBasic);
 				enemies[i]->SetState(Enemy_State::PATRULLANT);
-				Animation* anim = &_animBasic[enemies[i]->GetState()][Enemy_Direction::SOUTH];
+				Animation* anim = &_animBasic[enemies[i]->GetState()][Directions::SOUTH];
 				enemies[i]->setAnimation(anim);
 				break;
 			}

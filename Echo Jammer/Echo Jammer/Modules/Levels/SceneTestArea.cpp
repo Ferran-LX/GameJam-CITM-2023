@@ -28,6 +28,9 @@ bool SceneTestArea::Start()
 	enemies = App->enemies;
 	enemies->Enable();
 
+	player = App->player;
+	player->Enable();
+
 	enemies->AddEnemy(Enemy_Type::BASIC, 10, 10);
 
 	return true;
@@ -46,7 +49,11 @@ Update_Status SceneTestArea::PostUpdate()
 
 bool SceneTestArea::CleanUp()
 {
+	enemies->Disable();
 	enemies = nullptr;
+
+	player->Disable();
+	player = nullptr;
 
 	return true;
 }

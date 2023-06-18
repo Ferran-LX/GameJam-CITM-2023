@@ -27,6 +27,7 @@ private:
 
 	// Dependencies
 	ModuleEnemies* enemies = nullptr;
+	ModulePlayer* player = nullptr;
 
 
 	// Imatges de l'escena
