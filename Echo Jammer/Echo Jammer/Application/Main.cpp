@@ -12,6 +12,7 @@ enum class Main_States {
 Application* App = nullptr;
 
 int main(int argc, char* argv[]) {
+
 	ReportMemoryLeaks();
 
 	int main_return = EXIT_FAILURE;
