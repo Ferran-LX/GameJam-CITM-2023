@@ -11,6 +11,8 @@
 
 #pragma region IMAGES -> FI
 
+// Enemy textures
+const std::string FI_Enemy_Basic = "_Assets/Sprites/spritesheet_enemy_basic.png";
 
 #pragma endregion
 

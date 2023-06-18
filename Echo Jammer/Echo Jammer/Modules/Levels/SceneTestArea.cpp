@@ -7,6 +7,7 @@
 #include "../Core/ModuleRender.h"
 
 #include "../Gameplay/ModuleEnemies.h"
+#include "../Gameplay/ModulePlayer.h"
 
 #include "SceneTestArea.h"
 
@@ -27,7 +28,7 @@ bool SceneTestArea::Start()
 	enemies = App->enemies;
 	enemies->Enable();
 
-	enemies->AddEnemy(Enemy_Type::BASIC, 50, 50);
+	enemies->AddEnemy(Enemy_Type::BASIC, 10, 10);
 
 	return true;
 }

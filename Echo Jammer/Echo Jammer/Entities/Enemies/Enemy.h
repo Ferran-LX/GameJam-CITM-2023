@@ -47,6 +47,8 @@ public:
 
 	void SetTexture(SDL_Texture* nTexture) { _texture = nTexture; }
 
+	void setAnimation(Animation* nAnim) { _currentAnim = nAnim; }
+
 	// Elimina el collider actual i n'assigna un de nou
 	void SetCollider(Collider* nCollider);
 
@@ -71,6 +73,8 @@ public:
 	Enemy_Type GetType() const { return type; }
 
 	const SDL_Texture* GetTexture() const { return _texture; }
+
+	const Animation* GetAnimation() const { return _currentAnim; }
 
 	// Returns the enemy's collider
 	const Collider* GetCollider() const { return _collider; }

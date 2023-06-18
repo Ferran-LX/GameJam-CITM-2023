@@ -18,14 +18,24 @@
 ModuleEnemies::ModuleEnemies(bool startEnabled) : Module(startEnabled) {
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 		enemies[i] = nullptr;
-	_stateMachine = new EnemyStateMachine();
+
+	_animBasic[Enemy_State::PATRULLANT][Enemy_Direction::NORTH].PushBack({ 0,0,128,128 });
+	_animBasic[Enemy_State::PATRULLANT][Enemy_Direction::SOUTH].PushBack({ 0,0,128,128 });
+	_animBasic[Enemy_State::PATRULLANT][Enemy_Direction::WEST].PushBack({ 0,0,128,128 });
+	_animBasic[Enemy_State::PATRULLANT][Enemy_Direction::EAST].PushBack({ 0,0,128,128 });
 }
 
 ModuleEnemies::~ModuleEnemies() {
-	delete _stateMachine;
 }
 
 bool ModuleEnemies::Start() {
+	LOG("Loading enemy assets");
+
+	_textureBasic = App->textures->Load(FI_Enemy_Basic.c_str());
+	//_textureBasic = App->textures->Load(FI_Enemy_Speedy.c_str());
+	//_textureBasic = App->textures->Load(FI_Enemy_Big.c_str());
+	//_textureBasic = App->textures->Load(FI_Enemy_Invisible.c_str());
+
 	return true;
 }
 
@@ -76,6 +86,13 @@ bool ModuleEnemies::CleanUp() {
 			enemies[i] = nullptr;
 		}
 	}
+
+	LOG("Unloading textures");
+
+	App->textures->Unload(_textureBasic);	_textureBasic	= nullptr;
+	App->textures->Unload(_textureSpeedy);	_textureSpeedy	= nullptr;
+	App->textures->Unload(_textureBig);		_textureBig		= nullptr;
+	App->textures->Unload(_textureInvis);	_textureInvis	= nullptr;
 
 	return true;
 }
@@ -135,7 +152,14 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info) {
 	for (uint i = 0; i < MAX_ENEMIES; ++i) {
 		if (enemies[i] == nullptr) {
 			switch (info.type) {
-			case Enemy_Type::BASIC: enemies[i] = new EnemyBasic(info.x, info.y); break;
+			case Enemy_Type::BASIC: {
+				enemies[i] = new EnemyBasic(info.x, info.y);
+				enemies[i]->SetTexture(_textureBasic);
+				enemies[i]->SetState(Enemy_State::PATRULLANT);
+				Animation* anim = &_animBasic[enemies[i]->GetState()][Enemy_Direction::SOUTH];
+				enemies[i]->setAnimation(anim);
+				break;
+			}
 			default: break;
 			}
 
@@ -150,7 +174,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2) {
 	for (uint i = 0; i < MAX_ENEMIES; ++i) {
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1) {
 			enemies[i]->OnCollision(c2); //Notify the enemy of a collision
-			
+
 		}
 	}
 }

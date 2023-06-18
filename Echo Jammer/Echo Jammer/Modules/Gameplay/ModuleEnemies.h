@@ -2,6 +2,7 @@
 #define __MODULE_ENEMIES_H__
 
 #include "../../Modules/Module.h"
+#include "../../Utils/Animation.h"
 
 #define MAX_ENEMIES 200
 
@@ -25,6 +26,15 @@ enum Enemy_State {
 	JOC_FINALITZAT,
 
 	MAX_STATES
+};
+
+enum Enemy_Direction {
+	NORTH,
+	SOUTH,
+	EAST,
+	WEST,
+
+	MAX_DIRS
 };
 
 struct EnemySpawnpoint {
@@ -94,11 +104,18 @@ private:
 	// All spawned enemies in the scene
 	Enemy* enemies[MAX_ENEMIES] = { nullptr };
 
-	// The enemies sprite sheet
-	SDL_Texture* texture = nullptr;
+	// The enemies' sprite sheets
+	SDL_Texture* _textureBasic = nullptr;
+	SDL_Texture* _textureSpeedy = nullptr;
+	SDL_Texture* _textureBig = nullptr;
+	SDL_Texture* _textureInvis = nullptr;
 
-	// State machine for each robot type. Accessed as _stateMachine[Enemy_Type][Enemy_State][transitionIndex]
-	EnemyStateMachine* _stateMachine;
+	// Animation sets
+
+	Animation _animBasic[Enemy_State::MAX_STATES][Enemy_Direction::MAX_DIRS];
+	Animation _animSpeedy[Enemy_State::MAX_STATES][Enemy_Direction::MAX_DIRS];
+	Animation _animBig[Enemy_State::MAX_STATES][Enemy_Direction::MAX_DIRS];
+	Animation _animInvis[Enemy_State::MAX_STATES][Enemy_Direction::MAX_DIRS];
 
 
 };
