@@ -6,13 +6,15 @@
 struct EnemyStateTransition {
 	Enemy_State target;
 	std::function<bool()> condition = nullptr;
+	uint delay = 0;
+	uint timer = 0;
 };
 
 struct EnemyStateMachine
 {
 public:
 
-	void AddTransition(Enemy_State originState, Enemy_State destState, std::function<bool()> condition);
+	void AddTransition(Enemy_State originState, Enemy_State destState, uint delay, std::function<bool()> condition);
 
 	const std::vector<EnemyStateTransition> GetTransitions(Enemy_State state) const;
 

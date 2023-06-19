@@ -6,6 +6,6 @@ class DirectionHelper {
 public:
 
 	// Retorna direcció tenint en compte eixos de moviment en SDL
-	static Directions GetDirection(iPoint vectorDir);
+	static Directions GetDirection(iPoint fromPoint, iPoint toPoint);
 
 };

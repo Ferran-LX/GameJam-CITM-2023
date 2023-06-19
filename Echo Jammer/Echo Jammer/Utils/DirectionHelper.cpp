@@ -2,7 +2,12 @@
 #include "DirectionHelper.h"
 #include "p2Point.h"
 
-Directions DirectionHelper::GetDirection(iPoint vectorDir) {
+Directions DirectionHelper::GetDirection(iPoint fromPoint, iPoint toPoint) {
+
+	
+
+	iPoint vectorDir = toPoint - fromPoint;
+
 	if (vectorDir.x == 0) {
 		// Sol vertical
 		if (vectorDir.y < 0) {

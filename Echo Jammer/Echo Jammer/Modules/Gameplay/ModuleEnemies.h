@@ -5,6 +5,7 @@
 #include "../../Utils/Animation.h"
 #include "../../Utils/Directions.h"
 #include "../../Utils/p2Point.h"
+#include <vector>
 
 #define MAX_ENEMIES 200
 
@@ -117,6 +118,7 @@ private:
 	Animation _animBig[Enemy_State::MAX_STATES][DirToInt(Directions::DIRECTIONS_TOTAL)];
 	Animation _animInvis[Enemy_State::MAX_STATES][DirToInt(Directions::DIRECTIONS_TOTAL)];
 
+	std::vector<std::vector<Animation>> _animVec;
 	// Els enemics obtenen les seves rutes amb aixo
 	PathFinder* _pathfinder = nullptr;
 

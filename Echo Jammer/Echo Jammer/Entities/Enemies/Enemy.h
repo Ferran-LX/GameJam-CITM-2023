@@ -6,6 +6,7 @@
 #include "../../Utils/Directions.h"
 
 #include <functional>
+#include <vector>
 
 #define MAX_TRANSITIONS 5 
 
@@ -52,7 +53,7 @@ public:
 
 	virtual void HandleMove();
 
-	virtual void Move(Directions dir);
+	virtual bool Move(Directions dir);
 
 #pragma endregion
 
@@ -61,6 +62,8 @@ public:
 	void SetTexture(SDL_Texture* nTexture) { _texture = nTexture; }
 
 	void setAnimation(Animation* nAnim) { _currentAnim = nAnim; }
+
+	void ChangeAnimationSet(std::vector<std::vector<Animation>>& nAnimSet) { _animSet = nAnimSet; }
 
 	// Elimina el collider actual i n'assigna un de nou
 	void SetCollider(Collider* nCollider);
@@ -125,11 +128,17 @@ protected:
 	// A ptr to the current animation
 	Animation* _currentAnim = nullptr;
 
+	// Ptr a animacions corresponents a aquest enemic
+	// Animation originalSet[MAX_STATES][DIRECTIONS_TOTAL]
+	std::vector <std::vector<Animation>> _animSet;
+
 	// The enemy's collider
 	Collider* _collider = nullptr;
 
 	// Original spawn position. Stored for movement calculations
 	iPoint _spawnPos;
+
+	bool _moving = true;
 
 	int _speed = 0;
 

@@ -6,6 +6,7 @@
 #include "../../Modules/Core/ModuleAudio.h"
 #include "../../Modules/Core/ModuleRender.h"
 #include "../../Modules/Gameplay/ModuleEnemies.h"
+#include "../../Modules/Gameplay/ModulePlayer.h"
 #include "../../Utils/EnemyStateMachine.h"
 
 Enemy::Enemy(int x_, int y_, Enemy_Type type_) : position(x_, y_), type(type_)
@@ -30,8 +31,17 @@ Enemy::~Enemy() {
 void Enemy::InitStateMachine() {}
 
 void Enemy::Update() {
-	if (_currentAnim != nullptr)
-		_currentAnim->Update();
+	if (_moving) {
+		if (_currentAnim != nullptr && _currentAnim == &(_animSet)[_currState][DirToInt(_currDirection)]) {
+			_currentAnim->Update();
+		}
+		else {
+			_currentAnim = &(_animSet)[_currState][DirToInt(_currDirection)];
+		}
+	}
+	else {
+		LOG("Can't move");
+	}
 
 	if (_collider != nullptr)
 		_collider->SetPos(position.x, position.y);
@@ -58,53 +68,58 @@ void Enemy::SetToDelete() {
 
 void Enemy::HandleMove()
 {
-	Move(_currDirection);
+	_moving = (position.DistanceTo(App->player->position) >= 20);
+	if (_moving)
+		Move(_currDirection);
 }
 
-void Enemy::Move(Directions dir)
+bool Enemy::Move(Directions dir)
 {
+
 	switch (dir)
 	{
 	case Directions::NORTH: {
 		position.y -= _speed;
 		break;
 	}
-	case Directions::NORTH_EAST: {
-		position.x += (_speed >> 1);
-		position.y -= (_speed >> 1);
-		break;
-	}
 	case Directions::EAST: {
 		position.x += _speed;
 		break;
 	}
-	case Directions::SOUTH_EAST: {
-		position.x += (_speed >> 1);
-		position.y += (_speed >> 1);
+	case Directions::NORTH_EAST: {
+		position.x += _speed;
+		position.y -= _speed;
 		break;
 	}
 	case Directions::SOUTH: {
 		position.y += _speed;
 		break;
 	}
-	case Directions::SOUTH_WEST: {
-		position.x -= (_speed >> 1);
-		position.y += (_speed >> 1);
+	case Directions::SOUTH_EAST: {
+		position.x += _speed;
+		position.y += _speed;
 		break;
 	}
 	case Directions::WEST: {
-		position.x += _speed;
+		position.x -= _speed;
+		break;
+	}
+	case Directions::SOUTH_WEST: {
+		position.x -= _speed;
+		position.y += _speed;
 		break;
 	}
 	case Directions::NORTH_WEST: {
-		position.x -= (_speed >> 1);
-		position.y -= (_speed >> 1);
+		position.x -= _speed;
+		position.y -= _speed;
 		break;
 	}
 	case Directions::NONE:
 	default:
-		break;
+		return false;
 	}
+
+	return true;
 }
 
 void Enemy::SetCollider(Collider* nCollider)

@@ -16,24 +16,45 @@
 #define SPAWN_MARGIN 100
 
 
-ModuleEnemies::ModuleEnemies(bool startEnabled) : Module(startEnabled) {
+ModuleEnemies::ModuleEnemies(bool startEnabled) : Module(startEnabled),
+		_animVec(Enemy_State::MAX_STATES, std::vector<Animation>(DirToInt(Directions::DIRECTIONS_TOTAL)))
+{
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 		_enemies[i] = nullptr;
 
 	_pathfinder = new PathFinder();
 
-	//TODO asignar animacions d'enemics
-	_animBasic[Enemy_State::PATRULLANT][DirToInt(Directions::NORTH)].PushBack({ 0,0,64,64 });
-	_animBasic[Enemy_State::PATRULLANT][DirToInt(Directions::NORTH_EAST)].PushBack({ 0,0,64,64 });
-	_animBasic[Enemy_State::PATRULLANT][DirToInt(Directions::EAST)].PushBack({ 0,0,64,64 });
-	_animBasic[Enemy_State::PATRULLANT][DirToInt(Directions::SOUTH_EAST)].PushBack({ 0,0,64,64 });
-	_animBasic[Enemy_State::PATRULLANT][DirToInt(Directions::SOUTH)].PushBack({ 0,0,64,64 });
-	_animBasic[Enemy_State::PATRULLANT][DirToInt(Directions::SOUTH_WEST)].PushBack({ 0,0,64,64 });
-	_animBasic[Enemy_State::PATRULLANT][DirToInt(Directions::WEST)].PushBack({ 0,0,64,64 });
-	_animBasic[Enemy_State::PATRULLANT][DirToInt(Directions::NORTH_WEST)].PushBack({ 0,0,64,64 });
+#pragma region ROBOT_BASIC
 
+	//Patrulla
+	_animVec[Enemy_State::PATRULLANT][DirToInt(Directions::NONE)].PushBack({ 0,128,64,64 });
+	for (int i = 0; i < 20; i++)
+	{
+		_animVec[Enemy_State::PATRULLANT][DirToInt(Directions::WEST)].PushBack({ 64 * i,64 * 0,64,64 });
+		_animVec[Enemy_State::PATRULLANT][DirToInt(Directions::EAST)].PushBack({ 64 * i,64 * 1,64,64 });
+		_animVec[Enemy_State::PATRULLANT][DirToInt(Directions::SOUTH)].PushBack({ 64 * i,64 * 2,64,64 });
+		_animVec[Enemy_State::PATRULLANT][DirToInt(Directions::NORTH)].PushBack({ 64 * i,64 * 3,64,64 });
+		_animVec[Enemy_State::PATRULLANT][DirToInt(Directions::NORTH_WEST)].PushBack({ 64 * i,64 * 4,64,64 });
+		_animVec[Enemy_State::PATRULLANT][DirToInt(Directions::NORTH_EAST)].PushBack({ 64 * i,64 * 5,64,64 });
+		_animVec[Enemy_State::PATRULLANT][DirToInt(Directions::SOUTH_EAST)].PushBack({ 64 * i,64 * 6,64,64 });
+		_animVec[Enemy_State::PATRULLANT][DirToInt(Directions::SOUTH_WEST)].PushBack({ 64 * i,64 * 7,64,64 });
+	}
 
+	//Persecucio es la mateixa que patrulla
+	_animVec[Enemy_State::PERSEGUINT] = _animVec[Enemy_State::PATRULLANT];
 
+	//Per ara tots els estats tenen les mateixes animacions
+	_animVec[Enemy_State::CERCANT] = _animVec[Enemy_State::PATRULLANT];
+	_animVec[Enemy_State::ATACANT] = _animVec[Enemy_State::PATRULLANT];
+	_animVec[Enemy_State::CANSAT] = _animVec[Enemy_State::PATRULLANT];
+	_animVec[Enemy_State::BLOQUEJAT] = _animVec[Enemy_State::PATRULLANT];
+	_animVec[Enemy_State::JOC_FINALITZAT] = _animVec[Enemy_State::PATRULLANT];
+
+#pragma endregion
+
+#pragma region ROBOT_BIG
+
+#pragma endregion
 
 }
 
@@ -187,8 +208,7 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info) {
 				_enemies[i] = new EnemyBasic(info.x, info.y);
 				_enemies[i]->SetTexture(_textureBasic);
 				_enemies[i]->SetState(Enemy_State::PATRULLANT);
-				Animation* anim = &_animBasic[_enemies[i]->GetState()][DirToInt(Directions::SOUTH)];
-				_enemies[i]->setAnimation(anim);
+				_enemies[i]->ChangeAnimationSet(_animVec);
 				break;
 			}
 			default: break;

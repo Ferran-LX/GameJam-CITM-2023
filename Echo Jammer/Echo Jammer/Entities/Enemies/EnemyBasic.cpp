@@ -11,7 +11,7 @@
 
 EnemyBasic::EnemyBasic(int x_, int y_) : Enemy(x_, y_, Enemy_Type::BASIC)
 {
-	_speed = 5;
+	_speed = 2;
 	_aggro = 0;
 	_aggroMax = 50;
 	_attackRange = 20;
@@ -32,25 +32,25 @@ void EnemyBasic::InitStateMachine()
 	ModulePlayer* player = App->player;
 	if (_stateMachine == nullptr) _stateMachine = new EnemyStateMachine();
 
-	_stateMachine->AddTransition(Enemy_State::PATRULLANT, Enemy_State::PERSEGUINT,
+	_stateMachine->AddTransition(Enemy_State::PATRULLANT, Enemy_State::PERSEGUINT, 0,
 		[this, &player]() -> bool { return Transitions_Basic::Patrulla_Perseguir(*this, App->player); });
 
-	_stateMachine->AddTransition(Enemy_State::PERSEGUINT, Enemy_State::CERCANT,
+	_stateMachine->AddTransition(Enemy_State::PERSEGUINT, Enemy_State::CERCANT, 0,
 		[this, &player]() -> bool { return Transitions_Basic::Perseguir_Cerca(*this, App->player); });
 
-	_stateMachine->AddTransition(Enemy_State::PERSEGUINT, Enemy_State::ATACANT,
+	_stateMachine->AddTransition(Enemy_State::PERSEGUINT, Enemy_State::ATACANT, 0,
 		[this, &player]() -> bool { return Transitions_Basic::Perseguir_Atacar(*this, App->player); });
 
-	_stateMachine->AddTransition(Enemy_State::CERCANT, Enemy_State::PERSEGUINT,
+	_stateMachine->AddTransition(Enemy_State::CERCANT, Enemy_State::PERSEGUINT,	0,
 		[this, &player]() -> bool { return Transitions_Basic::Cerca_Perseguir(*this, App->player); });
 
-	_stateMachine->AddTransition(Enemy_State::CERCANT, Enemy_State::PATRULLANT,
+	_stateMachine->AddTransition(Enemy_State::CERCANT, Enemy_State::PATRULLANT,	0,
 		[this]() -> bool { return Transitions_Basic::Cerca_Patrulla(*this); });
 
-	_stateMachine->AddTransition(Enemy_State::ATACANT, Enemy_State::PERSEGUINT,
+	_stateMachine->AddTransition(Enemy_State::ATACANT, Enemy_State::PERSEGUINT,	2000,
 		[&player]() -> bool { return Transitions_Basic::Atacar_Perseguir(*(App->player)); });
 
-	_stateMachine->AddTransition(Enemy_State::ATACANT, Enemy_State::JOC_FINALITZAT,
+	_stateMachine->AddTransition(Enemy_State::ATACANT, Enemy_State::JOC_FINALITZAT,	2000,
 		[&player]() -> bool { return Transitions_Basic::Atacar_Final(*(App->player)); });
 
 }
@@ -71,20 +71,18 @@ void EnemyBasic::UpdateBehaviour(const ModulePlayer* player)
 		break;
 	}
 	case PERSEGUINT: {
-		//TODO canviar per direcció de pathfinding
-		iPoint dirVec = player->position - position;
-		_currDirection = DirectionHelper::GetDirection(dirVec);
+		_currDirection = DirectionHelper::GetDirection(position, player->position);
 
 		break;
 	}
 	case ATACANT: {
-		iPoint dirVec = player->position - position;
-		_currDirection = DirectionHelper::GetDirection(dirVec);
+		//iPoint dirVec = player->position - position;
+		_currDirection = DirectionHelper::GetDirection(position, player->position);
 		//Preparar i executar atac
 		break;
 	}
 	case CERCANT: {
-		// No es mou (?)
+		// Segueix Recte (si entra en aquest mode quan s'allunya del jugador, seguira allunyant-se tal com està ara
 		_aggro--;
 		break;
 	}

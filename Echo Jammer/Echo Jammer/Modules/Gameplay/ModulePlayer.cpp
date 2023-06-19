@@ -147,84 +147,84 @@ bool ModulePlayer::Start()
 }
 
 Update_Status ModulePlayer::Update() {
-	//switch (_actualDirection)
-	//{
-	//case Directions::NORTH: LOG("DIR actual: NORTH"); break;
-	//case Directions::NORTH_EAST: LOG("DIR actual: NORTH-EAST"); break;
-	//case Directions::EAST: LOG("DIR actual: EAST"); break;
-	//case Directions::SOUTH_EAST: LOG("DIR actual: SOUTH-EAST"); break;
-	//case Directions::SOUTH: LOG("DIR actual: SOUTH"); break;
-	//case Directions::SOUTH_WEST: LOG("DIR actual: SOUTH-WEST"); break;
-	//case Directions::WEST: LOG("DIR actual: WEST"); break;
-	//case Directions::NORTH_WEST: LOG("DIR actual: NORTH-WEST"); break;
-	//default: break;
-	//}
+	switch (_actualDirection)
+	{
+	case Directions::NORTH: LOG("DIR actual: NORTH"); break;
+	case Directions::NORTH_EAST: LOG("DIR actual: NORTH-EAST"); break;
+	case Directions::EAST: LOG("DIR actual: EAST"); break;
+	case Directions::SOUTH_EAST: LOG("DIR actual: SOUTH-EAST"); break;
+	case Directions::SOUTH: LOG("DIR actual: SOUTH"); break;
+	case Directions::SOUTH_WEST: LOG("DIR actual: SOUTH-WEST"); break;
+	case Directions::WEST: LOG("DIR actual: WEST"); break;
+	case Directions::NORTH_WEST: LOG("DIR actual: NORTH-WEST"); break;
+	default: break;
+	}
 
-	//if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
-	//{ // NORTH - EAST
-	//	_currentAnimation = &_northEastAnim;
-	//	position.y -= speed;
-	//	position.x += speed;
-	//	_actualDirection = Directions::NORTH_EAST;
-	//}
-	//else if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT) {
-	//	// SOUTH - EAST
-	//	_currentAnimation = &_southEastAnim;
-	//	position.y += speed;
-	//	position.x += speed;
-	//	_actualDirection = Directions::SOUTH_EAST;
-	//}
-	//else if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT) {
-	//	// SOUTH - WEAST
-	//	_currentAnimation = &_southWeastAnim;
-	//	position.y += speed;
-	//	position.x -= speed;
-	//	_actualDirection = Directions::SOUTH_WEST;
-	//}
-	//else if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT) {
-	//	// NORTH - WEAST
-	//	_currentAnimation = &_northWeastAnim;
-	//	position.y -= speed;
-	//	position.x -= speed;
-	//	_actualDirection = Directions::NORTH_WEST;
-	//}
-	//else if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT) {
-	//	// NORTH
-	//	_currentAnimation = &_northAnim;
-	//	position.y -= speed;
-	//	_actualDirection = Directions::NORTH;
-	//}
-	//else if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT) {
-	//	// SOUTH
-	//	_currentAnimation = &_southAnim;
-	//	position.y += speed;
-	//	_actualDirection = Directions::SOUTH;
-	//}
-	//else if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT) {
-	//	// EAST
-	//	_currentAnimation = &_eastAnim;
-	//	position.x += speed;
-	//	_actualDirection = Directions::EAST;
-	//}
-	//else if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT) {
-	//	// WEAST
-	//	_currentAnimation = &_weastAnim;
-	//	position.x -= speed;
-	//	_actualDirection = Directions::WEST;
-	//}
-	//else
-	//{
-	//	// Per defecte IDLE
-	//	if (_actualDirection == Directions::NORTH) _currentAnimation = &_idleNorthAnim;
-	//	else if (_actualDirection == Directions::NORTH_EAST) _currentAnimation = &_idleNorthEastAnim;
-	//	else if (_actualDirection == Directions::EAST) _currentAnimation = &_idleEastAnim;
-	//	else if (_actualDirection == Directions::SOUTH_EAST) _currentAnimation = &_idleSouthEastAnim;
-	//	else if (_actualDirection == Directions::SOUTH) _currentAnimation = &_idleSouthAnim;
-	//	else if (_actualDirection == Directions::SOUTH_WEST) _currentAnimation = &_idleSouthWeastAnim;
-	//	else if (_actualDirection == Directions::WEST) _currentAnimation = &_idleWeastAnim;
-	//	else if (_actualDirection == Directions::NORTH_WEST) _currentAnimation = &_idleNorthWeastAnim;
-	//	else _currentAnimation = &_idleSouthAnim;
-	//}
+	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
+	{ // NORTH - EAST
+		_currentAnimation = &_northEastAnim;
+		position.y -= speed;
+		position.x += speed;
+		_actualDirection = Directions::NORTH_EAST;
+	}
+	else if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT) {
+		// SOUTH - EAST
+		_currentAnimation = &_southEastAnim;
+		position.y += speed;
+		position.x += speed;
+		_actualDirection = Directions::SOUTH_EAST;
+	}
+	else if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT) {
+		// SOUTH - WEAST
+		_currentAnimation = &_southWeastAnim;
+		position.y += speed;
+		position.x -= speed;
+		_actualDirection = Directions::SOUTH_WEST;
+	}
+	else if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT) {
+		// NORTH - WEAST
+		_currentAnimation = &_northWeastAnim;
+		position.y -= speed;
+		position.x -= speed;
+		_actualDirection = Directions::NORTH_WEST;
+	}
+	else if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT) {
+		// NORTH
+		_currentAnimation = &_northAnim;
+		position.y -= speed;
+		_actualDirection = Directions::NORTH;
+	}
+	else if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT) {
+		// SOUTH
+		_currentAnimation = &_southAnim;
+		position.y += speed;
+		_actualDirection = Directions::SOUTH;
+	}
+	else if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT) {
+		// EAST
+		_currentAnimation = &_eastAnim;
+		position.x += speed;
+		_actualDirection = Directions::EAST;
+	}
+	else if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT) {
+		// WEAST
+		_currentAnimation = &_weastAnim;
+		position.x -= speed;
+		_actualDirection = Directions::WEST;
+	}
+	else
+	{
+		// Per defecte IDLE
+		if (_actualDirection == Directions::NORTH) _currentAnimation = &_idleNorthAnim;
+		else if (_actualDirection == Directions::NORTH_EAST) _currentAnimation = &_idleNorthEastAnim;
+		else if (_actualDirection == Directions::EAST) _currentAnimation = &_idleEastAnim;
+		else if (_actualDirection == Directions::SOUTH_EAST) _currentAnimation = &_idleSouthEastAnim;
+		else if (_actualDirection == Directions::SOUTH) _currentAnimation = &_idleSouthAnim;
+		else if (_actualDirection == Directions::SOUTH_WEST) _currentAnimation = &_idleSouthWeastAnim;
+		else if (_actualDirection == Directions::WEST) _currentAnimation = &_idleWeastAnim;
+		else if (_actualDirection == Directions::NORTH_WEST) _currentAnimation = &_idleNorthWeastAnim;
+		else _currentAnimation = &_idleSouthAnim;
+	}
 
 
 	return Update_Status::UPDATE_CONTINUE;
