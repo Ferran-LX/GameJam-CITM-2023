@@ -102,7 +102,7 @@ bool ModulePlayer::Start()
 	for (int i = 0; i < _numFrames; i++)
 		_eastAnim.PushBack({ 128 * i, 128 * 1, 128, 128 });
 	_eastAnim.loop = true;
-	_eastAnim.speed = 0.45f;
+	_eastAnim.speed = 0.5f;
 
 	// SOUTH - EAST
 	for (int i = 0; i < _numFrames; i++)
@@ -126,13 +126,13 @@ bool ModulePlayer::Start()
 	for (int i = 0; i < _numFrames; i++)
 		_weastAnim.PushBack({ 128 * i, 128 * 0, 128, 128 });
 	_weastAnim.loop = true;
-	_weastAnim.speed = 0.45f;
+	_weastAnim.speed = 0.5f;
 
 	// NORTH - WEAST
 	for (int i = 0; i < _numFrames; i++)
 		_northWeastAnim.PushBack({ 128 * i, 128 * 4, 128, 128 });
 	_northWeastAnim.loop = true;
-	_northWeastAnim.speed = 0.45f;
+	_northWeastAnim.speed = 0.5f;
 
 #pragma endregion
 
