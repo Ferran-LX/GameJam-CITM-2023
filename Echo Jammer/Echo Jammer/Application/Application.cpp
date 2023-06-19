@@ -36,8 +36,8 @@ Application::Application() {
 	modules.push_back(textures = new ModuleTextures(true));
 	modules.push_back(audio = new ModuleAudio(true));
 
-	modules.push_back(scene_0_Portada = new Scene0Portada(true));
-	modules.push_back(sceneTests = new SceneTESTS(false));
+	modules.push_back(scene_0_Portada = new Scene0Portada(false));
+	modules.push_back(sceneTests = new SceneTESTS(true));
 
 	modules.push_back(enemies = new ModuleEnemies(false));
 	modules.push_back(player = new ModulePlayer(false));
