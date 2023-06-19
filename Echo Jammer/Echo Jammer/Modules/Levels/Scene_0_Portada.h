@@ -22,7 +22,7 @@ public:
 
 private:
 	int _numFramesPerFila = 8;
-	int _numFiles = 3;
+	int _numFiles = 6;
 	Animation* _currentAnimation = nullptr;
 	Animation _animPortada;
 };
