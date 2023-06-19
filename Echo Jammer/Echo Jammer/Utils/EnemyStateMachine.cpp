@@ -16,6 +16,7 @@ Enemy_State EnemyStateMachine::CheckTransitions(Enemy_State currentState)
 {
 	for (EnemyStateTransition t : _transitions[currentState]) {
 		if (t.condition != nullptr && t.condition()) {
+			LOG("Enemic ha canviat d'estat: %i -> %i", currentState, t.target);
 			currentState = t.target;
 			break;
 		}

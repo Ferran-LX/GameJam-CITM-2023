@@ -31,6 +31,8 @@ bool SceneTESTS::Start()
 	App->enemies->Enable();
 	//App->collisions->Enable();
 
+	App->enemies->AddEnemy(Enemy_Type::BASIC, 10, 10);
+
 	return true;
 }
 

@@ -22,7 +22,6 @@ class ModuleHUD;
 class SceneTESTS;
 class SceneStart;
 class SceneIntro;
-class SceneTestArea;
 
 class Application {
 
@@ -65,7 +64,6 @@ public:
 	SceneTESTS* sceneTests = nullptr;
 	SceneIntro* sceneIntro = nullptr;
 	SceneStart* sceneStart = nullptr;
-	SceneTestArea* sceneTest = nullptr;
 
 private:
 	int sizeVector = 0;

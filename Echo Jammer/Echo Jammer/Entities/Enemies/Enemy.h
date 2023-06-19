@@ -3,6 +3,7 @@
 
 #include "../../Utils/p2Point.h"
 #include "../../Utils/Animation.h"
+#include "../../Utils/Directions.h"
 
 #include <functional>
 
@@ -13,6 +14,7 @@ struct Collider;
 struct EnemyStateMachine;
 enum class Enemy_Type;
 enum Enemy_State;
+class ModulePlayer;
 
 class Enemy {
 protected:
@@ -34,6 +36,9 @@ public:
 	// Updates animation and collider position
 	virtual void Update();
 
+	// Defineix el comportament de cada enemic
+	virtual void UpdateBehaviour(const ModulePlayer* player);
+
 	// Called from ModuleEnemies' Update
 	virtual void Draw();
 
@@ -42,6 +47,14 @@ public:
 
 	// Marca aquest enemic i el seu collider per ser eliminats
 	virtual void SetToDelete();
+
+#pragma region MovementMethods
+
+	virtual void HandleMove();
+
+	virtual void Move(Directions dir);
+
+#pragma endregion
 
 #pragma region Setters
 
@@ -129,6 +142,8 @@ protected:
 	int _visionRange = 0;
 
 	int _searchRange = 0;
+
+	Directions _currDirection = Directions::SOUTH;
 
 	Enemy_State _currState;
 

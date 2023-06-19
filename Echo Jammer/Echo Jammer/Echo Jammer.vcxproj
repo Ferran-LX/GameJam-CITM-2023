@@ -153,6 +153,7 @@
     <ClInclude Include="Application\MemLeaks.h" />
     <ClInclude Include="Entities\Enemies\TransitionConditionsBasic.h" />
     <ClInclude Include="Modules\Levels\SceneTESTS.h" />
+    <ClInclude Include="Utils\DirectionHelper.h" />
     <ClInclude Include="Utils\Directions.h" />
     <ClInclude Include="Modules\Levels\SceneTestArea.h" />
     <ClInclude Include="Utils\EnemyStateMachine.h" />
@@ -180,7 +181,8 @@
     <ClInclude Include="Utils\Collider.h" />
     <ClInclude Include="Utils\p2Point.h" />
     <ClInclude Include="Utils\Path.h" />
-    <ClInclude Include="Utils\Pathfinding\a_star_search.h" />
+    <ClInclude Include="Utils\Pathfinding\NodeBase.h" />
+    <ClInclude Include="Utils\Pathfinding\PathFinder.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application\Application.cpp" />
@@ -188,6 +190,7 @@
     <ClCompile Include="Application\Main.cpp" />
     <ClCompile Include="Modules\Levels\SceneTESTS.cpp" />
     <ClCompile Include="Modules\Levels\SceneTestArea.cpp" />
+    <ClCompile Include="Utils\DirectionHelper.cpp" />
     <ClCompile Include="Utils\EnemyStateMachine.cpp" />
     <ClCompile Include="Entities\Enemies\Enemy.cpp" />
     <ClCompile Include="Entities\Particle.cpp" />
@@ -211,7 +214,7 @@
     <ClCompile Include="Entities\Enemies\EnemyBasic.cpp" />
     <ClCompile Include="Utils\Collider.cpp" />
     <ClCompile Include="Utils\Path.cpp" />
-    <ClCompile Include="Utils\Pathfinding\a_star_search.cpp" />
+    <ClCompile Include="Utils\Pathfinding\PathFinder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="_Assets\Imagenes\enemy_01.png" />

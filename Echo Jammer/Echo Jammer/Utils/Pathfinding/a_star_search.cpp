@@ -2,6 +2,9 @@
 
 #include <iostream>
 
+#include "graphics_utility.h"
+#include "graphics_colour.h"
+
 
 void A_STAR_SEARCH::set_goal_location(int i, int j) {
 	if (m_grid[i][j].type != START) {

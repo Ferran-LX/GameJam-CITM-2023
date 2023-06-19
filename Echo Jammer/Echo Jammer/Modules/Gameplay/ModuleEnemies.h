@@ -35,8 +35,9 @@ struct EnemySpawnpoint {
 	int x, y;
 };
 
-struct EnemyStateMachine;
 class Enemy;
+class PathFinder;
+//struct EnemyStateMachine;
 struct SDL_Texture;
 
 class ModuleEnemies : public Module {
@@ -84,6 +85,9 @@ public:
 	// Destroys any enemies that have moved outside the camera limits
 	void HandleEnemiesDespawn();
 
+	//Updates enemy paths and position
+	void HandleEnemyMovement();
+
 	// Retorna true si l'enemic veu el punt especificat
 	bool CheckLineOfSight(const Enemy& e, const iPoint& p);
 
@@ -95,10 +99,10 @@ private:
 
 private:
 	// A queue with all spawn points information
-	EnemySpawnpoint spawnQueue[MAX_ENEMIES];
+	EnemySpawnpoint _spawnQueue[MAX_ENEMIES];
 
 	// All spawned enemies in the scene
-	Enemy* enemies[MAX_ENEMIES] = { nullptr };
+	Enemy* _enemies[MAX_ENEMIES] = { nullptr };
 
 	// The enemies' sprite sheets
 	SDL_Texture* _textureBasic = nullptr;
@@ -108,11 +112,13 @@ private:
 
 	// Animation sets
 
-	Animation _animBasic[Enemy_State::MAX_STATES][Directions::DIRECTIONS_TOTAL];
-	Animation _animSpeedy[Enemy_State::MAX_STATES][Directions::DIRECTIONS_TOTAL];
-	Animation _animBig[Enemy_State::MAX_STATES][Directions::DIRECTIONS_TOTAL];
-	Animation _animInvis[Enemy_State::MAX_STATES][Directions::DIRECTIONS_TOTAL];
+	Animation _animBasic[Enemy_State::MAX_STATES][DirToInt(Directions::DIRECTIONS_TOTAL)];
+	Animation _animSpeedy[Enemy_State::MAX_STATES][DirToInt(Directions::DIRECTIONS_TOTAL)];
+	Animation _animBig[Enemy_State::MAX_STATES][DirToInt(Directions::DIRECTIONS_TOTAL)];
+	Animation _animInvis[Enemy_State::MAX_STATES][DirToInt(Directions::DIRECTIONS_TOTAL)];
 
+	// Els enemics obtenen les seves rutes amb aixo
+	PathFinder* _pathfinder = nullptr;
 
 };
 
