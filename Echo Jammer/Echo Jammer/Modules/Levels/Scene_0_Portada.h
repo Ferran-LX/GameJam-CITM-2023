@@ -21,7 +21,8 @@ public:
 	SDL_Texture* textura = nullptr;
 
 private:
-	int _numFrames = 16;
+	int _numFramesPerFila = 8;
+	int _numFiles = 3;
 	Animation* _currentAnimation = nullptr;
 	Animation _animPortada;
 };

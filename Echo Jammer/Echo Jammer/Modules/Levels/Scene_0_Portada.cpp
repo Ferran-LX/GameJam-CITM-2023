@@ -13,11 +13,11 @@ Scene0Portada::~Scene0Portada() {
 bool Scene0Portada::Start() {
 	textura = App->textures->Load(FI_Animacio_Portada.c_str());
 
-	for (int i = 0; i < _numFrames / 2; i++)
-		_animPortada.PushBack({ 1920 * i, 1080 * 0, 1920, 1080 });
-
-	for (int i = 0; i < _numFrames / 2; i++)
-		_animPortada.PushBack({ 1920 * i, 1080 * 1, 1920, 1080 });
+	for (int i = 0; i < _numFiles; i++)
+	{
+		for (int k = 0; k < _numFramesPerFila; k++)
+			_animPortada.PushBack({ 1920 * k, 1080 * i, 1920, 1080 });
+	}
 
 	_animPortada.loop = true;
 	_animPortada.speed = 0.2f;
