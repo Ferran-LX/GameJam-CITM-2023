@@ -23,14 +23,18 @@ ModuleEnemies::ModuleEnemies(bool startEnabled) : Module(startEnabled) {
 	_pathfinder = new PathFinder();
 
 	//TODO asignar animacions d'enemics
-	_animBasic[Enemy_State::PATRULLANT][DirToInt(Directions::NORTH)].PushBack({ 0,0,128,128 });
-	_animBasic[Enemy_State::PATRULLANT][DirToInt(Directions::NORTH_EAST)].PushBack({ 0,0,128,128 });
-	_animBasic[Enemy_State::PATRULLANT][DirToInt(Directions::EAST)].PushBack({ 0,0,128,128 });
-	_animBasic[Enemy_State::PATRULLANT][DirToInt(Directions::SOUTH_EAST)].PushBack({ 0,0,128,128 });
-	_animBasic[Enemy_State::PATRULLANT][DirToInt(Directions::SOUTH)].PushBack({ 0,0,128,128 });
-	_animBasic[Enemy_State::PATRULLANT][DirToInt(Directions::SOUTH_WEST)].PushBack({ 0,0,128,128 });
-	_animBasic[Enemy_State::PATRULLANT][DirToInt(Directions::WEST)].PushBack({ 0,0,128,128 });
-	_animBasic[Enemy_State::PATRULLANT][DirToInt(Directions::NORTH_WEST)].PushBack({ 0,0,128,128 });
+	_animBasic[Enemy_State::PATRULLANT][DirToInt(Directions::NORTH)].PushBack({ 0,0,64,64 });
+	_animBasic[Enemy_State::PATRULLANT][DirToInt(Directions::NORTH_EAST)].PushBack({ 0,0,64,64 });
+	_animBasic[Enemy_State::PATRULLANT][DirToInt(Directions::EAST)].PushBack({ 0,0,64,64 });
+	_animBasic[Enemy_State::PATRULLANT][DirToInt(Directions::SOUTH_EAST)].PushBack({ 0,0,64,64 });
+	_animBasic[Enemy_State::PATRULLANT][DirToInt(Directions::SOUTH)].PushBack({ 0,0,64,64 });
+	_animBasic[Enemy_State::PATRULLANT][DirToInt(Directions::SOUTH_WEST)].PushBack({ 0,0,64,64 });
+	_animBasic[Enemy_State::PATRULLANT][DirToInt(Directions::WEST)].PushBack({ 0,0,64,64 });
+	_animBasic[Enemy_State::PATRULLANT][DirToInt(Directions::NORTH_WEST)].PushBack({ 0,0,64,64 });
+
+
+
+
 }
 
 ModuleEnemies::~ModuleEnemies() {

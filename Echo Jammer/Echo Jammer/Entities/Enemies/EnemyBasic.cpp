@@ -33,16 +33,16 @@ void EnemyBasic::InitStateMachine()
 	if (_stateMachine == nullptr) _stateMachine = new EnemyStateMachine();
 
 	_stateMachine->AddTransition(Enemy_State::PATRULLANT, Enemy_State::PERSEGUINT,
-		[this, &player]() -> bool { return Transitions_Basic::Patrulla_Perseguir(*this, App->player->position); });
+		[this, &player]() -> bool { return Transitions_Basic::Patrulla_Perseguir(*this, App->player); });
 
 	_stateMachine->AddTransition(Enemy_State::PERSEGUINT, Enemy_State::CERCANT,
-		[this, &player]() -> bool { return Transitions_Basic::Perseguir_Cerca(*this, App->player->position); });
+		[this, &player]() -> bool { return Transitions_Basic::Perseguir_Cerca(*this, App->player); });
 
 	_stateMachine->AddTransition(Enemy_State::PERSEGUINT, Enemy_State::ATACANT,
-		[this, &player]() -> bool { return Transitions_Basic::Perseguir_Atacar(*this, App->player->position); });
+		[this, &player]() -> bool { return Transitions_Basic::Perseguir_Atacar(*this, App->player); });
 
 	_stateMachine->AddTransition(Enemy_State::CERCANT, Enemy_State::PERSEGUINT,
-		[this, &player]() -> bool { return Transitions_Basic::Cerca_Perseguir(*this, App->player->position); });
+		[this, &player]() -> bool { return Transitions_Basic::Cerca_Perseguir(*this, App->player); });
 
 	_stateMachine->AddTransition(Enemy_State::CERCANT, Enemy_State::PATRULLANT,
 		[this]() -> bool { return Transitions_Basic::Cerca_Patrulla(*this); });
