@@ -19,6 +19,7 @@ class ModuleFonts;
 class ModuleRender;
 class ModuleHUD;
 
+class Scene0Portada;
 class SceneTESTS;
 class SceneStart;
 class SceneIntro;
@@ -61,6 +62,7 @@ public:
 	ModuleRender* render = nullptr;
 	ModuleHUD* hud = nullptr;
 
+	Scene0Portada* scene_0_Portada = nullptr;
 	SceneTESTS* sceneTests = nullptr;
 	SceneIntro* sceneIntro = nullptr;
 	SceneStart* sceneStart = nullptr;

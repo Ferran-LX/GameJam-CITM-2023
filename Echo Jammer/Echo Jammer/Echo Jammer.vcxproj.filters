@@ -128,6 +128,9 @@
     <ClInclude Include="Utils\DirectionHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Modules\Levels\Scene_0_Portada.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Utils\Collider.cpp">
@@ -220,12 +223,21 @@
     <ClCompile Include="Utils\DirectionHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Modules\Levels\Scene_0_Portada.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="_Assets\Imagenes\enemy_01.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="_Assets\Imagenes\main_character\spritesheet_character.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Imagenes\SpriteSheet.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Imagenes\FondoTest.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
