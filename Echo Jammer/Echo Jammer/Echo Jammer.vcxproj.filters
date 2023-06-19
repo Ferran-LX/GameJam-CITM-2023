@@ -116,6 +116,18 @@
     <ClInclude Include="Modules\Levels\SceneTESTS.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Modules\Levels\SceneTestArea.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\Pathfinding\PathFinder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\Pathfinding\NodeBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\DirectionHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Utils\Collider.cpp">
@@ -197,6 +209,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Modules\Levels\SceneTESTS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\Levels\SceneTestArea.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils\Pathfinding\PathFinder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils\DirectionHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

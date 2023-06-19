@@ -3,6 +3,7 @@
 
 #include "../../Utils/p2Point.h"
 #include "../../Utils/Animation.h"
+#include "../../Utils/Directions.h"
 
 #include <functional>
 
@@ -11,8 +12,9 @@
 struct SDL_Texture;
 struct Collider;
 struct EnemyStateMachine;
-enum Enemy_Type;
+enum class Enemy_Type;
 enum Enemy_State;
+class ModulePlayer;
 
 class Enemy {
 protected:
@@ -34,6 +36,9 @@ public:
 	// Updates animation and collider position
 	virtual void Update();
 
+	// Defineix el comportament de cada enemic
+	virtual void UpdateBehaviour(const ModulePlayer* player);
+
 	// Called from ModuleEnemies' Update
 	virtual void Draw();
 
@@ -43,9 +48,19 @@ public:
 	// Marca aquest enemic i el seu collider per ser eliminats
 	virtual void SetToDelete();
 
+#pragma region MovementMethods
+
+	virtual void HandleMove();
+
+	virtual void Move(Directions dir);
+
+#pragma endregion
+
 #pragma region Setters
 
 	void SetTexture(SDL_Texture* nTexture) { _texture = nTexture; }
+
+	void setAnimation(Animation* nAnim) { _currentAnim = nAnim; }
 
 	// Elimina el collider actual i n'assigna un de nou
 	void SetCollider(Collider* nCollider);
@@ -71,6 +86,8 @@ public:
 	Enemy_Type GetType() const { return type; }
 
 	const SDL_Texture* GetTexture() const { return _texture; }
+
+	const Animation* GetAnimation() const { return _currentAnim; }
 
 	// Returns the enemy's collider
 	const Collider* GetCollider() const { return _collider; }
@@ -125,6 +142,8 @@ protected:
 	int _visionRange = 0;
 
 	int _searchRange = 0;
+
+	Directions _currDirection = Directions::SOUTH;
 
 	Enemy_State _currState;
 

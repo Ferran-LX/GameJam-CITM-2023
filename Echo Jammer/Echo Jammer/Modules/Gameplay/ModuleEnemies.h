@@ -2,10 +2,13 @@
 #define __MODULE_ENEMIES_H__
 
 #include "../../Modules/Module.h"
+#include "../../Utils/Animation.h"
+#include "../../Utils/Directions.h"
+#include "../../Utils/p2Point.h"
 
 #define MAX_ENEMIES 200
 
-enum Enemy_Type {
+enum class Enemy_Type {
 	NO_TYPE,
 	BASIC,
 	SPEEDY,
@@ -32,8 +35,9 @@ struct EnemySpawnpoint {
 	int x, y;
 };
 
-struct EnemyStateMachine;
 class Enemy;
+class PathFinder;
+//struct EnemyStateMachine;
 struct SDL_Texture;
 
 class ModuleEnemies : public Module {
@@ -81,6 +85,12 @@ public:
 	// Destroys any enemies that have moved outside the camera limits
 	void HandleEnemiesDespawn();
 
+	//Updates enemy paths and position
+	void HandleEnemyMovement();
+
+	// Retorna true si l'enemic veu el punt especificat
+	bool CheckLineOfSight(const Enemy& e, const iPoint& p);
+
 
 private:
 	// Spawns a new enemy using the data from the queue
@@ -89,17 +99,26 @@ private:
 
 private:
 	// A queue with all spawn points information
-	EnemySpawnpoint spawnQueue[MAX_ENEMIES];
+	EnemySpawnpoint _spawnQueue[MAX_ENEMIES];
 
 	// All spawned enemies in the scene
-	Enemy* enemies[MAX_ENEMIES] = { nullptr };
+	Enemy* _enemies[MAX_ENEMIES] = { nullptr };
 
-	// The enemies sprite sheet
-	SDL_Texture* texture = nullptr;
+	// The enemies' sprite sheets
+	SDL_Texture* _textureBasic = nullptr;
+	SDL_Texture* _textureSpeedy = nullptr;
+	SDL_Texture* _textureBig = nullptr;
+	SDL_Texture* _textureInvis = nullptr;
 
-	// State machine for each robot type. Accessed as _stateMachine[Enemy_Type][Enemy_State][transitionIndex]
-	EnemyStateMachine* _stateMachine;
+	// Animation sets
 
+	Animation _animBasic[Enemy_State::MAX_STATES][DirToInt(Directions::DIRECTIONS_TOTAL)];
+	Animation _animSpeedy[Enemy_State::MAX_STATES][DirToInt(Directions::DIRECTIONS_TOTAL)];
+	Animation _animBig[Enemy_State::MAX_STATES][DirToInt(Directions::DIRECTIONS_TOTAL)];
+	Animation _animInvis[Enemy_State::MAX_STATES][DirToInt(Directions::DIRECTIONS_TOTAL)];
+
+	// Els enemics obtenen les seves rutes amb aixo
+	PathFinder* _pathfinder = nullptr;
 
 };
 

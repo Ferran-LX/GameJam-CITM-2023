@@ -1,7 +1,9 @@
 #pragma once
+
 enum class Directions
 {
 	// Sentit del rellotge
+	NONE,
 	NORTH,
 	NORTH_EAST,
 	EAST,
@@ -13,3 +15,7 @@ enum class Directions
 
 	DIRECTIONS_TOTAL
 };
+
+constexpr int DirToInt(Directions dir) {
+	return static_cast<int>(dir);
+}

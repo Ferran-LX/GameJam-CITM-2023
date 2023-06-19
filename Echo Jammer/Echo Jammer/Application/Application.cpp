@@ -15,6 +15,7 @@
 #include "../Modules/Core/ModuleHUD.h"
 #include "../Modules/Gameplay/ModulePlayer.h"
 #include "../Modules/Gameplay/ModuleEnemies.h"
+#include "../Modules/Levels/SceneTestArea.h"
 
 #include "../Modules/Levels/SceneTESTS.h"
 
@@ -35,12 +36,13 @@ Application::Application() {
 	modules.push_back(audio = new ModuleAudio(true));
 
 	modules.push_back(sceneTests = new SceneTESTS(true));
-	
+
 	modules.push_back(enemies = new ModuleEnemies(false));
 	modules.push_back(player = new ModulePlayer(false));
 	modules.push_back(particles = new ModuleParticles(true));
 	modules.push_back(collisions = new ModuleCollisions(false));
 	modules.push_back(fade = new ModuleFadeToBlack(true));
+
 
 	modules.push_back(fonts = new ModuleFonts(true));
 	modules.push_back(hud = new ModuleHUD(true));

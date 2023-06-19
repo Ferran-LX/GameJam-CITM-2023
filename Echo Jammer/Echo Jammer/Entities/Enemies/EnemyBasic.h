@@ -13,5 +13,7 @@ public:
 
     void InitStateMachine() override;
 
+    void UpdateBehaviour(const ModulePlayer* player) override;
+
 
 };
