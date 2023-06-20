@@ -8,7 +8,7 @@
 #include "../../Modules/Core/ModuleAudio.h"
 
 SceneTESTS::SceneTESTS(bool startEnabled) : Module(startEnabled) {
-	
+
 }
 
 SceneTESTS::~SceneTESTS() {
@@ -18,14 +18,14 @@ bool SceneTESTS::Start()
 {
 
 	textura_fondo = App->textures->Load(FI_Mapa_Level1.c_str());
-	
+
 	App->audio->PlayMusic(FA_Music_Ambient.c_str(), 1.0f);
 
 	rectFondo.x = 0;
 	rectFondo.y = 0;
 	rectFondo.w = 1920;
 	rectFondo.h = 1080;
-	
+
 
 	//// POSITION INITIAL CAMERA
 	App->render->camera.x = 0;
@@ -41,8 +41,17 @@ bool SceneTESTS::Start()
 }
 
 Update_Status SceneTESTS::Update() {
-	
-	//LOG("Player POSX:%d POSY:%d", App->player->position.x, App->player->position.y);
+
+	if (App->player->position.x <= 10) App->player->position.x = 10;
+	if (App->player->position.x >= weigthNivell - 10) App->player->position.x = weigthNivell - 10;
+	if (App->player->position.y <= 10) App->player->position.y = 10;
+	if (App->player->position.y >= heightNivell - 10) App->player->position.y = heightNivell - 10;
+
+
+	if (App->player->position.x > 0 && App->player->position.x < weigthNivell - 1920) App->render->camera.x = App->player->position.x;
+	if (App->player->position.y > 0 && App->player->position.y < heightNivell - 1080) App->render->camera.y = App->player->position.y;
+
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 

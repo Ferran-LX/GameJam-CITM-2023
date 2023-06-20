@@ -28,6 +28,9 @@ public:
 	bool stopGame = false;
 	int start_time;
 	int velocitatNivell = 0;
+
+	int weigthNivell = 1920;
+	int heightNivell = 2688;
 };
 
 #endif
