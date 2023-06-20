@@ -8,6 +8,7 @@
 #include "../../Modules/Gameplay/ModuleEnemies.h"
 #include "../../Modules/Gameplay/ModulePlayer.h"
 #include "../../Utils/EnemyStateMachine.h"
+#include "../../Utils/DirectionHelper.h"
 
 Enemy::Enemy(int x_, int y_, Enemy_Type type_, Collider* collider_) : position(x_, y_), type(type_), _collider(collider_)
 {
@@ -56,7 +57,15 @@ void Enemy::Draw() {
 		App->render->Blit(_texture, position.x, position.y, &(_currentAnim->GetCurrentFrame()));
 }
 
-void Enemy::OnCollision(Collider* collider) {
+void Enemy::OnCollision(Collider* otherCol) {
+	iPoint enemyCenter = { position.x + (_collider->rect.w >> 1), position.y + (_collider->rect.h >> 1) };
+	iPoint colCenter = { otherCol->rect.x + (otherCol->rect.w >> 1), otherCol->rect.y + (otherCol->rect.h >> 1) };
+	iPoint distVector = colCenter - position;
+
+	LOG("Distance to collider center: (%i,%i)", distVector.x, distVector.y);
+	Directions dir = DirectionHelper::GetDirection(enemyCenter, colCenter);
+	LOG("Direction to collider center: %i", DirToInt(dir));
+
 }
 
 void Enemy::SetToDelete() {

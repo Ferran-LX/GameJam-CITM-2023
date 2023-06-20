@@ -22,7 +22,8 @@ EnemyBasic::EnemyBasic(int x_, int y_, Collider* collider_) : Enemy(x_, y_, Enem
 	InitStateMachine();
 
 	_collisionCallback = [&](Collider* c1, Collider* c2) -> void {
-		LOG("EnemyBasic: Collision at (%i,%i)", position.x, position.y);
+		//LOG("EnemyBasic: Collision at (%i,%i)", position.x, position.y);
+		OnCollision(c2);
 	};
 
 	if (_collider != nullptr)
@@ -57,10 +58,10 @@ void EnemyBasic::InitStateMachine()
 	_stateMachine->AddTransition(Enemy_State::CERCANT, Enemy_State::PATRULLANT,	0,
 		[this]() -> bool { return Transitions_Basic::Cerca_Patrulla(*this); });
 
-	_stateMachine->AddTransition(Enemy_State::ATACANT, Enemy_State::PERSEGUINT,	2000,
+	_stateMachine->AddTransition(Enemy_State::ATACANT, Enemy_State::PERSEGUINT,	1000,
 		[&player]() -> bool { return Transitions_Basic::Atacar_Perseguir(*(App->player)); });
 
-	_stateMachine->AddTransition(Enemy_State::ATACANT, Enemy_State::JOC_FINALITZAT,	2000,
+	_stateMachine->AddTransition(Enemy_State::ATACANT, Enemy_State::JOC_FINALITZAT,	1000,
 		[&player]() -> bool { return Transitions_Basic::Atacar_Final(*(App->player)); });
 
 }
@@ -92,9 +93,10 @@ void EnemyBasic::UpdateBehaviour(const ModulePlayer* player)
 		if (_attackStart == 0)
 			_attackStart = SDL_GetTicks();
 		else if (_collider != nullptr && (_attackStart + _attackDelay) <= SDL_GetTicks()) {
-			//Si hi ha col·lisio el jugador ha mort
+			//Si hi ha col·lisio despres del temps d'inici d'atac, el jugador ha mort
 			if (_collider->Intersects(App->player->collider->rect))
 				App->player->alive = false;
+			_attackStart = 0;
 		}
 		break;
 	}
@@ -109,7 +111,7 @@ void EnemyBasic::UpdateBehaviour(const ModulePlayer* player)
 		break;
 	}
 	case JOC_FINALITZAT: {
-
+		_moving = false;
 		break;
 	}
 	default:
