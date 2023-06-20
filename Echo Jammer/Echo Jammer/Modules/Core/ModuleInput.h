@@ -40,6 +40,32 @@ struct GamePad
 	float rumble_strength;
 };
 
+enum KeyboardSetup {
+	MoveUp = SDL_Scancode::SDL_SCANCODE_W,
+	MoveDown = SDL_Scancode::SDL_SCANCODE_S,
+	MoveLeft = SDL_Scancode::SDL_SCANCODE_A,
+	MoveRight = SDL_Scancode::SDL_SCANCODE_D,
+	Sprint = SDL_Scancode::SDL_SCANCODE_LSHIFT,
+	Dash = SDL_Scancode::SDL_SCANCODE_SPACE,
+	Pause = SDL_Scancode::SDL_SCANCODE_I
+
+};
+class PlayerInput
+{
+public:
+	PlayerInput();
+	~PlayerInput();
+
+	Key_State moveUp;
+	Key_State moveDown;
+	Key_State moveLeft;
+	Key_State moveRight;
+	Key_State dash;
+	Key_State pause;
+	void StoreInput(const Key_State keyboard[MAX_KEYS], const GamePad& gamepad);
+
+};
+
 class ModuleInput : public Module
 {
 public:
@@ -80,6 +106,8 @@ public:
 
 	// An array to fill in all detected gamepads
 	GamePad pads[MAX_PADS];
+
+	PlayerInput controlP1;
 };
 
 #endif // __ModuleInput_H__

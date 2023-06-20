@@ -3,7 +3,6 @@
 #include "ModuleInput.h"
 
 #include <SDL.h>
-
 ModuleInput::ModuleInput(bool startEnabled) : Module(startEnabled)
 {
 	for (uint i = 0; i < MAX_KEYS; ++i)
@@ -46,6 +45,7 @@ bool ModuleInput::Init()
 
 Update_Status ModuleInput::PreUpdate()
 {
+
 	//Read all keyboard data and update our custom array
 	const Uint8* keyboard = SDL_GetKeyboardState(NULL);
 	for (int i = 0; i < MAX_KEYS; ++i)
@@ -80,7 +80,14 @@ Update_Status ModuleInput::PreUpdate()
 		}
 	}
 
+	if (keys[SDL_SCANCODE_ESCAPE] == KEY_DOWN)
+	{
+		return Update_Status::UPDATE_STOP;
+	}
+
 	UpdateGamepadsInput();
+
+	controlP1.StoreInput(keys, pads[0]);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -233,4 +240,66 @@ const char* ModuleInput::GetControllerName(int id) const
 		return SDL_GameControllerName(pads[id].controller);
 
 	return "unplugged";
+}
+
+PlayerInput::PlayerInput()
+{}
+
+PlayerInput::~PlayerInput()
+{}
+void PlayerInput::StoreInput(const Key_State keyboard[MAX_KEYS], const GamePad& gamepad)
+{
+	if (keyboard[KeyboardSetup::MoveUp] != Key_State::KEY_IDLE)
+		moveUp = keyboard[KeyboardSetup::MoveUp];
+	else {
+		if (gamepad.down)
+			moveUp = (moveUp == KEY_IDLE) ? KEY_DOWN : KEY_REPEAT;
+		else
+			moveUp = (moveUp == KEY_REPEAT || moveUp == KEY_DOWN) ? KEY_UP : KEY_IDLE;
+	}
+
+	if (keyboard[KeyboardSetup::MoveDown] != Key_State::KEY_IDLE)
+		moveDown = keyboard[KeyboardSetup::MoveDown];
+	else {
+		if (gamepad.down)
+			moveDown = (moveDown == KEY_IDLE) ? KEY_DOWN : KEY_REPEAT;
+		else
+			moveDown = (moveDown == KEY_REPEAT || moveDown == KEY_DOWN) ? KEY_UP : KEY_IDLE;
+	}
+
+	if (keyboard[KeyboardSetup::MoveLeft] != Key_State::KEY_IDLE)
+		moveLeft = keyboard[KeyboardSetup::MoveLeft];
+	else {
+		if (gamepad.left)
+			moveLeft = (moveLeft == KEY_IDLE) ? KEY_DOWN : KEY_REPEAT;
+		else
+			moveLeft = (moveLeft == KEY_REPEAT || moveLeft == KEY_DOWN) ? KEY_UP : KEY_IDLE;
+	}
+
+	if (keyboard[KeyboardSetup::MoveRight] != Key_State::KEY_IDLE)
+		moveRight = keyboard[KeyboardSetup::MoveRight];
+	else {
+		if (gamepad.right)
+			moveRight = (moveRight == KEY_IDLE) ? KEY_DOWN : KEY_REPEAT;
+		else
+			moveRight = (moveRight == KEY_REPEAT || moveRight == KEY_DOWN) ? KEY_UP : KEY_IDLE;
+	}
+
+	if (keyboard[KeyboardSetup::Pause] != Key_State::KEY_IDLE)
+		pause = keyboard[KeyboardSetup::Pause];
+	else {
+		if (gamepad.x)
+			pause = (pause == KEY_IDLE) ? KEY_DOWN : KEY_REPEAT;
+		else
+			pause = (pause == KEY_REPEAT || pause == KEY_DOWN) ? KEY_UP : KEY_IDLE;
+	}
+
+	if (keyboard[KeyboardSetup::Sprint] != Key_State::KEY_IDLE)
+		dash = keyboard[KeyboardSetup::Sprint];
+	else {
+		if (gamepad.a)
+			dash = (dash == KEY_IDLE) ? KEY_DOWN : KEY_REPEAT;
+		else
+			dash = (dash == KEY_REPEAT || dash == KEY_DOWN) ? KEY_UP : KEY_IDLE;
+	}
 }
