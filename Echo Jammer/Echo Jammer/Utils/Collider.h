@@ -13,11 +13,7 @@ struct Collider {
 		NONE = -1,
 		WALL,
 		PLAYER,
-		ENEMY,
-		PLAYER_SHOT,
-		ENEMY_SHOOT,
-		CHEST,
-		POWER_UP,
+		ENEMY,		
 		WALL_PLAYER,
 		MAX
 	};
