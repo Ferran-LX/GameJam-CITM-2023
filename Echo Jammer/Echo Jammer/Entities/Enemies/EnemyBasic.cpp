@@ -7,6 +7,7 @@
 #include "../../Utils/Collider.h"
 #include "../../Utils/p2Point.h"
 #include "../../Utils/DirectionHelper.h"
+#include <SDL_timer.h>
 
 
 EnemyBasic::EnemyBasic(int x_, int y_) : Enemy(x_, y_, Enemy_Type::BASIC)
@@ -17,6 +18,7 @@ EnemyBasic::EnemyBasic(int x_, int y_) : Enemy(x_, y_, Enemy_Type::BASIC)
 	_attackRange = 20;
 	_visionRange = 270;
 	_searchRange = 230;
+	_attackDelay = 1000;
 	InitStateMachine();
 }
 
@@ -79,6 +81,13 @@ void EnemyBasic::UpdateBehaviour(const ModulePlayer* player)
 		//iPoint dirVec = player->position - position;
 		_currDirection = DirectionHelper::GetDirection(position, player->position);
 		//Preparar i executar atac
+		if (_attackStart == 0)
+			_attackStart = SDL_GetTicks();
+		else if (_collider != nullptr && (_attackStart + _attackDelay) <= SDL_GetTicks()) {
+			//Si hi ha col·lisio el jugador ha mort
+			if (_collider->Intersects(App->player->collider->rect))
+				App->player->alive = false;
+		}
 		break;
 	}
 	case CERCANT: {

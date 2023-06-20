@@ -152,6 +152,10 @@ protected:
 
 	int _searchRange = 0;
 
+	uint _attackDelay = 0;
+
+	uint _attackStart = 0;
+
 	Directions _currDirection = Directions::SOUTH;
 
 	Enemy_State _currState;
