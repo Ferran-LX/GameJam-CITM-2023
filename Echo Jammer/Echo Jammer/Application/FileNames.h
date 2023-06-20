@@ -22,7 +22,11 @@ const std::string FI_Enemy_Basic = "_Assets/Imagenes/enemies/enemy_01_spriteshee
 
 #pragma endregion
 
+//HUD
 
+const std::string FI_HUD_font = "_Assets/Imagenes/UI/numeros_spritesheet.png";
+const std::string FI_HUD_image1 = "_Assets/Imagenes/UI/habilidad_icono.png";
+const std::string FI_HUD_image2 = "_Assets/Imagenes/UI/habilidad_icono_02.png";
 
 #pragma region AUDIOS -> FA
 

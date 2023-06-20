@@ -36,20 +36,17 @@ Application::Application() {
 	modules.push_back(input = new ModuleInput(true));
 	modules.push_back(textures = new ModuleTextures(true));
 	modules.push_back(audio = new ModuleAudio(true));
-
 	modules.push_back(scene_0_Portada = new Scene0Portada(true));
+	
 	modules.push_back(sceneTests = new SceneTESTS(false));
-
 	modules.push_back(enemies = new ModuleEnemies(false));
 	modules.push_back(player = new ModulePlayer(false));
 	modules.push_back(particles = new ModuleParticles(true));
 	modules.push_back(collisions = new ModuleCollisions(false));
+	
 	modules.push_back(fade = new ModuleFadeToBlack(true));
-
-
 	modules.push_back(fonts = new ModuleFonts(true));
 	modules.push_back(hud = new ModuleHUD(true));
-	
 	modules.push_back(render = new ModuleRender(true));
 
 	sizeVector = modules.size();
@@ -91,9 +88,9 @@ Update_Status Application::Update() {
 		// Only paint is Scene1 is eneabled
 		if (dynamic_cast<ModuleHUD*>(modules[i]))
 		{
-			if (modules[8]->IsEnabled()) { // SCene1
+			if (modules[5]->IsEnabled()) { // SCene1
 				ret = modules[i]->IsEnabled() ? modules[i]->PostUpdate() : Update_Status::UPDATE_CONTINUE;
-				ret = modules[9]->PostUpdate(); // Foreground
+				ret = modules[12]->PostUpdate(); // Foreground
 			}
 		}	
 		else

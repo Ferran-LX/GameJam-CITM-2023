@@ -7,6 +7,7 @@
 #include "../../Modules/Gameplay/ModuleEnemies.h"
 #include "../../Modules/Gameplay/ModulePlayer.h"
 #include "../../Modules/Core/ModuleAudio.h"
+#include "../../Modules/Core/ModuleInput.h"
 
 SceneTESTS::SceneTESTS(bool startEnabled) : Module(startEnabled) {
 
@@ -54,14 +55,18 @@ Update_Status SceneTESTS::Update() {
 	if (App->player->position.x > 0 && App->player->position.x < weigthNivell - 1920) App->render->camera.x = App->player->position.x;
 	if (App->player->position.y > 540 && App->player->position.y < heightNivell - 1080) App->render->camera.y = App->player->position.y-540;
 
-	
+	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN) {
+		stopEcho = true;
+	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
 
 Update_Status SceneTESTS::PostUpdate() {
 	App->render->Blit(textura_fondo, 0, 0, &rectFondo);
+
 	return Update_Status::UPDATE_CONTINUE;
+
 }
 
 bool SceneTESTS::CleanUp() {

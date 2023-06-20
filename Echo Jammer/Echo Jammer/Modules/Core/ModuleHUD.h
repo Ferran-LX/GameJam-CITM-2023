@@ -26,25 +26,52 @@ public:
 	Update_Status Update() override;
 	Update_Status PostUpdate() override;
 	bool CleanUp();
-
-
+#define NUM_IMAGES 2
+	SDL_Texture* ArrayImagesHud[NUM_IMAGES];
+	
+	bool stopEcho = true;
 
 private:
 	int score;
 	int score2;
 	int highScore;
 	int sizeVector;
-	int widthLetter = 25;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	int widthLetter = 100;
+	int startTime;
 
 	std::vector<abecedari> vectorABC;
+	
 
-	std::string player1 = "Player 1";
-	std::string player2 = "Player 2";
-	std::string hlScore = "Hi-Score";
-	std::string X = "x";
 
-	SDL_Texture* textureFont = nullptr;
-	SDL_Texture* textureIcons = nullptr;
+	/*SDL_Texture* textureFont = nullptr;
+	SDL_Texture* textureIcons = nullptr;*/
 
 	int PosLetter(char leterToSearch);
 	int LoadVector();
