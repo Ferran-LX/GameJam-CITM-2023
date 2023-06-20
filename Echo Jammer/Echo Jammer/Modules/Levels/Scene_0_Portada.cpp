@@ -3,6 +3,7 @@
 #include "../../Application/Application.h"
 #include "../../Modules/Core/ModuleTextures.h"
 #include "../../Modules/Core/ModuleRender.h"
+#include "../../Modules/Core/ModuleAudio.h"
 
 Scene0Portada::Scene0Portada(bool startEnabled) : Module(startEnabled) {
 }
@@ -12,6 +13,8 @@ Scene0Portada::~Scene0Portada() {
 
 bool Scene0Portada::Start() {
 	textura = App->textures->Load(FI_Animacio_Portada.c_str());
+
+	App->audio->PlayMusic(FA_Music_Ambient.c_str(), 1.0f);
 
 	for (int i = 0; i < _numFiles; i++)
 	{
