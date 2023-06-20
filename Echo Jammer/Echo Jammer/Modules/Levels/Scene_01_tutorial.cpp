@@ -47,7 +47,8 @@ bool Scene_01_tutorial::Start()
 	App->enemies->AddEnemy(Enemy_Type::BASIC, 64 * 10, 668);
 	App->enemies->AddEnemy(Enemy_Type::BASIC, 64 * 10, 732);
 
-	App->collisions->AddCollider({ 0, 0, 1920 * 2,256 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 0, 796, 1920 * 2,476 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 0, 0, 1920 * 2,476}, Collider::Type::WALL);
 
 
 
