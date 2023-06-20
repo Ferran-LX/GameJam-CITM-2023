@@ -13,7 +13,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled) {
 
 	matrix[Collider::Type::WALL][Collider::Type::WALL] = false;
 	matrix[Collider::Type::WALL][Collider::Type::PLAYER] = true;
-	matrix[Collider::Type::WALL][Collider::Type::ENEMY] = false;
+	matrix[Collider::Type::WALL][Collider::Type::ENEMY] = true;
 	matrix[Collider::Type::WALL][Collider::Type::PLAYER_SHOT] = true;
 	matrix[Collider::Type::WALL][Collider::Type::ENEMY_SHOOT] = true;
 	matrix[Collider::Type::WALL][Collider::Type::CHEST] = true;
@@ -29,7 +29,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled) {
 	matrix[Collider::Type::PLAYER][Collider::Type::WALL_PLAYER] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::POWER_UP] = true;
 
-	matrix[Collider::Type::ENEMY][Collider::Type::WALL] = false;
+	matrix[Collider::Type::ENEMY][Collider::Type::WALL] = true;
 	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::ENEMY][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER_SHOT] = true;
@@ -129,11 +129,11 @@ Update_Status ModuleCollisions::PreUpdate() {
 				// Check function callbacks
 				for (uint i = 0; i < MAX_LISTENERS; ++i)
 					if (c1->listenerFunctions[i] != nullptr)
-						c1->listenerFunctions[i](c1, c2);
+						(*c1->listenerFunctions[i])(c1, c2);
 
 				for (uint i = 0; i < MAX_LISTENERS; ++i)
 					if (c2->listenerFunctions[i] != nullptr)
-						c2->listenerFunctions[i](c2, c1);
+						(*c2->listenerFunctions[i])(c2, c1);
 			}
 		}
 	}
@@ -212,7 +212,7 @@ Collider* ModuleCollisions::AddCollider(SDL_Rect rect, Collider::Type type, Modu
 	return ret;
 }
 
-Collider* ModuleCollisions::AddCollider(SDL_Rect rect, Collider::Type type, void(*listener)(Collider*, Collider*)) {
+Collider* ModuleCollisions::AddCollider(SDL_Rect rect, Collider::Type type, std::function<void(Collider*,Collider*)>* listener) {
 	Collider* ret = nullptr;
 
 	for (uint i = 0; i < MAX_COLLIDERS; ++i) {

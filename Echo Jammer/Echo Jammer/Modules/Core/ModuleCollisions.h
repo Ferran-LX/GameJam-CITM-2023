@@ -5,6 +5,7 @@
 
 #include "../../Modules/Module.h"
 #include "../../Utils/Collider.h"
+#include <functional>
 
 class ModuleCollisions : public Module {
 
@@ -33,10 +34,10 @@ public:
 	bool CleanUp();
 
 	// Adds a new collider to the list
-	Collider* AddCollider(SDL_Rect rect, Collider::Type type, Module* listener = nullptr);
+	Collider* AddCollider(SDL_Rect rect, Collider::Type type, Module* listener);
 
 	// Adds a new collider to the list with option to add function callback
-	Collider* AddCollider(SDL_Rect rect, Collider::Type type, void (*listener)(Collider*, Collider*) = nullptr);
+	Collider* AddCollider(SDL_Rect rect, Collider::Type type, std::function<void(Collider*, Collider*)>* = nullptr);
 
 	// Removes the collider memory and removes it from the colliders array
 	void RemoveCollider(Collider* collider);

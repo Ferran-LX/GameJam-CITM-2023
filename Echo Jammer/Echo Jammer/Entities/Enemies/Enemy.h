@@ -20,7 +20,7 @@ class ModulePlayer;
 class Enemy {
 protected:
 	// Constructor requerit per classes derivades
-	Enemy(int x_, int y_, Enemy_Type type_);
+	Enemy(int x_, int y_, Enemy_Type type_, Collider* collider_ = nullptr);
 
 public:
 	// Constructor
@@ -50,6 +50,8 @@ public:
 	virtual void SetToDelete();
 
 #pragma region MovementMethods
+
+	virtual Directions ChangeDirection();
 
 	virtual void HandleMove();
 
@@ -140,6 +142,8 @@ protected:
 
 	bool _moving = true;
 
+	uint _dirChangeTimer = 0;
+
 	int _speed = 0;
 
 	int _aggro = 0;
@@ -152,12 +156,17 @@ protected:
 
 	int _searchRange = 0;
 
+	uint _attackDelay = 0;
+
+	uint _attackStart = 0;
+
 	Directions _currDirection = Directions::SOUTH;
 
 	Enemy_State _currState;
 
 	EnemyStateMachine* _stateMachine = nullptr;
 
+	std::function<void(Collider*, Collider*)> _collisionCallback;
 };
 
 #endif // __ENEMY_H__

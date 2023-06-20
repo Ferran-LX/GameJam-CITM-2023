@@ -2,13 +2,16 @@
 #include "DirectionHelper.h"
 #include "p2Point.h"
 
+#define DEADZONE 0.38
+
 Directions DirectionHelper::GetDirection(iPoint fromPoint, iPoint toPoint) {
 
-	
+	iPoint iVec = toPoint - fromPoint;
 
-	iPoint vectorDir = toPoint - fromPoint;
+	fPoint vectorDir = { (float)iVec.x,(float)iVec.y };
+	vectorDir = vectorDir.Normalized();
 
-	if (vectorDir.x == 0) {
+	if (vectorDir.x <= DEADZONE && vectorDir.x >= -DEADZONE) {
 		// Sol vertical
 		if (vectorDir.y < 0) {
 			return Directions::NORTH;
@@ -18,7 +21,7 @@ Directions DirectionHelper::GetDirection(iPoint fromPoint, iPoint toPoint) {
 		}
 
 	}
-	else if (vectorDir.y == 0) {
+	else if (vectorDir.y <= DEADZONE && vectorDir.y >= -DEADZONE) {
 		// Sol horitzontal
 		if (vectorDir.x < 0) {
 			return Directions::WEST;
