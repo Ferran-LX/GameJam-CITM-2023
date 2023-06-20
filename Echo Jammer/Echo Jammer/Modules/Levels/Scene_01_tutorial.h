@@ -29,7 +29,7 @@ public:
 	int start_time;
 	int velocitatNivell = 0;
 
-	int weigthNivell = 1920*2;
+	int widthNivell = 1920*2;
 	int heightNivell = 1080;
 };
 

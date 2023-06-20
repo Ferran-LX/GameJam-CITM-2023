@@ -44,6 +44,7 @@ bool SceneTESTS::Start()
 
 Update_Status SceneTESTS::Update() {
 
+
 	if (App->player->position.x <= 10)
 		App->player->position.x = 10;
 	if (App->player->position.x >= weigthNivell - 10 -128)
