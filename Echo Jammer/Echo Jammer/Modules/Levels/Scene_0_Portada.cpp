@@ -7,6 +7,7 @@
 #include "../../Modules/Core/ModuleRender.h"
 #include "../../Modules/Core/ModuleFadeToBlack.h"
 #include "../../Modules/Core/ModuleInput.h"
+#include "../../Modules/Core/ModuleAudio.h"
 
 Scene0Portada::Scene0Portada(bool startEnabled) : Module(startEnabled) {
 }
@@ -18,6 +19,7 @@ bool Scene0Portada::Start() {
 	textura = App->textures->Load(FI_Animacio_Portada.c_str());
 
 	startTime = SDL_GetTicks();
+	App->audio->PlayMusic(FA_Music_Ambient.c_str(), 1.0f);
 
 	for (int i = 0; i < _numFiles; i++)
 	{
