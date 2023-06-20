@@ -32,7 +32,7 @@ bool ModulePlayer::Start()
 	_currentAnimation = &_idleSouthAnim;
 
 	position.x = 300;
-	position.y = 300;
+	position.y = 00;
 
 #pragma region IDLE
 	// IDLE NORTH
@@ -148,7 +148,8 @@ bool ModulePlayer::Start()
 }
 
 Update_Status ModulePlayer::Update() {
-	
+	App->player->positionAnterior = App->player->position;
+
 	PlaceHolderMove();
 
 	collider->SetPos(position.x, position.y);
