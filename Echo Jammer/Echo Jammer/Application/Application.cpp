@@ -76,7 +76,7 @@ bool Application::Init() {
 
 	// Only active modules will be 'started'
 	for (int i = 0; i < sizeVector && ret; ++i)
-		ret = modules[i]->IsEnabled() ? modules[i]->Start() : true;
+		ret = modules[i]->startEnabled ? modules[i]->Enable() : true;
 
 	return ret;
 }
