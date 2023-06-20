@@ -20,6 +20,8 @@
 
 #include "../Modules/Levels/SceneTESTS.h"
 #include "../Modules/Levels/Scene_0_Portada.h"
+#include "../Modules/Levels/Scene_01_tutorial.h"
+
 
 int _start_time = SDL_GetTicks();
 int last_frame_time = _start_time;
@@ -38,7 +40,10 @@ Application::Application() {
 	modules.push_back(audio = new ModuleAudio(true));
 	modules.push_back(scene_0_Portada = new Scene0Portada(false));
 
-	modules.push_back(sceneTests = new SceneTESTS(true));
+	modules.push_back(scene_0_Portada = new Scene0Portada(false));
+	modules.push_back(scene_01_tutorial = new Scene_01_tutorial(true));
+	modules.push_back(sceneTests = new SceneTESTS(false));
+
 	modules.push_back(enemies = new ModuleEnemies(false));
 	modules.push_back(player = new ModulePlayer(false));
 	modules.push_back(particles = new ModuleParticles(true));
@@ -71,7 +76,7 @@ bool Application::Init() {
 
 	// Only active modules will be 'started'
 	for (int i = 0; i < sizeVector && ret; ++i)
-		ret = modules[i]->IsEnabled() ? modules[i]->Start() : true;
+		ret = modules[i]->startEnabled ? modules[i]->Enable() : true;
 
 	return ret;
 }

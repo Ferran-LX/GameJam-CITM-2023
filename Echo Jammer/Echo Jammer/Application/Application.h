@@ -21,6 +21,7 @@ class ModuleHUD;
 
 class Scene0Portada;
 class SceneTESTS;
+class Scene_01_tutorial;
 class SceneStart;
 class SceneIntro;
 
@@ -63,6 +64,7 @@ public:
 	ModuleHUD* hud = nullptr;
 
 	Scene0Portada* scene_0_Portada = nullptr;
+	Scene_01_tutorial* scene_01_tutorial = nullptr;
 	SceneTESTS* sceneTests = nullptr;
 	SceneIntro* sceneIntro = nullptr;
 	SceneStart* sceneStart = nullptr;
