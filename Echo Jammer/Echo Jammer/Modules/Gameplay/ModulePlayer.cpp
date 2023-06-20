@@ -148,7 +148,7 @@ bool ModulePlayer::Start()
 }
 
 Update_Status ModulePlayer::Update() {
-	switch (_actualDirection)
+	/*switch (_actualDirection)
 	{
 	case Directions::NORTH: LOG("DIR actual: NORTH"); break;
 	case Directions::NORTH_EAST: LOG("DIR actual: NORTH-EAST"); break;
@@ -159,7 +159,8 @@ Update_Status ModulePlayer::Update() {
 	case Directions::WEST: LOG("DIR actual: WEST"); break;
 	case Directions::NORTH_WEST: LOG("DIR actual: NORTH-WEST"); break;
 	default: break;
-	}
+	}*/
+	positionAnterior = position;
 
 	if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT && App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
 	{ // NORTH - EAST
@@ -240,22 +241,31 @@ Update_Status ModulePlayer::PostUpdate() {
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 
-	iPoint enemyCenter = { position.x + (c1->rect.w >> 1), position.y + (c1->rect.h >> 1) };
-	iPoint colCenter = { c2->rect.x + (c2->rect.w >> 1), c2->rect.y + (c2->rect.h >> 1) };
-	iPoint distVector = colCenter - position;
+	if (c1->rect.x < c2->rect.x + c2->rect.w
+		&& c1->rect.x + c1->rect.w > c2->rect.x
+		&& c1->rect.y < c2->rect.y + c2->rect.h
+		&& c1->rect.y + c1->rect.h > c2->rect.y) {
 
-	Directions dir = DirectionHelper::GetDirection(enemyCenter, colCenter);
-	LOG("Distance to collider center: (%i,%i)", distVector.x, distVector.y);
-	LOG("Direction to collider center: %i", DirToInt(dir));
+		position = positionAnterior;
+		//LOG("Hay superposición");
+	}
+
+	//iPoint enemyCenter = { position.x + (c1->rect.w >> 1), position.y + (c1->rect.h >> 1) };
+	//iPoint colCenter = { c2->rect.x + (c2->rect.w >> 1), c2->rect.y + (c2->rect.h >> 1) };
+	//iPoint distVector = colCenter - position;
+
+	//Directions dir = DirectionHelper::GetDirection(enemyCenter, colCenter);
+	////LOG("Distance to collider center: (%i,%i)", distVector.x, distVector.y);
+	////LOG("Direction to collider center: %i", DirToInt(dir));
 
 
-	fPoint normalizedDir = { (float)distVector.x, (float)distVector.y };
-	normalizedDir = normalizedDir.Normalized();
-	normalizedDir *= 3;
+	//fPoint normalizedDir = { (float)distVector.x, (float)distVector.y };
+	//normalizedDir = normalizedDir.Normalized();
+	//normalizedDir *= 3;
 
-	iPoint pushVect = { (int)-normalizedDir.x, (int)-normalizedDir.y };
+	//iPoint pushVect = { (int)-normalizedDir.x, (int)-normalizedDir.y };
 
-	position += pushVect;
+	//position += pushVect;
 
 
 }

@@ -35,8 +35,14 @@ bool SceneTESTS::Start()
 	App->enemies->Enable();
 	App->collisions->Enable();
 
+ 	App->player->position.x = 400;
+	App->player->position.y = 500;
+	App->player->collider->SetPos(400, 500);
+
+
 	App->enemies->AddEnemy(Enemy_Type::BASIC, 10, 100);
 
+	App->collisions->AddCollider({ 0, 0, weigthNivell, 220 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 700, 400, 200,200 }, Collider::Type::WALL);
 
 	return true;
