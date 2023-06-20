@@ -152,6 +152,9 @@ Update_Status ModulePlayer::Update() {
 
 	PlaceHolderMove();
 
+	//GetInputDirection();
+	//ApplyMovement();
+
 	collider->SetPos(position.x, position.y);
 
 	return Update_Status::UPDATE_CONTINUE;
@@ -266,7 +269,7 @@ void ModulePlayer::PlaceHolderMove()
 
 }
 
-Directions ModulePlayer::GetInputDirection()
+void ModulePlayer::GetInputDirection()
 {
 	const PlayerInput& p1 = App->input->controlP1;
 	iPoint dirVect;
@@ -276,10 +279,73 @@ Directions ModulePlayer::GetInputDirection()
 	dirVect.x += (int)(p1.moveLeft == Key_State::KEY_REPEAT ? -1 : 0);
 	dirVect.x += (int)(p1.moveRight == Key_State::KEY_REPEAT ? 1 : 0);
 
-	Directions ret = DirectionHelper::GetDirection({ 0,0 },dirVect);
-	return ret;
+	_actualDirection = DirectionHelper::GetDirection({ 0,0 }, dirVect);
+	
 }
 
 void ModulePlayer::ApplyMovement()
 {
+
+	switch (_actualDirection)
+	{
+	case Directions::NORTH: {
+		_currentAnimation = &_northAnim;
+		position.y -= speed;
+		break;
+	}
+	case Directions::EAST: {
+		_currentAnimation = &_eastAnim;
+		position.x += speed;
+		break;
+	}
+	case Directions::NORTH_EAST: {
+		_currentAnimation = &_northEastAnim;
+		position.x += speed;
+		position.y -= speed;
+		break;
+	}
+	case Directions::SOUTH: {
+		_currentAnimation = &_southAnim;
+		position.y += speed;
+		break;
+	}
+	case Directions::SOUTH_EAST: {
+		_currentAnimation = &_southEastAnim;
+		position.x += speed;
+		position.y += speed;
+		break;
+	}
+	case Directions::WEST: {
+		_currentAnimation = &_weastAnim;
+		position.x -= speed;
+		break;
+	}
+	case Directions::SOUTH_WEST: {
+		_currentAnimation = &_southWeastAnim;
+		position.x -= speed;
+		position.y += speed;
+		break;
+	}
+	case Directions::NORTH_WEST: {
+		_currentAnimation = &_northWeastAnim;
+		position.x -= speed;
+		position.y -= speed;
+		break;
+	}
+	case Directions::NONE: {
+		// Per defecte IDLE
+		if (_currentAnimation == &_northAnim) _currentAnimation = &_idleNorthAnim;
+		else if (_currentAnimation == &_northEastAnim) _currentAnimation = &_idleNorthEastAnim;
+		else if (_currentAnimation == &_eastAnim) _currentAnimation = &_idleEastAnim;
+		else if (_currentAnimation == &_southEastAnim) _currentAnimation = &_idleSouthEastAnim;
+		else if (_currentAnimation == &_southAnim) _currentAnimation = &_idleSouthAnim;
+		else if (_currentAnimation == &_southWeastAnim) _currentAnimation = &_idleSouthWeastAnim;
+		else if (_currentAnimation == &_weastAnim) _currentAnimation = &_idleWeastAnim;
+		else if (_currentAnimation == &_northWeastAnim) _currentAnimation = &_idleNorthWeastAnim;
+		else _currentAnimation = &_idleSouthAnim;
+	}
+	default:
+		break;
+	}
+
 }

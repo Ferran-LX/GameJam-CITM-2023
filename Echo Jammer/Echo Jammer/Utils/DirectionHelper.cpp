@@ -8,6 +8,8 @@ Directions DirectionHelper::GetDirection(iPoint fromPoint, iPoint toPoint) {
 
 	iPoint iVec = toPoint - fromPoint;
 
+	if (iVec.IsZero()) return Directions::NONE;
+
 	fPoint vectorDir = { (float)iVec.x,(float)iVec.y };
 	vectorDir = vectorDir.Normalized();
 
