@@ -153,6 +153,7 @@
     <ClInclude Include="Application\MemLeaks.h" />
     <ClInclude Include="Entities\Enemies\TransitionConditionsBasic.h" />
     <ClInclude Include="Modules\Levels\SceneTESTS.h" />
+    <ClInclude Include="Modules\Levels\Scene_01_tutorial.h" />
     <ClInclude Include="Modules\Levels\Scene_0_Portada.h" />
     <ClInclude Include="Utils\DirectionHelper.h" />
     <ClInclude Include="Utils\Directions.h" />
@@ -191,6 +192,7 @@
     <ClCompile Include="Application\Main.cpp" />
     <ClCompile Include="Modules\Levels\SceneTESTS.cpp" />
     <ClCompile Include="Modules\Levels\SceneTestArea.cpp" />
+    <ClCompile Include="Modules\Levels\Scene_01_tutorial.cpp" />
     <ClCompile Include="Modules\Levels\Scene_0_Portada.cpp" />
     <ClCompile Include="Utils\DirectionHelper.cpp" />
     <ClCompile Include="Utils\EnemyStateMachine.cpp" />
