@@ -3,6 +3,7 @@
 #include "../../Application/Application.h"
 #include "../../Modules/Core/ModuleTextures.h"
 #include "../../Modules/Core/ModuleRender.h"
+#include "../../Modules/Core/ModuleCollisions.h"
 #include "../../Modules/Gameplay/ModuleEnemies.h"
 #include "../../Modules/Gameplay/ModulePlayer.h"
 
@@ -29,9 +30,11 @@ bool SceneTESTS::Start()
 
 	App->player->Enable();
 	App->enemies->Enable();
-	//App->collisions->Enable();
+	App->collisions->Enable();
 
 	App->enemies->AddEnemy(Enemy_Type::BASIC, 10, 10);
+
+	App->collisions->AddCollider({ 700, 400, 64,64 },Collider::Type::WALL);
 
 	return true;
 }
@@ -50,7 +53,7 @@ Update_Status SceneTESTS::PostUpdate() {
 bool SceneTESTS::CleanUp() {
 	App->player->Disable();
 	App->enemies->Disable();
-	//App->collisions->Disable();
+	App->collisions->Disable();
 	App->player->lives = 3;
 	return true;
 }

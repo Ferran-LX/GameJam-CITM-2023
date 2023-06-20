@@ -9,7 +9,7 @@
 #include "../../Modules/Gameplay/ModulePlayer.h"
 #include "../../Utils/EnemyStateMachine.h"
 
-Enemy::Enemy(int x_, int y_, Enemy_Type type_) : position(x_, y_), type(type_)
+Enemy::Enemy(int x_, int y_, Enemy_Type type_, Collider* collider_) : position(x_, y_), type(type_), _collider(collider_)
 {
 	_speed = 0;
 	_aggro = 0;
@@ -128,4 +128,5 @@ void Enemy::SetCollider(Collider* nCollider)
 		_collider->pendingToDelete = true;
 
 	_collider = nCollider;
+	_collider->AddListener(&_collisionCallback);
 }

@@ -10,7 +10,7 @@
 #include <SDL_timer.h>
 
 
-EnemyBasic::EnemyBasic(int x_, int y_) : Enemy(x_, y_, Enemy_Type::BASIC)
+EnemyBasic::EnemyBasic(int x_, int y_, Collider* collider_) : Enemy(x_, y_, Enemy_Type::BASIC, collider_)
 {
 	_speed = 2;
 	_aggro = 0;
@@ -20,6 +20,14 @@ EnemyBasic::EnemyBasic(int x_, int y_) : Enemy(x_, y_, Enemy_Type::BASIC)
 	_searchRange = 230;
 	_attackDelay = 1000;
 	InitStateMachine();
+
+	_collisionCallback = [&](Collider* c1, Collider* c2) -> void {
+		LOG("EnemyBasic: Collision at (%i,%i)", position.x, position.y);
+	};
+
+	if (_collider != nullptr)
+		_collider->AddListener(&_collisionCallback);
+
 }
 
 EnemyBasic::~EnemyBasic()

@@ -20,7 +20,7 @@ class ModulePlayer;
 class Enemy {
 protected:
 	// Constructor requerit per classes derivades
-	Enemy(int x_, int y_, Enemy_Type type_);
+	Enemy(int x_, int y_, Enemy_Type type_, Collider* collider_ = nullptr);
 
 public:
 	// Constructor
@@ -162,6 +162,7 @@ protected:
 
 	EnemyStateMachine* _stateMachine = nullptr;
 
+	std::function<void(Collider*, Collider*)> _collisionCallback;
 };
 
 #endif // __ENEMY_H__

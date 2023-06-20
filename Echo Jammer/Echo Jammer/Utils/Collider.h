@@ -2,6 +2,7 @@
 #define __COLLIDER_H__
 
 #include <SDL_rect.h>
+#include <functional>
 
 #define MAX_LISTENERS 5
 
@@ -22,9 +23,9 @@ struct Collider {
 	};
 
 	//Methods
-	Collider(SDL_Rect rectangle, Type type, Module* listener = nullptr);
+	Collider(SDL_Rect rectangle, Type type, Module* listener);
 
-	Collider(SDL_Rect rectangle, Type type, void (*listener)(Collider*, Collider*) = nullptr);
+	Collider(SDL_Rect rectangle, Type type, std::function<void(Collider*,Collider*)>* listener = nullptr);
 
 	void SetPos(int x, int y);
 
@@ -34,7 +35,7 @@ struct Collider {
 	void AddListener(Module* listener);
 
 	// Añade funcion a llamar cuando colisiona
-	void AddListener(void (*listener)(Collider*, Collider*));
+	void AddListener(std::function<void(Collider*, Collider*)>* listener);
 
 	//Variables
 	SDL_Rect rect;
@@ -43,7 +44,7 @@ struct Collider {
 	Module* listeners[MAX_LISTENERS] = { nullptr };
 
 
-	void (*listenerFunctions[MAX_LISTENERS])(Collider*, Collider*) = { nullptr };
+	std::function<void(Collider*, Collider*)>* listenerFunctions[MAX_LISTENERS]{ nullptr };
 };
 
 

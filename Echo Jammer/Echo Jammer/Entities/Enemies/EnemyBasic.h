@@ -6,7 +6,7 @@ class EnemyBasic :
 public:
 
     // Constructor
-    EnemyBasic(int x_, int y_);
+    EnemyBasic(int x_, int y_, Collider* collider = nullptr);
 
     // Destructor
     ~EnemyBasic();
