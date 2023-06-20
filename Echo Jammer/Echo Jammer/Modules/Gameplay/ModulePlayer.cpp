@@ -35,50 +35,50 @@ bool ModulePlayer::Start()
 
 #pragma region IDLE
 	// IDLE NORTH
-	for (int i = 0; i < _numFrames - 8; i++)
-		_idleNorthAnim.PushBack({ 128 * i, 128 * 11, 128, 128 });
+	for (int i = 0; i < _numFrames - 10; i++)
+		_idleNorthAnim.PushBack({ 128 * i, 128 * 12, 128, 128 });
 	_idleNorthAnim.loop = true;
 	_idleNorthAnim.speed = 0.2f;
 
 	// IDLE NORTH - EAST
-	for (int i = 0; i < _numFrames - 8; i++)
-		_idleNorthEastAnim.PushBack({ 128 * i, 128 * 11, 128, 128 });
+	for (int i = 0; i < _numFrames - 10; i++)
+		_idleNorthEastAnim.PushBack({ 128 * i, 128 * 12, 128, 128 });
 	_idleNorthEastAnim.loop = true;
 	_idleNorthEastAnim.speed = 0.2f;
 
 	// IDLE EAST
-	for (int i = 0; i < _numFrames - 8; i++)
-		_idleEastAnim.PushBack({ 128 * i, 128 * 9, 128, 128 });
+	for (int i = 0; i < _numFrames - 10; i++)
+		_idleEastAnim.PushBack({ 128 * i, 128 * 14, 128, 128 });
 	_idleEastAnim.loop = true;
 	_idleEastAnim.speed = 0.2f;
 
 	// IDLE SOUTH - EAST
-	for (int i = 0; i < _numFrames - 8; i++)
-		_idleSouthEastAnim.PushBack({ 128 * i, 128 * 10, 128, 128 });
+	for (int i = 0; i < _numFrames - 10; i++)
+		_idleSouthEastAnim.PushBack({ 128 * i, 128 * 13, 128, 128 });
 	_idleSouthEastAnim.loop = true;
 	_idleSouthEastAnim.speed = 0.2f;
 
 	// IDLE SOUTH
-	for (int i = 0; i < _numFrames - 8; i++)
-		_idleSouthAnim.PushBack({ 128 * i, 128 * 10, 128, 128 });
+	for (int i = 0; i < _numFrames - 10; i++)
+		_idleSouthAnim.PushBack({ 128 * i, 128 * 13, 128, 128 });
 	_idleSouthAnim.loop = true;
 	_idleSouthAnim.speed = 0.2f;
 
 	// IDLE SOUTH - WEAST
-	for (int i = 0; i < _numFrames - 8; i++)
-		_idleSouthWeastAnim.PushBack({ 128 * i, 128 * 10, 128, 128 });
+	for (int i = 0; i < _numFrames - 10; i++)
+		_idleSouthWeastAnim.PushBack({ 128 * i, 128 * 13, 128, 128 });
 	_idleSouthWeastAnim.loop = true;
 	_idleSouthWeastAnim.speed = 0.2f;
 
 	// IDLE WEAST
-	for (int i = 0; i < _numFrames - 8; i++)
-		_idleWeastAnim.PushBack({ 128 * i, 128 * 8, 128, 128 });
+	for (int i = 0; i < _numFrames - 10; i++)
+		_idleWeastAnim.PushBack({ 128 * i, 128 * 15, 128, 128 });
 	_idleWeastAnim.loop = true;
 	_idleWeastAnim.speed = 0.2f;
 
 	// IDLE NORTH - WEAST
-	for (int i = 0; i < _numFrames - 8; i++)
-		_idleNorthWeastAnim.PushBack({ 128 * i, 128 * 11, 128, 128 });
+	for (int i = 0; i < _numFrames - 10; i++)
+		_idleNorthWeastAnim.PushBack({ 128 * i, 128 * 15, 128, 128 });
 	_idleNorthWeastAnim.loop = true;
 	_idleNorthWeastAnim.speed = 0.2f;
 

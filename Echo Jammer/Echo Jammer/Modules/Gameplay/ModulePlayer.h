@@ -26,7 +26,7 @@ public:
 	bool alive = true;
 	iPoint position;
 	bool stopGame = false;
-	int speed = 4;
+	int speed = 5;
 	SDL_Texture* texture = nullptr;
 	Collider* collider = nullptr;
 
