@@ -20,6 +20,8 @@
 
 #include "../Modules/Levels/SceneTESTS.h"
 #include "../Modules/Levels/Scene_0_Portada.h"
+#include "../Modules/Levels/Scene_01_tutorial.h"
+
 
 int _start_time = SDL_GetTicks();
 int last_frame_time = _start_time;
@@ -37,7 +39,8 @@ Application::Application() {
 	modules.push_back(textures = new ModuleTextures(true));
 	modules.push_back(audio = new ModuleAudio(true));
 
-	modules.push_back(scene_0_Portada = new Scene0Portada(true));
+	modules.push_back(scene_0_Portada = new Scene0Portada(false));
+	modules.push_back(scene_01_tutorial = new Scene_01_tutorial(true));
 	modules.push_back(sceneTests = new SceneTESTS(false));
 
 	modules.push_back(enemies = new ModuleEnemies(false));
