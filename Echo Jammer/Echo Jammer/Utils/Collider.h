@@ -25,7 +25,7 @@ struct Collider {
 	//Methods
 	Collider(SDL_Rect rectangle, Type type, Module* listener);
 
-	Collider(SDL_Rect rectangle, Type type, std::function<void(Collider*,Collider*)>* listener = nullptr);
+	Collider(SDL_Rect rectangle, Type type, std::function<void(Collider*, Collider*)>* listener = nullptr);
 
 	void SetPos(int x, int y);
 

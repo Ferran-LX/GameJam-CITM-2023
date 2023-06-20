@@ -24,8 +24,8 @@ bool SceneTESTS::Start()
 
 	rectFondo.x = 0;
 	rectFondo.y = 0;
-	rectFondo.w = 1920;
-	rectFondo.h = 1080;
+	rectFondo.w = weigthNivell;
+	rectFondo.h = heightNivell;
 
 
 	//// POSITION INITIAL CAMERA
@@ -48,12 +48,13 @@ Update_Status SceneTESTS::Update() {
 	if (App->player->position.x <= 10) App->player->position.x = 10;
 	if (App->player->position.x >= weigthNivell - 10) App->player->position.x = weigthNivell - 10;
 	if (App->player->position.y <= 10) App->player->position.y = 10;
-	if (App->player->position.y >= heightNivell - 10) App->player->position.y = heightNivell - 10;
+	if (App->player->position.y >= heightNivell - 128 - 10) App->player->position.y = heightNivell - 10;
 
 
 	if (App->player->position.x > 0 && App->player->position.x < weigthNivell - 1920) App->render->camera.x = App->player->position.x;
 	if (App->player->position.y > 540 && App->player->position.y < heightNivell - 1080) App->render->camera.y = App->player->position.y-540;
 
+	
 
 	return Update_Status::UPDATE_CONTINUE;
 }

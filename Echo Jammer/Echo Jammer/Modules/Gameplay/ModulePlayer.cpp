@@ -227,6 +227,7 @@ Update_Status ModulePlayer::Update() {
 		else _currentAnimation = &_idleSouthAnim;
 	}
 
+	collider->SetPos(position.x, position.y);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
