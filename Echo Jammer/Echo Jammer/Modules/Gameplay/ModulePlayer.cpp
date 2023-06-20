@@ -164,24 +164,31 @@ Update_Status ModulePlayer::PostUpdate() {
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 
-	if (c2->type == Collider::Type::ENEMY) return;
+	if (c1->rect.x < c2->rect.x + c2->rect.w
+		&& c1->rect.x + c1->rect.w > c2->rect.x
+		&& c1->rect.y < c2->rect.y + c2->rect.h
+		&& c1->rect.y + c1->rect.h > c2->rect.y) {
 
-	iPoint enemyCenter = { position.x + (c1->rect.w >> 1), position.y + (c1->rect.h >> 1) };
-	iPoint colCenter = { c2->rect.x + (c2->rect.w >> 1), c2->rect.y + (c2->rect.h >> 1) };
-	iPoint distVector = colCenter - position;
+		position = positionAnterior;
+		//LOG("Hay superposici�n");
+	}
 
-	Directions dir = DirectionHelper::GetDirection(enemyCenter, colCenter);
-	LOG("Distance to collider center: (%i,%i)", distVector.x, distVector.y);
-	LOG("Direction to collider center: %i", DirToInt(dir));
+	//iPoint enemyCenter = { position.x + (c1->rect.w >> 1), position.y + (c1->rect.h >> 1) };
+	//iPoint colCenter = { c2->rect.x + (c2->rect.w >> 1), c2->rect.y + (c2->rect.h >> 1) };
+	//iPoint distVector = colCenter - position;
+
+	//Directions dir = DirectionHelper::GetDirection(enemyCenter, colCenter);
+	////LOG("Distance to collider center: (%i,%i)", distVector.x, distVector.y);
+	////LOG("Direction to collider center: %i", DirToInt(dir));
 
 
-	fPoint normalizedDir = { (float)distVector.x, (float)distVector.y };
-	normalizedDir = normalizedDir.Normalized();
-	normalizedDir *= 3;
+	//fPoint normalizedDir = { (float)distVector.x, (float)distVector.y };
+	//normalizedDir = normalizedDir.Normalized();
+	//normalizedDir *= 3;
 
-	iPoint pushVect = { (int)-normalizedDir.x, (int)-normalizedDir.y };
+	//iPoint pushVect = { (int)-normalizedDir.x, (int)-normalizedDir.y };
 
-	position += pushVect;
+	//position += pushVect;
 
 
 }

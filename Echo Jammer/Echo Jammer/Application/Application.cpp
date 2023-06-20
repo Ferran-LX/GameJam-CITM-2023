@@ -38,6 +38,7 @@ Application::Application() {
 	modules.push_back(input = new ModuleInput(true));
 	modules.push_back(textures = new ModuleTextures(true));
 	modules.push_back(audio = new ModuleAudio(true));
+	modules.push_back(scene_0_Portada = new Scene0Portada(false));
 
 	modules.push_back(scene_0_Portada = new Scene0Portada(false));
 	modules.push_back(scene_01_tutorial = new Scene_01_tutorial(true));
@@ -47,9 +48,8 @@ Application::Application() {
 	modules.push_back(player = new ModulePlayer(false));
 	modules.push_back(particles = new ModuleParticles(true));
 	modules.push_back(collisions = new ModuleCollisions(false));
+
 	modules.push_back(fade = new ModuleFadeToBlack(true));
-
-
 	modules.push_back(fonts = new ModuleFonts(true));
 	modules.push_back(hud = new ModuleHUD(true));
 	

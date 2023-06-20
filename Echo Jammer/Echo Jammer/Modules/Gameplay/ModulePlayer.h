@@ -31,6 +31,7 @@ public:
 	bool godMode = false;
 	bool alive = true;
 	iPoint position;
+	iPoint positionAnterior;
 	bool stopGame = false;
 	int speed = 5;
 	SDL_Texture* texture = nullptr;
