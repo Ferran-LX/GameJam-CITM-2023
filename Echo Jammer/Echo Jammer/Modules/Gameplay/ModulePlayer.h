@@ -23,7 +23,7 @@ public:
 
 	void PlaceHolderMove();
 
-	Directions GetInputDirection();
+	void GetInputDirection();
 
 	void ApplyMovement();
 
