@@ -13,17 +13,19 @@
 
 SceneTestArea::SceneTestArea(bool startEnabled) : Module(startEnabled)
 {
+
 }
 
 SceneTestArea::~SceneTestArea()
 {
+
 }
 
 bool SceneTestArea::Start()
 {
 	LOG("Loading assets SCENE TEST AREA");
 
-	// _imageArray[0] = App->textures->Load() // Inserta imatge de fons
+	_imageArray[0] = App->textures->Load(FI_Mapa_Level1.c_str()); // Inserta imatge de fons
 
 	enemies = App->enemies;
 	enemies->Enable();

@@ -15,11 +15,12 @@ const std::string FI_Player_moveset = "_Assets/Imagenes/main_character/spriteshe
 const std::string FI_Fondo_Test = "_Assets/Imagenes/FondoTest.png";
 const std::string FI_Animacio_Portada = "_Assets/Imagenes/UI/intro_spritesheet.png";
 const std::string FI_Animacio_Start = "_Assets/Imagenes/UI/espacio_sprite.png";
+const std::string FI_Mapa_Level1 = "_Assets/Imagenes/mapas/level_01.png";
 
 // Enemy textures
 const std::string FI_Enemy_Basic = "_Assets/Imagenes/enemies/enemy_01_spritesheet.png";
 
-#pragma endregion
+#pragma
 
 
 

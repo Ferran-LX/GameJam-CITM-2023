@@ -15,7 +15,7 @@ SceneTESTS::~SceneTESTS() {
 
 bool SceneTESTS::Start()
 {
-	textura_fondo = App->textures->Load(FI_Fondo_Test.c_str());
+	textura_fondo = App->textures->Load(FI_Mapa_Level1.c_str());
 		
 	rectFondo.x = 0;
 	rectFondo.y = 0;
@@ -24,8 +24,8 @@ bool SceneTESTS::Start()
 	
 
 	//// POSITION INITIAL CAMERA
-	//App->render->camera.x = 0;
-	//App->render->camera.y = 2850;
+	App->render->camera.x = 0;
+	App->render->camera.y = 0;
 
 	App->player->Enable();
 	App->enemies->Enable();
