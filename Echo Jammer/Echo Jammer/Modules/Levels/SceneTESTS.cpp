@@ -35,7 +35,8 @@ bool SceneTESTS::Start()
 	App->enemies->Enable();
 	App->collisions->Enable();
 
- 	App->player->position.x = 400;
+	// TODO: Poner en la posicion inical / puerta del nivel
+	App->player->position.x = 400;
 	App->player->position.y = 500;
 	App->player->collider->SetPos(400, 500);
 
@@ -53,8 +54,8 @@ Update_Status SceneTESTS::Update() {
 
 	if (App->player->position.x <= 10)
 		App->player->position.x = 10;
-	if (App->player->position.x >= weigthNivell - 10 -128)
-		App->player->position.x = weigthNivell - 10-128;
+	if (App->player->position.x >= weigthNivell - 10 - 128)
+		App->player->position.x = weigthNivell - 10 - 128;
 
 	if (App->player->position.y <= 10)
 		App->player->position.y = 10;
