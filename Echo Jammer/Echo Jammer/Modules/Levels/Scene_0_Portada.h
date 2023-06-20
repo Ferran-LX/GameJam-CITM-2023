@@ -23,6 +23,7 @@ public:
 private:
 	int _numFramesPerFila = 8;
 	int _numFiles = 6;
+	int startTime;
 	Animation* _currentAnimation = nullptr;
 	Animation _animPortada;
 };

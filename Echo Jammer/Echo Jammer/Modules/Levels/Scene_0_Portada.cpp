@@ -1,8 +1,11 @@
 #include "Scene_0_Portada.h"
+#include <SDL_timer.h>
+#include <SDL_image.h>
 
 #include "../../Application/Application.h"
 #include "../../Modules/Core/ModuleTextures.h"
 #include "../../Modules/Core/ModuleRender.h"
+
 
 Scene0Portada::Scene0Portada(bool startEnabled) : Module(startEnabled) {
 }
@@ -12,6 +15,8 @@ Scene0Portada::~Scene0Portada() {
 
 bool Scene0Portada::Start() {
 	textura = App->textures->Load(FI_Animacio_Portada.c_str());
+
+	startTime = SDL_GetTicks();
 
 	for (int i = 0; i < _numFiles; i++)
 	{
@@ -34,6 +39,12 @@ Update_Status Scene0Portada::Update() {
 Update_Status Scene0Portada::PostUpdate() {
 	_currentAnimation->Update();
 	App->render->Blit(textura, 0, 0, &_currentAnimation->GetCurrentFrame());
+	Uint32 currentTime = SDL_GetTicks() - startTime;
+	if (currentTime >= 1000 && currentTime < 5500) {
+
+		App->render->Blit(ArrayImagesIntro[0], 0, 0, NULL);//jovani
+
+	}
 	return Update_Status::UPDATE_CONTINUE;
 }
 
