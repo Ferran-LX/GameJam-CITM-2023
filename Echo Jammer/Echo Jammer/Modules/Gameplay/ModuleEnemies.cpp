@@ -5,6 +5,7 @@
 #include "../../Modules/Core/ModuleRender.h"
 #include "../../Modules/Core/ModuleTextures.h"
 #include "../../Modules/Core/ModuleAudio.h"
+#include "../../Modules/Core/ModuleCollisions.h"
 
 #include "../../Entities/Enemies/Enemy.h"
 #include "../../Entities/Enemies/EnemyBasic.h"
@@ -209,6 +210,7 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info) {
 				_enemies[i]->SetTexture(_textureBasic);
 				_enemies[i]->SetState(Enemy_State::PATRULLANT);
 				_enemies[i]->ChangeAnimationSet(_animVec);
+				_enemies[i]->SetCollider(App->collisions->AddCollider({ 0,0,64,64 }, Collider::Type::ENEMY));
 				break;
 			}
 			default: break;

@@ -67,6 +67,20 @@ public:
 		return(*this);
 	}
 
+	const p2Point& operator *=(const TYPE v) {
+		x *= v;
+		y *= v;
+
+		return(*this);
+	}
+
+	const p2Point& operator /=(const TYPE v) {
+		x /= v;
+		y /= v;
+
+		return(*this);
+	}
+
 	bool operator ==(const p2Point& v) const {
 		return (x == v.x && y == v.y);
 	}
@@ -90,6 +104,21 @@ public:
 		y = -y;
 
 		return(*this);
+	}
+
+	// Utilitzat quan representa un vector direcció
+	p2Point Normalized() {
+		p2Point v = *this;
+
+		float length = sqrtf(v.x * v.x + v.y * v.y);
+
+		if (length == 0) return { 0, 0 };
+
+		// normalize vector
+		v.x /= length;
+		v.y /= length;
+
+		return v;
 	}
 
 	// Distances ---------------------------------------------

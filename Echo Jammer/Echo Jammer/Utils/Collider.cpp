@@ -4,7 +4,7 @@ Collider::Collider(SDL_Rect rectangle, Type type, Module* listener) : rect(recta
 	listeners[0] = listener;
 }
 
-Collider::Collider(SDL_Rect rectangle, Type type, void(*listener)(Collider*, Collider*)) : rect(rectangle), type(type) {
+Collider::Collider(SDL_Rect rectangle, Type type, std::function<void(Collider*, Collider*)>* listener) : rect(rectangle), type(type) {
 	listenerFunctions[0] = listener;
 }
 
@@ -33,15 +33,15 @@ void Collider::AddListener(Module* listener) {
 	}
 }
 
-void Collider::AddListener(void(*listenerFunc)(Collider*, Collider*)) {
+void Collider::AddListener(std::function<void(Collider*, Collider*)>* listener) {
 	for (int i = 0; i < MAX_LISTENERS; ++i) {
 		if (listenerFunctions[i] == nullptr) {
-			listenerFunctions[i] = listenerFunc;
+			listenerFunctions[i] = listener;
 			break;
 		}
 
 		//Simple security check to avoid adding the same listener twice
-		else if (listenerFunctions[i] == listenerFunc)
+		else if (listenerFunctions[i] == listener)
 			break;
 	}
 }
