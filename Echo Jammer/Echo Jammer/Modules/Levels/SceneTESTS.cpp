@@ -27,7 +27,6 @@ bool SceneTESTS::Start()
 	rectFondo.w = weigthNivell;
 	rectFondo.h = heightNivell;
 
-
 	//// POSITION INITIAL CAMERA
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
@@ -38,23 +37,28 @@ bool SceneTESTS::Start()
 
 	App->enemies->AddEnemy(Enemy_Type::BASIC, 10, 100);
 
-	App->collisions->AddCollider({ 700, 400, 64,64 },Collider::Type::WALL);
+	App->collisions->AddCollider({ 700, 400, 200,200 }, Collider::Type::WALL);
 
 	return true;
 }
 
 Update_Status SceneTESTS::Update() {
 
-	if (App->player->position.x <= 10) App->player->position.x = 10;
-	if (App->player->position.x >= weigthNivell - 10) App->player->position.x = weigthNivell - 10;
-	if (App->player->position.y <= 10) App->player->position.y = 10;
-	if (App->player->position.y >= heightNivell - 128 - 10) App->player->position.y = heightNivell - 10;
+	if (App->player->position.x <= 10)
+		App->player->position.x = 10;
+	if (App->player->position.x >= weigthNivell - 10 -128)
+		App->player->position.x = weigthNivell - 10-128;
+
+	if (App->player->position.y <= 10)
+		App->player->position.y = 10;
+	if (App->player->position.y >= heightNivell - 128 - 10)
+		App->player->position.y = heightNivell - 128 - 10;
 
 
 	if (App->player->position.x > 0 && App->player->position.x < weigthNivell - 1920) App->render->camera.x = App->player->position.x;
-	if (App->player->position.y > 540 && App->player->position.y < heightNivell - 1080) App->render->camera.y = App->player->position.y-540;
+	if (App->player->position.y > 540 && App->player->position.y < heightNivell - 1080 + 540) App->render->camera.y = App->player->position.y - 540;
 
-	
+
 
 	return Update_Status::UPDATE_CONTINUE;
 }
