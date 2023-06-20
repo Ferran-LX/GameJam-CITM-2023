@@ -91,54 +91,54 @@ bool ModulePlayer::Start()
 	for (int i = 0; i < _numFrames; i++)
 		_northAnim.PushBack({ 128 * i, 128 * 3, 128, 128 });
 	_northAnim.loop = true;
-	_northAnim.speed = 0.5f;
+	_northAnim.speed = 0.2f;
 
 	// NORTH - EAST
 	for (int i = 0; i < _numFrames; i++)
 		_northEastAnim.PushBack({ 128 * i, 128 * 5, 128, 128 });
 	_northEastAnim.loop = true;
-	_northEastAnim.speed = 0.5f;
+	_northEastAnim.speed = 0.2f;
 
 	// EAST
 	for (int i = 0; i < _numFrames; i++)
 		_eastAnim.PushBack({ 128 * i, 128 * 1, 128, 128 });
 	_eastAnim.loop = true;
-	_eastAnim.speed = 0.5f;
+	_eastAnim.speed = 0.2f;
 
 	// SOUTH - EAST
 	for (int i = 0; i < _numFrames; i++)
 		_southEastAnim.PushBack({ 128 * i, 128 * 6, 128, 128 });
 	_southEastAnim.loop = true;
-	_southEastAnim.speed = 0.5f;
+	_southEastAnim.speed = 0.2f;
 
 	// SOUTH
 	for (int i = 0; i < _numFrames; i++)
 		_southAnim.PushBack({ 128 * i, 128 * 2, 128, 128 });
 	_southAnim.loop = true;
-	_southAnim.speed = 0.5f;
+	_southAnim.speed = 0.2f;
 
 	// SOUTH - WEAST
 	for (int i = 0; i < _numFrames; i++)
 		_southWeastAnim.PushBack({ 128 * i, 128 * 7, 128, 128 });
 	_southWeastAnim.loop = true;
-	_southWeastAnim.speed = 0.5f;
+	_southWeastAnim.speed = 0.2f;
 
 	// WEAST
 	for (int i = 0; i < _numFrames; i++)
 		_weastAnim.PushBack({ 128 * i, 128 * 0, 128, 128 });
 	_weastAnim.loop = true;
-	_weastAnim.speed = 0.5f;
+	_weastAnim.speed = 0.2f;
 
 	// NORTH - WEAST
 	for (int i = 0; i < _numFrames; i++)
 		_northWeastAnim.PushBack({ 128 * i, 128 * 4, 128, 128 });
 	_northWeastAnim.loop = true;
-	_northWeastAnim.speed = 0.5f;
+	_northWeastAnim.speed = 0.2f;
 
 	for (int i = 0; i < 26; i++)
 		_deathAnim.PushBack({ 128 * i, 128 * 16, 128, 128 });
 	_deathAnim.loop = true;
-	_deathAnim.speed = 0.5f;
+	_deathAnim.speed = 0.2f;
 
 	_currentAnimation = &_deathAnim;
 
