@@ -29,6 +29,8 @@ const std::string FA_Music_stage1 = "Assets/Audios/Stage-1/stage1.ogg";
 //musica game over
 const std::string FA_Music_GameOver = "Assets/Audios/Hud-music/game_over.ogg";
 
+const std::string FA_Music_Ambient = "_Assets/Musica_FX/Ambient.ogg";
+
 // Level 2
 
 // Level 3

@@ -5,6 +5,7 @@
 #include "../../Modules/Core/ModuleRender.h"
 #include "../../Modules/Gameplay/ModuleEnemies.h"
 #include "../../Modules/Gameplay/ModulePlayer.h"
+#include "../../Modules/Core/ModuleAudio.h"
 
 SceneTESTS::SceneTESTS(bool startEnabled) : Module(startEnabled) {
 	
@@ -16,7 +17,9 @@ SceneTESTS::~SceneTESTS() {
 bool SceneTESTS::Start()
 {
 	textura_fondo = App->textures->Load(FI_Fondo_Test.c_str());
-		
+	
+	App->audio->PlayMusic(FA_Music_Ambient.c_str(), 1.0f);
+
 	rectFondo.x = 0;
 	rectFondo.y = 0;
 	rectFondo.w = 1920;
