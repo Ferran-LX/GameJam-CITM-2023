@@ -10,6 +10,10 @@
 #include "../../Utils/EnemyStateMachine.h"
 #include "../../Utils/DirectionHelper.h"
 
+#include "../../../SDLs/SDL/include/SDL_timer.h"
+
+#define DIR_CHANGE_DELAY 500
+
 Enemy::Enemy(int x_, int y_, Enemy_Type type_, Collider* collider_) : position(x_, y_), type(type_), _collider(collider_)
 {
 	_speed = 0;
@@ -19,6 +23,7 @@ Enemy::Enemy(int x_, int y_, Enemy_Type type_, Collider* collider_) : position(x
 	_visionRange = 0;
 	_searchRange = 0;
 	_currState = Enemy_State::PATRULLANT;
+	_currDirection = Directions::NONE;
 	_spawnPos = position;
 }
 
@@ -75,9 +80,20 @@ void Enemy::SetToDelete() {
 		_collider->pendingToDelete = true;
 }
 
+Directions Enemy::ChangeDirection()
+{
+	uint currTicks = SDL_GetTicks();
+	if (_dirChangeTimer < currTicks) {
+		_dirChangeTimer = SDL_GetTicks() + DIR_CHANGE_DELAY;
+
+		return DirectionHelper::GetDirection(position, App->player->position);
+	}
+	return _currDirection;
+}
+
 void Enemy::HandleMove()
 {
-	_moving = (position.DistanceTo(App->player->position) >= 20);
+	//_moving = (position.DistanceTo(App->player->position) >= 20);
 	if (_moving)
 		Move(_currDirection);
 }

@@ -82,13 +82,13 @@ void EnemyBasic::UpdateBehaviour(const ModulePlayer* player)
 		break;
 	}
 	case PERSEGUINT: {
-		_currDirection = DirectionHelper::GetDirection(position, player->position);
+		_currDirection = ChangeDirection();
 
 		break;
 	}
 	case ATACANT: {
 		//iPoint dirVec = player->position - position;
-		_currDirection = DirectionHelper::GetDirection(position, player->position);
+		_currDirection = ChangeDirection();
 		//Preparar i executar atac
 		if (_attackStart == 0)
 			_attackStart = SDL_GetTicks();

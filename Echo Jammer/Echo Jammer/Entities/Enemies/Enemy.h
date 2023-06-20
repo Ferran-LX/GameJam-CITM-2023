@@ -51,6 +51,8 @@ public:
 
 #pragma region MovementMethods
 
+	virtual Directions ChangeDirection();
+
 	virtual void HandleMove();
 
 	virtual bool Move(Directions dir);
@@ -139,6 +141,8 @@ protected:
 	iPoint _spawnPos;
 
 	bool _moving = true;
+
+	uint _dirChangeTimer = 0;
 
 	int _speed = 0;
 
