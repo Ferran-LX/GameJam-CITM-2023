@@ -17,12 +17,15 @@ public:
 	Update_Status Update() override;
 	Update_Status PostUpdate() override;
 	bool CleanUp();
+#define NUM_IMAGES 1
+	SDL_Texture* ArrayImagesStart[NUM_IMAGES];
 
 	SDL_Texture* textura = nullptr;
 
 private:
 	int _numFramesPerFila = 8;
 	int _numFiles = 6;
+	int startTime;
 	Animation* _currentAnimation = nullptr;
 	Animation _animPortada;
 };
