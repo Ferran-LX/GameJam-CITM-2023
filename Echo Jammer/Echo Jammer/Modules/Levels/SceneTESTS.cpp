@@ -17,7 +17,7 @@ SceneTESTS::~SceneTESTS() {
 bool SceneTESTS::Start()
 {
 
-	textura_fondo = App->textures->Load(FI_Fondo_Test.c_str());
+	textura_fondo = App->textures->Load(FI_Mapa_Level1.c_str());
 	
 	App->audio->PlayMusic(FA_Music_Ambient.c_str(), 1.0f);
 

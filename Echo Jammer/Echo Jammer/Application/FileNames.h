@@ -20,7 +20,7 @@ const std::string FI_Mapa_Level1 = "_Assets/Imagenes/mapas/level_01.png";
 // Enemy textures
 const std::string FI_Enemy_Basic = "_Assets/Imagenes/enemies/enemy_01_spritesheet.png";
 
-#pragma
+#pragma endregion
 
 
 
