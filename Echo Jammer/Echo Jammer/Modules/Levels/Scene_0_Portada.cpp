@@ -38,7 +38,7 @@ bool Scene0Portada::Start() {
 }
 
 Update_Status Scene0Portada::Update() {
-	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN) {
+	if (App->input->controlP1.dash == Key_State::KEY_DOWN) {
 		App->fade->FadeToBlack(this, (Module*)App->sceneTests, 60);
 	}
 

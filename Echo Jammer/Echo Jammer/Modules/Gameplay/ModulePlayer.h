@@ -21,6 +21,12 @@ public:
 	Update_Status PostUpdate() override;
 	void OnCollision(Collider* c1, Collider* c2) override;
 
+	void PlaceHolderMove();
+
+	Directions GetInputDirection();
+
+	void ApplyMovement();
+
 	int lives = 3;
 	bool godMode = false;
 	bool alive = true;
@@ -29,6 +35,7 @@ public:
 	int speed = 5;
 	SDL_Texture* texture = nullptr;
 	Collider* collider = nullptr;
+	Collider* secCollider = nullptr;
 
 private:
 	int _numFrames = 36; // Frames que tiene cada fila

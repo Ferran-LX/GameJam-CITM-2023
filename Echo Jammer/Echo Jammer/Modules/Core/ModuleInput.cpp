@@ -252,7 +252,7 @@ void PlayerInput::StoreInput(const Key_State keyboard[MAX_KEYS], const GamePad& 
 	if (keyboard[KeyboardSetup::MoveUp] != Key_State::KEY_IDLE)
 		moveUp = keyboard[KeyboardSetup::MoveUp];
 	else {
-		if (gamepad.down)
+		if (gamepad.up)
 			moveUp = (moveUp == KEY_IDLE) ? KEY_DOWN : KEY_REPEAT;
 		else
 			moveUp = (moveUp == KEY_REPEAT || moveUp == KEY_DOWN) ? KEY_UP : KEY_IDLE;
@@ -288,7 +288,7 @@ void PlayerInput::StoreInput(const Key_State keyboard[MAX_KEYS], const GamePad& 
 	if (keyboard[KeyboardSetup::Pause] != Key_State::KEY_IDLE)
 		pause = keyboard[KeyboardSetup::Pause];
 	else {
-		if (gamepad.x)
+		if (gamepad.start)
 			pause = (pause == KEY_IDLE) ? KEY_DOWN : KEY_REPEAT;
 		else
 			pause = (pause == KEY_REPEAT || pause == KEY_DOWN) ? KEY_UP : KEY_IDLE;

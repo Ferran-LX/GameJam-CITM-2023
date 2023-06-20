@@ -94,8 +94,10 @@ Directions Enemy::ChangeDirection()
 	uint currTicks = SDL_GetTicks();
 	if (_dirChangeTimer < currTicks) {
 		_dirChangeTimer = SDL_GetTicks() + DIR_CHANGE_DELAY;
+		SDL_Rect& rectE = _collider->rect;
+		SDL_Rect& rectP = App->player->collider->rect;
 
-		return DirectionHelper::GetDirection(position, App->player->position);
+		return DirectionHelper::GetDirection({ rectE.x + (rectE.w >> 1) ,rectE.y + (rectE.h >> 1) }, { rectP.x + (rectP.w >> 1),rectP.y + (rectP.h >> 1) });
 	}
 	return _currDirection;
 }
