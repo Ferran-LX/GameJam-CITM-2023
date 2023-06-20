@@ -36,7 +36,7 @@ bool SceneTESTS::Start()
 	App->enemies->Enable();
 	App->collisions->Enable();
 
-	App->enemies->AddEnemy(Enemy_Type::BASIC, 10, 10);
+	App->enemies->AddEnemy(Enemy_Type::BASIC, 10, 100);
 
 	App->collisions->AddCollider({ 700, 400, 64,64 },Collider::Type::WALL);
 
@@ -52,7 +52,7 @@ Update_Status SceneTESTS::Update() {
 
 
 	if (App->player->position.x > 0 && App->player->position.x < weigthNivell - 1920) App->render->camera.x = App->player->position.x;
-	if (App->player->position.y > 0 && App->player->position.y < heightNivell - 1080) App->render->camera.y = App->player->position.y;
+	if (App->player->position.y > 540 && App->player->position.y < heightNivell - 1080) App->render->camera.y = App->player->position.y-540;
 
 
 	return Update_Status::UPDATE_CONTINUE;

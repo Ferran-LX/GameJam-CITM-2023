@@ -67,9 +67,18 @@ void Enemy::OnCollision(Collider* otherCol) {
 	iPoint colCenter = { otherCol->rect.x + (otherCol->rect.w >> 1), otherCol->rect.y + (otherCol->rect.h >> 1) };
 	iPoint distVector = colCenter - position;
 
-	LOG("Distance to collider center: (%i,%i)", distVector.x, distVector.y);
 	Directions dir = DirectionHelper::GetDirection(enemyCenter, colCenter);
+	LOG("Distance to collider center: (%i,%i)", distVector.x, distVector.y);
 	LOG("Direction to collider center: %i", DirToInt(dir));
+
+
+	fPoint normalizedDir = { (float)distVector.x, (float)distVector.y };
+	normalizedDir = normalizedDir.Normalized();
+	normalizedDir *= 3;
+
+	iPoint pushVect = { (int)-normalizedDir.x, (int)-normalizedDir.y };
+
+	position += pushVect;
 
 }
 

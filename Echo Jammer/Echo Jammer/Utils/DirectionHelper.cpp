@@ -52,3 +52,21 @@ Directions DirectionHelper::GetDirection(iPoint fromPoint, iPoint toPoint) {
 		}
 	}
 }
+
+Directions DirectionHelper::GetOpposite(Directions dir)
+{
+	Directions ret = dir;
+	switch (ret)
+	{
+	case Directions::NORTH: return Directions::SOUTH;
+	case Directions::NORTH_EAST: return Directions::SOUTH_WEST;
+	case Directions::EAST:return Directions::WEST;
+	case Directions::SOUTH_EAST:return Directions::NORTH_WEST;
+	case Directions::SOUTH:return Directions::NORTH;
+	case Directions::SOUTH_WEST:return Directions::NORTH_EAST;
+	case Directions::WEST:return Directions::EAST;
+	case Directions::NORTH_WEST:return Directions::SOUTH_EAST;
+	default:
+		break;
+	}
+}
