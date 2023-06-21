@@ -19,6 +19,7 @@ struct Collider {
 		TR_NIVELL_12, // Nivel 1 -> Nivel 2
 		TR_NIVELL_23, // Nivel 2 -> Nivel 3
 		TR_NIVELL_3F, // Nivel 3 -> FINAL
+		ECO,
 		MAX
 	};
 

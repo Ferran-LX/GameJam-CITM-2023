@@ -105,6 +105,7 @@ void ModuleCollisions::DebugDraw() {
 
 		switch (colliders[i]->type) {
 		case Collider::Type::NONE: App->render->DrawQuad(colliders[i]->rect, 255, 255, 255, alpha); break;// white
+
 		case Collider::Type::WALL: App->render->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha); break;// blue
 		case Collider::Type::PLAYER: App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha); break;// green
 		case Collider::Type::ENEMY: App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha); break;// red
@@ -113,6 +114,8 @@ void ModuleCollisions::DebugDraw() {
 		case Collider::Type::TR_NIVELL_12: App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha); break; // yellow
 		case Collider::Type::TR_NIVELL_23: App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha); break; // yellow
 		case Collider::Type::TR_NIVELL_3F: App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha); break; // yellow
+
+		case Collider::Type::ECO: App->render->DrawQuad(colliders[i]->rect, 128, 0, 128, alpha); break; // purple
 
 		}
 	}

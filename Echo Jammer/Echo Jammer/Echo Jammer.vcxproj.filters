@@ -41,15 +41,6 @@
     <ClInclude Include="Modules\Gameplay\ModulePlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Modules\Levels\SceneEscoger.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Modules\Levels\SceneIntro.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Modules\Levels\ScenePreintro.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Modules\Levels\SceneStart.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -113,7 +104,7 @@
     <ClInclude Include="Utils\Directions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Modules\Levels\SceneTESTS.h">
+    <ClInclude Include="Modules\Levels\Scene_02_nivel1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Modules\Levels\SceneTestArea.h">
@@ -128,7 +119,7 @@
     <ClInclude Include="Utils\DirectionHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Modules\Levels\Scene_0_Portada.h">
+    <ClInclude Include="Modules\Levels\Scene_00_Portada.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Modules\Levels\Scene_01_tutorial.h">
@@ -146,15 +137,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Modules\Gameplay\ModulePlayer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Modules\Levels\SceneEscoger.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Modules\Levels\SceneIntro.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Modules\Levels\ScenePreintro.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Modules\Levels\SceneStart.cpp">
@@ -217,7 +199,7 @@
     <ClCompile Include="Utils\EnemyStateMachine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Modules\Levels\SceneTESTS.cpp">
+    <ClCompile Include="Modules\Levels\Scene_02_nivel1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Modules\Levels\SceneTestArea.cpp">
@@ -229,7 +211,7 @@
     <ClCompile Include="Utils\DirectionHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Modules\Levels\Scene_0_Portada.cpp">
+    <ClCompile Include="Modules\Levels\Scene_00_Portada.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Modules\Levels\Scene_01_tutorial.cpp">

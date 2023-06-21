@@ -16,6 +16,10 @@
 #include "../../Modules/Gameplay/ModuleEnemies.h"
 #include "../../Utils/DirectionHelper.h"
 
+#include "../Levels/Scene_01_tutorial.h"
+#include "../Levels/Scene_02_nivel1.h"
+
+
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled) {
 
 
@@ -26,7 +30,8 @@ ModulePlayer::~ModulePlayer() {
 
 bool ModulePlayer::Start()
 {
-	texture = App->textures->Load(FI_Player_moveset.c_str());
+	texturePlayer = App->textures->Load(FI_Player_moveset.c_str());
+	textureEco = App->textures->Load(FI_Player_Eco.c_str());
 	collider = App->collisions->AddCollider({ position.x, position.y, 128, 128 }, Collider::Type::PLAYER, this);
 
 	_currentAnimation = &_idleSouthAnim;
@@ -135,14 +140,29 @@ bool ModulePlayer::Start()
 	_northWeastAnim.loop = true;
 	_northWeastAnim.speed = 0.2f;
 
+
+#pragma endregion
+
+#pragma region Altres
+
+	// DEATH
 	for (int i = 0; i < 26; i++)
 		_deathAnim.PushBack({ 128 * i, 128 * 16, 128, 128 });
 	_deathAnim.loop = true;
 	_deathAnim.speed = 0.2f;
 
-	_currentAnimation = &_deathAnim;
+	// ECO	
+	for (int i = 0; i < 4; i++)
+		_ecoAnim.PushBack({ 3840 * i , 2160 * 0, 3840, 2160 });
+	_ecoAnim.loop = true;
+	_ecoAnim.speed = 0.8f;
 
+	for (int i = 0; i < 3; i++)
+		_ecoAnim.PushBack({ 3840 * i , 2160 * 1, 3840, 2160 });
+	_ecoAnim.loop = true;
+	_ecoAnim.speed = 0.8f;
 #pragma endregion
+
 
 	return true;
 }
@@ -157,12 +177,37 @@ Update_Status ModulePlayer::Update() {
 
 	collider->SetPos(position.x, position.y);
 
+	// ECOOOOOOOOOOOOOOOOOOOO
+	if (ecoActive)
+	{
+		if (App->input->keys[SDL_SCANCODE_E] == KEY_DOWN) {
+			LOG("ECO ACTIVAT!");
+			delayEco = SDL_GetTicks();
+			ecoActive = false;
+			ecoAnimActive = true;
+			_currentAnimation = &_ecoAnim;
+		}
+	}
+
+	if (SDL_GetTicks() - delayEco >= tempsCooldownEco) {
+		ecoActive = true;
+		ecoAnimActive = false;
+	}
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
 Update_Status ModulePlayer::PostUpdate() {
 	_currentAnimation->Update();
-	App->render->Blit(texture, position.x, position.y, &_currentAnimation->GetCurrentFrame());
+	App->render->Blit(texturePlayer, position.x, position.y, &_currentAnimation->GetCurrentFrame());
+
+	if (ecoAnimActive)
+	{
+		_ecoAnim.Update();
+		App->render->Blit(textureEco, position.x - 64 - 1920, position.y - 64 - 1080, &_ecoAnim.GetCurrentFrame());
+	}
+
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -180,24 +225,27 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 	}
 
 	if (c2->type == Collider::TR_NIVELL_T1) {
-		App->player->Disable();
-		App->enemies->Disable();
-		App->collisions->Disable();
-
+		LOG("TRIGGER NIVELL TUTORIAL ACTIVAT!");
 		// TODO: Disable scene tutorial, ascensor, and enable scene level 1
 		// TODO: En la escena fer un enable de los apartados anteriores
+		// TODO: fer tres ascensors
+		
+		App->fade->FadeToBlack(this, (Module*)App->scene_02_nivel1, 60);
 	}
 
 	if (c2->type == Collider::TR_NIVELL_12) {
-
+		LOG("TRIGGER NIVELL 1 ACTIVAT!");
+		//App->fade->FadeToBlack(this, (Module*)App->scene_03_nivel2, 60);
 	}
 
 	if (c2->type == Collider::TR_NIVELL_23) {
-
+		LOG("TRIGGER NIVELL 2 ACTIVAT!");
+		//App->fade->FadeToBlack(this, (Module*)App->sceneTests, 60);
 	}
 
 	if (c2->type == Collider::TR_NIVELL_3F) {
-
+		LOG("TRIGGER NIVELL 3 ACTIVAT!");
+		//App->fade->FadeToBlack(this, (Module*)App->sceneTests, 60);
 	}
 
 
@@ -306,7 +354,7 @@ void ModulePlayer::GetInputDirection()
 	dirVect.x += (int)(p1.moveRight == Key_State::KEY_REPEAT ? 1 : 0);
 
 	_actualDirection = DirectionHelper::GetDirection({ 0,0 }, dirVect);
-	
+
 }
 
 void ModulePlayer::ApplyMovement()
