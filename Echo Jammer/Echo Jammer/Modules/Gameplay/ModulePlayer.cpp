@@ -32,7 +32,7 @@ bool ModulePlayer::Start()
 {
 	texturePlayer = App->textures->Load(FI_Player_moveset.c_str());
 	textureEco = App->textures->Load(FI_Player_Eco.c_str());
-	collider = App->collisions->AddCollider({ position.x, position.y, 128, 128 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ position.x, position.y, 64, 128 }, Collider::Type::PLAYER, this);
 
 	_currentAnimation = &_idleSouthAnim;
 
@@ -178,7 +178,7 @@ Update_Status ModulePlayer::Update() {
 	//GetInputDirection();
 	//ApplyMovement();
 
-	collider->SetPos(position.x, position.y);
+	collider->SetPos(position.x+32, position.y);
 
 	// ECOOOOOOOOOOOOOOOOOOOO
 	if (ecoActive)
