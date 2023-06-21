@@ -242,12 +242,13 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 	if (c2->type == Collider::TR_NIVELL_12) {
 		LOG("TRIGGER NIVELL 1 ACTIVAT!");
 		//App->fade->FadeToBlack(this, (Module*)App->scene_03_nivel2, 60);
-		App->fade->FadeToBlack((Module*)App->scene_02_nivel1, (Module*)App->scene_00_Portada, 60);
+		App->fade->FadeToBlack((Module*)App->scene_02_nivel1, (Module*)App->scene_03_nivel2, 60);
 	}
 
 	if (c2->type == Collider::TR_NIVELL_23) {
 		LOG("TRIGGER NIVELL 2 ACTIVAT!");
 		//App->fade->FadeToBlack(this, (Module*)App->sceneTests, 60);
+		App->fade->FadeToBlack((Module*)App->scene_03_nivel2, (Module*)App->scene_00_Portada, 60);
 	}
 
 	if (c2->type == Collider::TR_NIVELL_3F) {

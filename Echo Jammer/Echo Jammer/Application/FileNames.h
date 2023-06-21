@@ -25,6 +25,7 @@ const std::string FI_Animacio_Start = "_Assets/Imagenes/UI/espacio_sprite.png";
 
 // Mapes
 const std::string FI_Mapa_Level1 = "_Assets/Imagenes/mapas/level_01.png";
+const std::string FI_Mapa_Level2 = "_Assets/Imagenes/mapas/level_02.png";
 const std::string FI_Mapa_Tutorial = "_Assets/Imagenes/mapas/tutorial_level.png";
 const std::string FI_Mapa_Overlay = "_Assets/Imagenes/UI/oscuridad.png";
 
