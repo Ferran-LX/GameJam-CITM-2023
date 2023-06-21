@@ -152,15 +152,14 @@ bool ModulePlayer::Start()
 	_deathAnim.speed = 0.2f;
 
 	// ECO	
-	for (int i = 0; i < 4; i++)
-		_ecoAnim.PushBack({ 3840 * i , 2160 * 0, 3840, 2160 });
-	_ecoAnim.loop = true;
-	_ecoAnim.speed = 0.8f;
+	for (int k = 0; k < 3; k++)
+	{
+		for (int i = 0; i < 4; i++)
+			_ecoAnim.PushBack({ 3840 * i , 2160 * k, 3840, 2160 });		
+	}
+	_ecoAnim.loop = false;
+	_ecoAnim.speed = 0.2f;
 
-	for (int i = 0; i < 3; i++)
-		_ecoAnim.PushBack({ 3840 * i , 2160 * 1, 3840, 2160 });
-	_ecoAnim.loop = true;
-	_ecoAnim.speed = 0.8f;
 #pragma endregion
 
 
@@ -230,7 +229,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 		// TODO: En la escena fer un enable de los apartados anteriores
 		// TODO: fer tres ascensors
 		
-		App->fade->FadeToBlack(this, (Module*)App->scene_02_nivel1, 60);
+		App->fade->FadeToBlack((Module*)App->scene_01_tutorial, (Module*)App->scene_02_nivel1, 60);
 	}
 
 	if (c2->type == Collider::TR_NIVELL_12) {

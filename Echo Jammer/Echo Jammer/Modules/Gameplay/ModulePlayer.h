@@ -67,10 +67,12 @@ private:
 	Animation _idleWeastAnim;
 	Animation _idleNorthWeastAnim;
 
-	int delayEco;
+	int delayEco = 10;
 	int tempsCooldownEco = 5 * 1000; // 10 segons de cc
 	bool ecoActive = true; // L'habilitat es pot utlitzar o no
 	bool ecoAnimActive = false; // Per pintar l'eco
+
+
 };
 
 #endif 
