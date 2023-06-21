@@ -156,6 +156,7 @@
     <ClInclude Include="Modules\Levels\Scene_02_nivel1.h" />
     <ClInclude Include="Modules\Levels\Scene_01_tutorial.h" />
     <ClInclude Include="Modules\Levels\Scene_00_Portada.h" />
+    <ClInclude Include="Modules\Levels\Scene_03_level2.h" />
     <ClInclude Include="Utils\DirectionHelper.h" />
     <ClInclude Include="Utils\Directions.h" />
     <ClInclude Include="Modules\Levels\SceneTestArea.h" />
@@ -194,6 +195,7 @@
     <ClCompile Include="Modules\Levels\SceneTestArea.cpp" />
     <ClCompile Include="Modules\Levels\Scene_01_tutorial.cpp" />
     <ClCompile Include="Modules\Levels\Scene_00_Portada.cpp" />
+    <ClCompile Include="Modules\Levels\Scene_03_level2.cpp" />
     <ClCompile Include="Utils\DirectionHelper.cpp" />
     <ClCompile Include="Utils\EnemyStateMachine.cpp" />
     <ClCompile Include="Entities\Enemies\Enemy.cpp" />

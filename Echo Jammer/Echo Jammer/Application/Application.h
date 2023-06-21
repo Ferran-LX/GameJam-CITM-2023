@@ -23,6 +23,7 @@ class ModuleOscuridad;
 class Scene_00_Portada;
 class Scene_01_tutorial;
 class Scene_02_nivel1;
+class Scene_03_nivel2;
 
 class SceneStart;
 class SceneIntro;
@@ -69,6 +70,7 @@ public:
 	Scene_00_Portada* scene_00_Portada = nullptr;
 	Scene_01_tutorial* scene_01_tutorial = nullptr;
 	Scene_02_nivel1* scene_02_nivel1 = nullptr;
+	Scene_03_nivel2* scene_03_nivel2 = nullptr;
 	SceneIntro* sceneIntro = nullptr;
 	SceneStart* sceneStart = nullptr;
 

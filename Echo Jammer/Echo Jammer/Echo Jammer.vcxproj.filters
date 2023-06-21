@@ -131,6 +131,9 @@
     <ClInclude Include="Utils\PatrolPath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Modules\Levels\Scene_03_level2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Utils\Collider.cpp">
@@ -224,6 +227,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Utils\PatrolPath.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\Levels\Scene_03_level2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
