@@ -7,6 +7,7 @@
 #include "../../Modules/Gameplay/ModuleEnemies.h"
 #include "../../Modules/Gameplay/ModulePlayer.h"
 #include "../../Modules/Core/ModuleAudio.h"
+#include "../../Modules/Core/ModuleFadeToBlack.h"
 
 Scene_01_tutorial::Scene_01_tutorial(bool startEnabled) : Module(startEnabled) {
 
@@ -61,7 +62,9 @@ bool Scene_01_tutorial::Start()
 
 Update_Status Scene_01_tutorial::Update() {
 
-
+	if (!App->player->alive) {
+		App->fade->FadeToBlack((Module*)this, (Module*)App->scene_01_tutorial, 60);
+	}
 
 	if (App->player->position.x <= 10)
 		App->player->position.x = 10;

@@ -7,6 +7,7 @@
 #include "../../Modules/Gameplay/ModuleEnemies.h"
 #include "../../Modules/Gameplay/ModulePlayer.h"
 #include "../../Modules/Core/ModuleAudio.h"
+#include "../../Modules/Core/ModuleFadeToBlack.h"
 
 Scene_02_nivel1::Scene_02_nivel1(bool startEnabled) : Module(startEnabled) {
 
@@ -18,7 +19,7 @@ Scene_02_nivel1::~Scene_02_nivel1() {
 bool Scene_02_nivel1::Start()
 {
 
-	textura_fondo = App->textures->Load(FI_Mapa_Level1.c_str());
+	textura_fondo2 = App->textures->Load(FI_Mapa_Level1.c_str());
 	textura_oscuridad = App->textures->Load(FI_Mapa_Overlay.c_str());
 
 	App->audio->PlayMusic(FA_Music_Ambient.c_str(), 1.0f);
@@ -91,6 +92,9 @@ bool Scene_02_nivel1::Start()
 
 Update_Status Scene_02_nivel1::Update() {
 
+	if (!App->player->alive) {
+		App->fade->FadeToBlack((Module*)this, (Module*)App->scene_01_tutorial, 60);
+	}
 
 	if (App->player->position.x <= 10)
 		App->player->position.x = 10;
@@ -110,7 +114,7 @@ Update_Status Scene_02_nivel1::Update() {
 }
 
 Update_Status Scene_02_nivel1::PostUpdate() {
-	App->render->Blit(textura_fondo, 0, 0, &rectFondo);
+	App->render->Blit(textura_fondo2, 0, 0, &rectFondo);
 	return Update_Status::UPDATE_CONTINUE;
 }
 
