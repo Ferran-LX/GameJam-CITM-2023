@@ -191,10 +191,10 @@ Update_Status ModulePlayer::Update() {
 			_currentAnimation = &_ecoAnim;
 		}
 	}
-
-	if (SDL_GetTicks() - delayEco >= tempsCooldownEco) {
+	else if (SDL_GetTicks() - delayEco >= tempsCooldownEco) {
 		ecoActive = true;
 		ecoAnimActive = false;
+		_ecoAnim.Reset();
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
@@ -207,7 +207,7 @@ Update_Status ModulePlayer::PostUpdate() {
 	if (ecoAnimActive)
 	{
 		_ecoAnim.Update();
-		App->render->Blit(textureEco, position.x - 64 - 1920, position.y - 64 - 1080, &_ecoAnim.GetCurrentFrame());
+		App->render->Blit(textureEco, position.x - 1856, position.y - 1016, &_ecoAnim.GetCurrentFrame());
 	}
 
 
@@ -242,6 +242,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 	if (c2->type == Collider::TR_NIVELL_12) {
 		LOG("TRIGGER NIVELL 1 ACTIVAT!");
 		//App->fade->FadeToBlack(this, (Module*)App->scene_03_nivel2, 60);
+		App->fade->FadeToBlack((Module*)App->scene_02_nivel1, (Module*)App->scene_00_Portada, 60);
 	}
 
 	if (c2->type == Collider::TR_NIVELL_23) {

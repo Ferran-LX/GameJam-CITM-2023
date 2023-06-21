@@ -34,6 +34,10 @@ bool Scene_00_Portada::Start() {
 
 	_currentAnimation = &_animPortada;
 
+	//// POSITION INITIAL CAMERA
+	App->render->camera.x = 0;
+	App->render->camera.y = 0;
+
 	return true;
 }
 
