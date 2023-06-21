@@ -37,13 +37,13 @@ bool Scene_02_nivel1::Start()
 	App->collisions->Enable();
 
 	// TODO: Poner en la posicion inical / puerta del nivel
-	App->player->position.x = 400;
-	App->player->position.y = 500;
+	App->player->position.x = 64;
+	App->player->position.y = 1700;
 	App->player->collider->SetPos(400, 500);
 
 
 
-	App->enemies->AddEnemy(Enemy_Type::BASIC, 1500, 1500);
+	
 
 	/*App->collisions->AddCollider({ 0, 0, weigthNivell, 220 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 700, 400, 200,200 }, Collider::Type::WALL);*/
@@ -80,9 +80,11 @@ bool Scene_02_nivel1::Start()
 	App->collisions->AddCollider({ 1536 , 572+236 +32 , 128 , 100 }, Collider::Type::WALL);
 
 
-	App->collisions->AddCollider({ 1792 , 1344, 128 , 256 }, Collider::Type::TR_NIVELL_12);
-  
-  	App->enemies->AddEnemy(Enemy_Type::BASIC, 10, 100);
+	App->collisions->AddCollider({ 128 , 1344, 128 , 256 }, Collider::Type::TR_NIVELL_12);
+	
+	App->enemies->AddEnemy(Enemy_Type::BASIC, 960, 1500);
+	App->enemies->AddEnemy(Enemy_Type::BASIC, 1420, 1500);
+	App->enemies->AddEnemy(Enemy_Type::BASIC, 1420, 620);
 
 	return true;
 }
