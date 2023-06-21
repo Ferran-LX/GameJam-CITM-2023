@@ -39,9 +39,11 @@ bool Module::Enable() {
 	return ret;
 }
 
-void Module::Disable() {
+bool Module::Disable() {
+	bool ret = true;
 	if (isEnabled) {
 		isEnabled = false;
-		CleanUp();
+		ret = CleanUp();
 	}
+	return ret;
 }

@@ -61,7 +61,7 @@ void EnemyBasic::InitStateMachine()
 	_stateMachine->AddTransition(Enemy_State::ATACANT, Enemy_State::PERSEGUINT,	1000,
 		[&player]() -> bool { return Transitions_Basic::Atacar_Perseguir(*(App->player)); });
 
-	_stateMachine->AddTransition(Enemy_State::ATACANT, Enemy_State::JOC_FINALITZAT,	1000,
+	_stateMachine->AddTransition(Enemy_State::ATACANT, Enemy_State::JOC_FINALITZAT,	300,
 		[&player]() -> bool { return Transitions_Basic::Atacar_Final(*(App->player)); });
 
 }

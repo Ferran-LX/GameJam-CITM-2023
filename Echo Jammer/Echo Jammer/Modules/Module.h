@@ -37,7 +37,7 @@ public:
 	bool Enable();
 
 	// Switches isEnabled and calls CleanUp() method
-	void Disable();
+	bool Disable();
 
 	inline bool IsEnabled() const { return isEnabled; }
 
