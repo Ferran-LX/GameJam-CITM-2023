@@ -182,9 +182,9 @@ Update_Status ModulePlayer::Update() {
 
 	PlaceHolderMove();
 
-	if (_ecoAnimPlayer.currentFrame == 0.0f) {
+	/*if (_ecoAnimPlayer.currentFrame == 0.0f) {
 		LOG("AnimReset");
-	}
+	}*/
 
 	//GetInputDirection();
 	//ApplyMovement();
