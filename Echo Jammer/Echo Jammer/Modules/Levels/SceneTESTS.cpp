@@ -42,8 +42,22 @@ bool SceneTESTS::Start()
 
 	App->enemies->AddEnemy(Enemy_Type::BASIC, 10, 100);
 
-	App->collisions->AddCollider({ 0, 0, weigthNivell, 220 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 700, 400, 200,200 }, Collider::Type::WALL);
+	
+	
+
+	App->collisions->AddCollider({ 1088, 1600, 576, 64 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 1088, 1664, 320, 128 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 1088, 1792, 64, 448 }, Collider::Type::WALL);
+
+	App->collisions->AddCollider({ 1088, 2496, 64, 192 }, Collider::Type::WALL);
+	
+	App->collisions->AddCollider({ 1792, 1600, 128, 512 }, Collider::Type::WALL);
+
+	App->collisions->AddCollider({ 1152, 960, 128, 360 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 1280, 1088, 128, 232 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 1408 , 1216 , 128, 103  }, Collider::Type::WALL);
+
+	App->collisions->AddCollider({ 1536 , 572+236 +32 , 128 , 100 }, Collider::Type::WALL);
 
 	return true;
 }
