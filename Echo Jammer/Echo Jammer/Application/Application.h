@@ -18,6 +18,7 @@ class ModuleFadeToBlack;
 class ModuleFonts;
 class ModuleRender;
 class ModuleHUD;
+class ModuleOscuridad;
 
 class Scene0Portada;
 class SceneTESTS;
@@ -62,6 +63,7 @@ public:
 	ModuleFonts* fonts = nullptr;
 	ModuleRender* render = nullptr;
 	ModuleHUD* hud = nullptr;
+	ModuleOscuridad* oscuridad = nullptr;
 
 	Scene0Portada* scene_0_Portada = nullptr;
 	Scene_01_tutorial* scene_01_tutorial = nullptr;
