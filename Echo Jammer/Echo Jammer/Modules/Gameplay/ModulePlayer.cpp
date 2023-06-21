@@ -37,7 +37,7 @@ bool ModulePlayer::Start()
 	_currentAnimation = &_idleSouthAnim;
 
 	position.x = 300;
-	position.y = 00;
+	position.y = 300;
 
 #pragma region IDLE
 	// IDLE NORTH

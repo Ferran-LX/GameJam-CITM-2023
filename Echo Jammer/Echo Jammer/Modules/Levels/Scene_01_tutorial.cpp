@@ -36,16 +36,16 @@ bool Scene_01_tutorial::Start()
 	App->player->Enable();
 	App->enemies->Enable();
 	App->collisions->Enable();
-	App->player->position.x = 1600;
+	App->player->position.x = 64*7;
 	App->player->position.y = 600;
 	App->player->positionAnterior = App->player->position;
 	App->player->collider->rect.x = 1600;
 	App->player->collider->rect.y = 600;
 
-	App->enemies->AddEnemy(Enemy_Type::BASIC, 64 * 10, 540);
-	App->enemies->AddEnemy(Enemy_Type::BASIC, 64 * 10, 604);
-	App->enemies->AddEnemy(Enemy_Type::BASIC, 64 * 10, 668);
-	App->enemies->AddEnemy(Enemy_Type::BASIC, 64 * 10, 732);
+	App->enemies->AddEnemy(Enemy_Type::BASIC, 64 * 2, 540);
+	App->enemies->AddEnemy(Enemy_Type::BASIC, 64 * 2, 604);
+	App->enemies->AddEnemy(Enemy_Type::BASIC, 64 * 2, 668);
+	App->enemies->AddEnemy(Enemy_Type::BASIC, 64 * 2, 732);
 
 	//App->collisions->AddCollider({ 3712 , 540, 128 , 256 }, Collider::Type::TR_NIVELL_T1);
 

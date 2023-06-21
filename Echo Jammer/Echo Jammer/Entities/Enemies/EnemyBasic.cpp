@@ -12,8 +12,8 @@
 
 EnemyBasic::EnemyBasic(int x_, int y_, Collider* collider_) : Enemy(x_, y_, Enemy_Type::BASIC, collider_)
 {
-	_speed = 2;
-	_aggro = 0;
+	_speed = 4;
+	_aggro = 50;
 	_aggroMax = 50;
 	_attackRange = 20;
 	_visionRange = 270;
