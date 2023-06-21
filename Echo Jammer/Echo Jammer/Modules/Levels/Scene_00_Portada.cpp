@@ -39,7 +39,7 @@ bool Scene_00_Portada::Start() {
 
 Update_Status Scene_00_Portada::Update() {
 	if (App->input->controlP1.dash == Key_State::KEY_DOWN) {
-		App->fade->FadeToBlack(this, (Module*)App->scene_02_nivel1, 60);
+		App->fade->FadeToBlack(this, (Module*)App->scene_01_tutorial, 60);
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
@@ -58,7 +58,7 @@ Update_Status Scene_00_Portada::PostUpdate() {
 	}
 
 	if (currentTime >= 13000) {
-		App->fade->FadeToBlack(this, (Module*)App->scene_02_nivel1, 60);//canviar Tests
+		App->fade->FadeToBlack(this, (Module*)App->scene_01_tutorial, 60);//canviar Tests
 
 	}
 

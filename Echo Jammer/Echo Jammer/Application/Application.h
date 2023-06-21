@@ -21,8 +21,9 @@ class ModuleHUD;
 class ModuleOscuridad;
 
 class Scene_00_Portada;
-class Scene_02_nivel1;
 class Scene_01_tutorial;
+class Scene_02_nivel1;
+
 class SceneStart;
 class SceneIntro;
 
