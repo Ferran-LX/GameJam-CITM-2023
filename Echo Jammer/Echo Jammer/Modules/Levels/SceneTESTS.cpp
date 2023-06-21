@@ -19,6 +19,7 @@ bool SceneTESTS::Start()
 {
 
 	textura_fondo = App->textures->Load(FI_Mapa_Level1.c_str());
+	textura_oscuridad = App->textures->Load(FI_Mapa_Overlay.c_str());
 
 	App->audio->PlayMusic(FA_Music_Ambient.c_str(), 1.0f);
 
@@ -40,10 +41,27 @@ bool SceneTESTS::Start()
 	App->player->collider->SetPos(400, 500);
 
 
-	App->enemies->AddEnemy(Enemy_Type::BASIC, 10, 100);
+	App->enemies->AddEnemy(Enemy_Type::BASIC, 1500, 1500);
 
-	App->collisions->AddCollider({ 0, 0, weigthNivell, 220 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 700, 400, 200,200 }, Collider::Type::WALL);
+	/*App->collisions->AddCollider({ 0, 0, weigthNivell, 220 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 700, 400, 200,200 }, Collider::Type::WALL);*/
+
+	App->collisions->AddCollider({ 0, 0, 1920, 192}, Collider::Type::WALL);
+	App->collisions->AddCollider({ 0, 192, 384, 128 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 0, 320, 128, 512 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 1088, 192, 128, 448 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 1216, 192, 384, 128 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 1792, 192, 128, 512 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 0, 1152, 128, 512 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 128, 1600, 704, 64 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 384, 1664, 448, 64 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 640, 1728, 192, 448 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 768, 2176, 64, 64 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 768, 2496, 64, 192 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 0, 2176, 128,512 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 128, 2528, 256,128 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 448, 1184, 256,96 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 704, 832, 128,448 }, Collider::Type::WALL);
 
 	return true;
 }
@@ -64,8 +82,6 @@ Update_Status SceneTESTS::Update() {
 
 	if (App->player->position.x > 0 && App->player->position.x < weigthNivell - 1920) App->render->camera.x = App->player->position.x;
 	if (App->player->position.y > 540 && App->player->position.y < heightNivell - 1080 + 540) App->render->camera.y = App->player->position.y - 540;
-
-
 
 	return Update_Status::UPDATE_CONTINUE;
 }

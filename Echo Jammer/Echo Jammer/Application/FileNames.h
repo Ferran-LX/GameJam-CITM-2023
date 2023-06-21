@@ -17,6 +17,7 @@ const std::string FI_Animacio_Portada = "_Assets/Imagenes/UI/intro_spritesheet.p
 const std::string FI_Animacio_Start = "_Assets/Imagenes/UI/espacio_sprite.png";
 const std::string FI_Mapa_Level1 = "_Assets/Imagenes/mapas/level_01.png";
 const std::string FI_Mapa_Tutorial = "_Assets/Imagenes/mapas/tutorial_level.png";
+const std::string FI_Mapa_Overlay = "_Assets/Imagenes/UI/oscuridad.png";
 
 // Enemy textures
 const std::string FI_Enemy_Basic = "_Assets/Imagenes/enemies/enemy_01_spritesheet.png";

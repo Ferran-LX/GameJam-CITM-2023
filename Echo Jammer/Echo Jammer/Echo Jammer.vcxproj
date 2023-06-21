@@ -152,6 +152,7 @@
     <ClInclude Include="Application\Globals.h" />
     <ClInclude Include="Application\MemLeaks.h" />
     <ClInclude Include="Entities\Enemies\TransitionConditionsBasic.h" />
+    <ClInclude Include="Modules\Core\ModuleOscuridad.h" />
     <ClInclude Include="Modules\Levels\SceneTESTS.h" />
     <ClInclude Include="Modules\Levels\Scene_01_tutorial.h" />
     <ClInclude Include="Modules\Levels\Scene_0_Portada.h" />
@@ -190,6 +191,7 @@
     <ClCompile Include="Application\Application.cpp" />
     <ClCompile Include="Application\Globals.cpp" />
     <ClCompile Include="Application\Main.cpp" />
+    <ClCompile Include="Modules\Core\ModuleOscuridad.cpp" />
     <ClCompile Include="Modules\Levels\SceneTESTS.cpp" />
     <ClCompile Include="Modules\Levels\SceneTestArea.cpp" />
     <ClCompile Include="Modules\Levels\Scene_01_tutorial.cpp" />
