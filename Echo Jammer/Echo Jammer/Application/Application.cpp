@@ -38,18 +38,18 @@ Application::Application() {
 	modules.push_back(input = new ModuleInput(true));
 	modules.push_back(textures = new ModuleTextures(true));
 	modules.push_back(audio = new ModuleAudio(true));
-	modules.push_back(collisions = new ModuleCollisions(false));
 	modules.push_back(scene_00_Portada = new Scene_00_Portada(true));
 
 	modules.push_back(scene_01_tutorial = new Scene_01_tutorial(false));
 	modules.push_back(scene_02_nivel1 = new Scene_02_nivel1(false));
 	modules.push_back(enemies = new ModuleEnemies(false));
-	modules.push_back(oscuridad = new ModuleOscuridad(true));
+	modules.push_back(oscuridad = new ModuleOscuridad(false));
 	modules.push_back(player = new ModulePlayer(false));
 
 	modules.push_back(particles = new ModuleParticles(true));
 	modules.push_back(fade = new ModuleFadeToBlack(true));
 	modules.push_back(fonts = new ModuleFonts(true));
+	modules.push_back(collisions = new ModuleCollisions(false));
 	modules.push_back(hud = new ModuleHUD(true));
 	
 	modules.push_back(render = new ModuleRender(true));
@@ -91,12 +91,13 @@ Update_Status Application::Update() {
 
 	for (int i = 0; i < sizeVector && ret == Update_Status::UPDATE_CONTINUE; ++i)
 		// Only paint is Scene1 is eneabled
-		if (dynamic_cast<ModuleHUD*>(modules[i]))
+		if (modules[i] == hud)
 		{
-			if (modules[8]->IsEnabled()) { // SCene1
-				ret = modules[i]->IsEnabled() ? modules[i]->PostUpdate() : Update_Status::UPDATE_CONTINUE;
-				ret = modules[9]->IsEnabled() ? modules[9]->PostUpdate() : Update_Status::UPDATE_CONTINUE; // Foreground
-			}
+			//if (modules[8]->IsEnabled()) { // SCene1
+			//	ret = modules[i]->IsEnabled() ? modules[i]->PostUpdate() : Update_Status::UPDATE_CONTINUE;
+			//	ret = modules[9]->IsEnabled() ? modules[9]->PostUpdate() : Update_Status::UPDATE_CONTINUE; // Foreground
+			//}
+			
 		}	
 		else
 			ret = modules[i]->IsEnabled() ? modules[i]->PostUpdate() : Update_Status::UPDATE_CONTINUE;
@@ -126,7 +127,10 @@ bool Application::CleanUp() {
 	bool ret = true;
 
 	for (int i = sizeVector - 1; i >= 0 && ret; --i)
-		ret = modules[i]->IsEnabled() ? modules[i]->Disable() : true;
+		if (modules[i] == collisions) {
+			enemies->Disable();
+		} else
+		ret = modules[i]->Disable();
 
 	return ret;
 }

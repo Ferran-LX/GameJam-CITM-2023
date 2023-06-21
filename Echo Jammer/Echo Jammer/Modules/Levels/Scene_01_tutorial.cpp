@@ -7,6 +7,8 @@
 #include "../../Modules/Gameplay/ModuleEnemies.h"
 #include "../../Modules/Gameplay/ModulePlayer.h"
 #include "../../Modules/Core/ModuleAudio.h"
+#include "../../Modules/Core/ModuleOscuridad.h"
+#include "../../Entities/Enemies/Enemy.h"
 
 Scene_01_tutorial::Scene_01_tutorial(bool startEnabled) : Module(startEnabled) {
 
@@ -32,7 +34,7 @@ bool Scene_01_tutorial::Start()
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
-
+	App->oscuridad->Enable();
 	App->player->Enable();
 	App->enemies->Enable();
 	App->collisions->Enable();
@@ -42,10 +44,10 @@ bool Scene_01_tutorial::Start()
 	App->player->collider->rect.x = 1600;
 	App->player->collider->rect.y = 600;
 
-	App->enemies->AddEnemy(Enemy_Type::BASIC, 64 * 2, 540);
-	App->enemies->AddEnemy(Enemy_Type::BASIC, 64 * 2, 604);
-	App->enemies->AddEnemy(Enemy_Type::BASIC, 64 * 2, 668);
-	App->enemies->AddEnemy(Enemy_Type::BASIC, 64 * 2, 732);
+	App->enemies->AddEnemy(Enemy_Type::BASIC, 64 * 2, 540)->SetVisionRange(999999999);
+	App->enemies->AddEnemy(Enemy_Type::BASIC, 64 * 2, 604)->SetVisionRange(999999999);
+	App->enemies->AddEnemy(Enemy_Type::BASIC, 64 * 2, 668)->SetVisionRange(999999999);
+	App->enemies->AddEnemy(Enemy_Type::BASIC, 64 * 2, 732)->SetVisionRange(999999999);
 
 	//App->collisions->AddCollider({ 3712 , 540, 128 , 256 }, Collider::Type::TR_NIVELL_T1);
 
@@ -98,6 +100,7 @@ Update_Status Scene_01_tutorial::PostUpdate() {
 }
 
 bool Scene_01_tutorial::CleanUp() {
+	App->oscuridad->Disable();
 	App->player->Disable();
 	App->enemies->Disable();
 	App->collisions->Disable();

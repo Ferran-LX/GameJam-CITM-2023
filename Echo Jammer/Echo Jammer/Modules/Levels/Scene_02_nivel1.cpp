@@ -7,6 +7,7 @@
 #include "../../Modules/Gameplay/ModuleEnemies.h"
 #include "../../Modules/Gameplay/ModulePlayer.h"
 #include "../../Modules/Core/ModuleAudio.h"
+#include "../../Modules/Core/ModuleOscuridad.h"
 
 Scene_02_nivel1::Scene_02_nivel1(bool startEnabled) : Module(startEnabled) {
 
@@ -32,6 +33,7 @@ bool Scene_02_nivel1::Start()
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
+	App->oscuridad->Enable();
 	App->player->Enable();
 	App->enemies->Enable();
 	App->collisions->Enable();
@@ -115,6 +117,7 @@ Update_Status Scene_02_nivel1::PostUpdate() {
 }
 
 bool Scene_02_nivel1::CleanUp() {
+	App->oscuridad->Disable();
 	App->player->Disable();
 	App->enemies->Disable();
 	App->collisions->Disable();
