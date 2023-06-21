@@ -19,6 +19,7 @@ public:
 	bool CleanUp();
 
 	SDL_Texture* textura_fondo = nullptr;
+	SDL_Texture* textura_oscuridad = nullptr;
 	SDL_Rect rectFondo;
 	Collider* botcoll = nullptr;
 	Collider* topcoll = nullptr;

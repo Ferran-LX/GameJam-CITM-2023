@@ -16,6 +16,7 @@
 #include "../Modules/Gameplay/ModulePlayer.h"
 #include "../Modules/Gameplay/ModuleEnemies.h"
 #include "../Modules/Levels/SceneTestArea.h"
+#include "../Modules/Core/ModuleOscuridad.h"
 
 
 #include "../Modules/Levels/SceneTESTS.h"
@@ -48,9 +49,11 @@ Application::Application() {
 	modules.push_back(player = new ModulePlayer(false));
 	modules.push_back(particles = new ModuleParticles(true));
 	modules.push_back(collisions = new ModuleCollisions(false));
+	//modulo nuevo de oscuridad
 
 	modules.push_back(fade = new ModuleFadeToBlack(true));
 	modules.push_back(fonts = new ModuleFonts(true));
+	modules.push_back(oscuridad = new ModuleOscuridad(true));
 	modules.push_back(hud = new ModuleHUD(true));
 	
 	modules.push_back(render = new ModuleRender(true));
