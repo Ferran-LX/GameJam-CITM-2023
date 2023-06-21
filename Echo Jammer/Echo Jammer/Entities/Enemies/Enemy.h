@@ -7,6 +7,7 @@
 
 #include <functional>
 #include <vector>
+#include "../../Utils/PatrolPath.h"
 
 #define MAX_TRANSITIONS 5 
 
@@ -116,6 +117,8 @@ public:
 public:
 	// The current position in the world
 	iPoint position;
+
+	PatrolPath patrolPath;
 
 	// A flag for the enemy removal. Important! We do not delete objects instantly
 	bool pendingToDelete = false;

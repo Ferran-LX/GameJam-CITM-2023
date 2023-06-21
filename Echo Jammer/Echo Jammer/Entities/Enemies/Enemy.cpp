@@ -25,6 +25,7 @@ Enemy::Enemy(int x_, int y_, Enemy_Type type_, Collider* collider_) : position(x
 	_currState = Enemy_State::PATRULLANT;
 	_currDirection = Directions::NONE;
 	_spawnPos = position;
+	patrolPath.PushBack(_spawnPos);
 }
 
 Enemy::~Enemy() {
