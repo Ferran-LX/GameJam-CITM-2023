@@ -61,6 +61,7 @@ public:
 	Key_State moveLeft;
 	Key_State moveRight;
 	Key_State dash;
+	Key_State sprint;
 	Key_State pause;
 	void StoreInput(const Key_State keyboard[MAX_KEYS], const GamePad& gamepad);
 

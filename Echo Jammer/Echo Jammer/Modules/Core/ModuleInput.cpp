@@ -294,12 +294,21 @@ void PlayerInput::StoreInput(const Key_State keyboard[MAX_KEYS], const GamePad& 
 			pause = (pause == KEY_REPEAT || pause == KEY_DOWN) ? KEY_UP : KEY_IDLE;
 	}
 
-	if (keyboard[KeyboardSetup::Sprint] != Key_State::KEY_IDLE)
-		dash = keyboard[KeyboardSetup::Sprint];
+	if (keyboard[KeyboardSetup::Dash] != Key_State::KEY_IDLE)
+		dash = keyboard[KeyboardSetup::Dash];
 	else {
 		if (gamepad.a)
 			dash = (dash == KEY_IDLE) ? KEY_DOWN : KEY_REPEAT;
 		else
 			dash = (dash == KEY_REPEAT || dash == KEY_DOWN) ? KEY_UP : KEY_IDLE;
+	}
+
+	if (keyboard[KeyboardSetup::Sprint] != Key_State::KEY_IDLE)
+		sprint = keyboard[KeyboardSetup::Sprint];
+	else {
+		if (gamepad.a)
+			sprint = (sprint == KEY_IDLE) ? KEY_DOWN : KEY_REPEAT;
+		else
+			sprint = (sprint == KEY_REPEAT || sprint == KEY_DOWN) ? KEY_UP : KEY_IDLE;
 	}
 }

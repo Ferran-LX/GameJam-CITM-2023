@@ -78,7 +78,7 @@ public:
 	void OnCollision(Collider* c1, Collider* c2) override;
 
 	// Add an enemy into the queue to be spawned later
-	bool AddEnemy(Enemy_Type type, int x, int y);
+	Enemy* AddEnemy(Enemy_Type type, int x, int y);
 
 	// Iterates the queue and checks for camera position
 	void HandleEnemiesSpawn();
@@ -95,7 +95,7 @@ public:
 
 private:
 	// Spawns a new enemy using the data from the queue
-	void SpawnEnemy(const EnemySpawnpoint& info);
+	Enemy* SpawnEnemy(const EnemySpawnpoint& info);
 
 
 private:

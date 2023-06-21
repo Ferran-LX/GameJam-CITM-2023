@@ -135,9 +135,16 @@ bool ModuleEnemies::CleanUp() {
 	return true;
 }
 
-bool ModuleEnemies::AddEnemy(Enemy_Type type, int x, int y)
+Enemy* ModuleEnemies::AddEnemy(Enemy_Type type, int x, int y)
 {
-	bool ret = false;
+	EnemySpawnpoint info;
+	info.type = type;
+	info.x = x;
+	info.y = y;
+	SpawnEnemy(info);
+
+	return SpawnEnemy(info);
+	/*bool ret = false;
 
 	for (uint i = 0; i < MAX_ENEMIES; ++i) {
 		if (_spawnQueue[i].type == Enemy_Type::NO_TYPE) {
@@ -150,7 +157,7 @@ bool ModuleEnemies::AddEnemy(Enemy_Type type, int x, int y)
 		}
 	}
 
-	return ret;
+	return ret;*/
 }
 
 void ModuleEnemies::HandleEnemiesSpawn() {
@@ -200,13 +207,14 @@ bool ModuleEnemies::CheckLineOfSight(const Enemy& e, const iPoint& p) {
 }
 
 
-void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info) {
+Enemy* ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info) {
+	Enemy* ret = nullptr;
 	// Find an empty slot in the enemies array
 	for (uint i = 0; i < MAX_ENEMIES; ++i) {
 		if (_enemies[i] == nullptr) {
 			switch (info.type) {
 			case Enemy_Type::BASIC: {
-				_enemies[i] = new EnemyBasic(info.x, info.y);
+				_enemies[i] = ret = new EnemyBasic(info.x, info.y);
 				_enemies[i]->SetTexture(_textureBasic);
 				_enemies[i]->SetState(Enemy_State::PATRULLANT);
 				_enemies[i]->ChangeAnimationSet(_animVec);
@@ -221,6 +229,7 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info) {
 			break;
 		}
 	}
+	return ret;
 }
 
 void ModuleEnemies::OnCollision(Collider* c1, Collider* c2) {
