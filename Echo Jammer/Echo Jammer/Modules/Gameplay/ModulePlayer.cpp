@@ -36,6 +36,7 @@ bool ModulePlayer::Start()
 
 	_currentAnimation = &_idleSouthAnim;
 
+	alive = true;
 	position.x = 300;
 	position.y = 300;
 
@@ -144,12 +145,15 @@ bool ModulePlayer::Start()
 #pragma endregion
 
 #pragma region Altres
-
 	// DEATH
-	for (int i = 0; i < 26; i++)
+
+	for (int i = 0; i < 26; i++) {
 		_deathAnim.PushBack({ 128 * i, 128 * 16, 128, 128 });
-	_deathAnim.loop = true;
-	_deathAnim.speed = 0.2f;
+		_deathAnim.loop = true;
+		_deathAnim.speed = 0.2f;
+	}
+		
+	
 
 	// ECO	
 	for (int k = 0; k < 3; k++)
@@ -222,6 +226,9 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 			//LOG("Hay superposici�n");
 		}
 	}
+	
+	
+	
 
 	if (c2->type == Collider::TR_NIVELL_T1) {
 		LOG("TRIGGER NIVELL TUTORIAL ACTIVAT!");
@@ -245,6 +252,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 	if (c2->type == Collider::TR_NIVELL_3F) {
 		LOG("TRIGGER NIVELL 3 ACTIVAT!");
 		//App->fade->FadeToBlack(this, (Module*)App->sceneTests, 60);
+	}
+
+	if (c2->type == Collider::ENEMY)
+	{
+		//App->fade->FadeToBlack((Module*)App->scene_02_nivel1, (Module*)App->scene_01_tutorial, 60);
 	}
 
 

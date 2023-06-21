@@ -40,8 +40,8 @@ Application::Application() {
 	modules.push_back(audio = new ModuleAudio(true));
 	modules.push_back(scene_00_Portada = new Scene_00_Portada(false));
 
-	modules.push_back(scene_01_tutorial = new Scene_01_tutorial(true));
-	modules.push_back(scene_02_nivel1 = new Scene_02_nivel1(false));
+	modules.push_back(scene_01_tutorial = new Scene_01_tutorial(false));
+	modules.push_back(scene_02_nivel1 = new Scene_02_nivel1(true));
 	modules.push_back(enemies = new ModuleEnemies(false));
 	modules.push_back(oscuridad = new ModuleOscuridad(true));
 	modules.push_back(player = new ModulePlayer(false));

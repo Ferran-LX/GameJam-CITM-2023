@@ -18,7 +18,7 @@ public:
 	Update_Status PostUpdate() override;
 	bool CleanUp();
 
-	SDL_Texture* textura_fondo = nullptr;
+	SDL_Texture* textura_fondo2 = nullptr;
 	SDL_Texture* textura_oscuridad = nullptr;
 	SDL_Rect rectFondo;
 	Collider* botcoll = nullptr;

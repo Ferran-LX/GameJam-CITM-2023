@@ -18,7 +18,7 @@ EnemyBasic::EnemyBasic(int x_, int y_, Collider* collider_) : Enemy(x_, y_, Enem
 	_attackRange = 20;
 	_visionRange = 270;
 	_searchRange = 230;
-	_attackDelay = 1000;
+	_attackDelay = 100;
 	InitStateMachine();
 
 	_collisionCallback = [&](Collider* c1, Collider* c2) -> void {
