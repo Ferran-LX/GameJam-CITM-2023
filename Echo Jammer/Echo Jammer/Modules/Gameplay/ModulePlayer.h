@@ -47,7 +47,8 @@ private:
 	Animation* _currentAnimation = nullptr;
 
 	Animation _deathAnim;
-	Animation _ecoAnim;
+	Animation _ecoAnimScreen;
+	Animation _ecoAnimPlayer;
 
 	Animation _northAnim;
 	Animation _northEastAnim;

@@ -153,16 +153,23 @@ bool ModulePlayer::Start()
 		_deathAnim.speed = 0.2f;
 	}
 		
-	
+	// ECO player
+	for (int i = 0; i < 28; i++)
+	{
+		_ecoAnimPlayer.PushBack({ 128*i, 1280, 128, 128 });
+	}
 
-	// ECO	
+	_ecoAnimPlayer.loop = false;
+	_ecoAnimPlayer.speed = 0.2f;
+
+	// ECO screen
 	for (int k = 0; k < 3; k++)
 	{
 		for (int i = 0; i < 4; i++)
-			_ecoAnim.PushBack({ 3840 * i , 2160 * k, 3840, 2160 });		
+			_ecoAnimScreen.PushBack({ 3840 * i , 2160 * k, 3840, 2160 });		
 	}
-	_ecoAnim.loop = false;
-	_ecoAnim.speed = 0.2f;
+	_ecoAnimScreen.loop = false;
+	_ecoAnimScreen.speed = 0.2f;
 
 #pragma endregion
 
@@ -174,6 +181,10 @@ Update_Status ModulePlayer::Update() {
 	App->player->positionAnterior = App->player->position;
 
 	PlaceHolderMove();
+
+	if (_ecoAnimPlayer.currentFrame == 0.0f) {
+		LOG("AnimReset");
+	}
 
 	//GetInputDirection();
 	//ApplyMovement();
@@ -188,13 +199,14 @@ Update_Status ModulePlayer::Update() {
 			delayEco = SDL_GetTicks();
 			ecoActive = false;
 			ecoAnimActive = true;
-			_currentAnimation = &_ecoAnim;
+			_ecoAnimScreen.Reset();
+			_ecoAnimPlayer.Reset();
+			_currentAnimation = &_ecoAnimPlayer;
 		}
 	}
 	else if (SDL_GetTicks() - delayEco >= tempsCooldownEco) {
 		ecoActive = true;
 		ecoAnimActive = false;
-		_ecoAnim.Reset();
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
@@ -206,8 +218,8 @@ Update_Status ModulePlayer::PostUpdate() {
 
 	if (ecoAnimActive)
 	{
-		_ecoAnim.Update();
-		App->render->Blit(textureEco, position.x - 1856, position.y - 1016, &_ecoAnim.GetCurrentFrame());
+		_ecoAnimScreen.Update();
+		App->render->Blit(textureEco, position.x - 1856, position.y - 1016, &_ecoAnimScreen.GetCurrentFrame());
 	}
 
 
@@ -342,8 +354,11 @@ void ModulePlayer::PlaceHolderMove()
 	}
 	else
 	{
-		// Per defecte IDLE
-		if (_actualDirection == Directions::NORTH) _currentAnimation = &_idleNorthAnim;
+		// Per defecte IDLE - no canvia si esta utilitzant ecolocalitzacio sense moure's
+		if (_currentAnimation == &_ecoAnimPlayer && !_ecoAnimPlayer.HasFinished()) {
+				//LOG("EEEEECOOOOOO");
+		}
+		else if (_actualDirection == Directions::NORTH) _currentAnimation = &_idleNorthAnim;
 		else if (_actualDirection == Directions::NORTH_EAST) _currentAnimation = &_idleNorthEastAnim;
 		else if (_actualDirection == Directions::EAST) _currentAnimation = &_idleEastAnim;
 		else if (_actualDirection == Directions::SOUTH_EAST) _currentAnimation = &_idleSouthEastAnim;
