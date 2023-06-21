@@ -19,6 +19,7 @@ public:
 	bool CleanUp();
 
 	SDL_Texture* textura_fondo = nullptr;
+	SDL_Texture* textura_detecion = nullptr;
 	SDL_Rect rectFondo;
 	Collider* botcoll = nullptr;
 	Collider* topcoll = nullptr;
@@ -26,11 +27,16 @@ public:
 	Collider* raightcoll = nullptr;
 
 	bool stopGame = false;
+
+	bool detectionActive = false;
+
 	int start_time;
 	int velocitatNivell = 0;
 
 	int widthNivell = 1920*2;
 	int heightNivell = 1080;
+
+	Animation _animDetecion;
 };
 
 #endif

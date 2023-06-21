@@ -18,6 +18,7 @@
 #include "../Modules/Levels/SceneTestArea.h"
 #include "../Modules/Core/ModuleOscuridad.h"
 
+#include "../Modules/Levels/Scene_0_Portada.h"
 #include "../Modules/Levels/Scene_00_Portada.h"
 #include "../Modules/Levels/Scene_01_tutorial.h"
 #include "../Modules/Levels/Scene_02_nivel1.h"
@@ -38,9 +39,10 @@ Application::Application() {
 	modules.push_back(input = new ModuleInput(true));
 	modules.push_back(textures = new ModuleTextures(true));
 	modules.push_back(audio = new ModuleAudio(true));
-	modules.push_back(scene_00_Portada = new Scene_00_Portada(false));
+	modules.push_back(scenaPortada = new Scene0Portada(true));
+	//modules.push_back(scene_00_Portada = new Scene_00_Portada(true));
 
-	modules.push_back(scene_01_tutorial = new Scene_01_tutorial(true));
+	modules.push_back(scene_01_tutorial = new Scene_01_tutorial(false));
 	modules.push_back(scene_02_nivel1 = new Scene_02_nivel1(false));
 	modules.push_back(enemies = new ModuleEnemies(false));
 	modules.push_back(oscuridad = new ModuleOscuridad(true));

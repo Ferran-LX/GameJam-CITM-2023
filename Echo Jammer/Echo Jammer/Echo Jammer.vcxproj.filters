@@ -128,6 +128,9 @@
     <ClInclude Include="Modules\Core\ModuleOscuridad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Modules\Levels\Scene_0_Portada.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Utils\Collider.cpp">
@@ -218,6 +221,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Modules\Core\ModuleOscuridad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\Levels\Scene_0_Portada.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

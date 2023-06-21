@@ -20,6 +20,7 @@ class ModuleRender;
 class ModuleHUD;
 class ModuleOscuridad;
 
+class Scene0Portada;
 class Scene_00_Portada;
 class Scene_02_nivel1;
 class Scene_01_tutorial;
@@ -65,6 +66,7 @@ public:
 	ModuleHUD* hud = nullptr;
 	ModuleOscuridad* oscuridad = nullptr;
 
+	Scene0Portada* scenaPortada = nullptr;
 	Scene_00_Portada* scene_00_Portada = nullptr;
 	Scene_01_tutorial* scene_01_tutorial = nullptr;
 	Scene_02_nivel1* scene_02_nivel1 = nullptr;

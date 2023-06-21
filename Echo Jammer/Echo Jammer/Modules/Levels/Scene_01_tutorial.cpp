@@ -19,6 +19,13 @@ bool Scene_01_tutorial::Start()
 {
 
 	textura_fondo = App->textures->Load(FI_Mapa_Tutorial.c_str());
+	textura_detecion = App->textures->Load(FI_Enemy_Eco.c_str());
+
+	// Detecion
+	for (int i = 0; i < 5; i++)
+		_animDetecion.PushBack({ 500 * i, 0, 500, 500 });
+	_animDetecion.loop = false;
+	_animDetecion.speed = 0.2f;
 
 	App->audio->PlayMusic(FA_Music_Ambient.c_str(), 1.0f);
 
@@ -60,8 +67,6 @@ bool Scene_01_tutorial::Start()
 }
 
 Update_Status Scene_01_tutorial::Update() {
-
-
 
 	if (App->player->position.x <= 10)
 		App->player->position.x = 10;

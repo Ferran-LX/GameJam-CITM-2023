@@ -185,12 +185,14 @@ Update_Status ModulePlayer::Update() {
 			ecoActive = false;
 			ecoAnimActive = true;
 			_currentAnimation = &_ecoAnim;
+			App->scene_01_tutorial->detectionActive = true;
 		}
 	}
 
 	if (SDL_GetTicks() - delayEco >= tempsCooldownEco) {
 		ecoActive = true;
 		ecoAnimActive = false;
+		App->scene_01_tutorial->detectionActive = false;
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
@@ -228,7 +230,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 		// TODO: Disable scene tutorial, ascensor, and enable scene level 1
 		// TODO: En la escena fer un enable de los apartados anteriores
 		// TODO: fer tres ascensors
-		
+
 		App->fade->FadeToBlack((Module*)App->scene_01_tutorial, (Module*)App->scene_02_nivel1, 60);
 	}
 
