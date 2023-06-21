@@ -9,6 +9,7 @@
 #include "../../Modules/Core/ModuleAudio.h"
 #include "../../Modules/Core/ModuleOscuridad.h"
 #include "../../Entities/Enemies/Enemy.h"
+#include "../../Modules/Core/ModuleFadeToBlack.h"
 
 Scene_01_tutorial::Scene_01_tutorial(bool startEnabled) : Module(startEnabled) {
 
@@ -48,6 +49,7 @@ bool Scene_01_tutorial::Start()
 	App->enemies->AddEnemy(Enemy_Type::BASIC, 64 * 2, 604)->SetVisionRange(999999999);
 	App->enemies->AddEnemy(Enemy_Type::BASIC, 64 * 2, 668)->SetVisionRange(999999999);
 	App->enemies->AddEnemy(Enemy_Type::BASIC, 64 * 2, 732)->SetVisionRange(999999999);
+	App->enemies->AddEnemy(Enemy_Type::BASIC, 1426, 594);
 
 	//App->collisions->AddCollider({ 3712 , 540, 128 , 256 }, Collider::Type::TR_NIVELL_T1);
 
@@ -63,7 +65,9 @@ bool Scene_01_tutorial::Start()
 
 Update_Status Scene_01_tutorial::Update() {
 
-
+	if (!App->player->alive) {
+		App->fade->FadeToBlack((Module*)this, (Module*)App->scene_01_tutorial, 60);
+	}
 
 	if (App->player->position.x <= 10)
 		App->player->position.x = 10;
