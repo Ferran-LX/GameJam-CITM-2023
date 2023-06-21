@@ -78,6 +78,9 @@ bool SceneTESTS::Start()
 	App->collisions->AddCollider({ 1408 , 1216 , 128, 103  }, Collider::Type::WALL);
 
 	App->collisions->AddCollider({ 1536 , 572+236 +32 , 128 , 100 }, Collider::Type::WALL);
+
+
+	App->collisions->AddCollider({ 1792 , 1344, 128 , 256 }, Collider::Type::TR_NIVELL_12);
   
   	App->enemies->AddEnemy(Enemy_Type::BASIC, 10, 100);
 
