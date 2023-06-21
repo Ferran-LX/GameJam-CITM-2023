@@ -1,5 +1,5 @@
-#ifndef __SCENE_0_PORTADA_H__
-#define __SCENE_0_PORTADA_H__
+#ifndef __SCENE_00_PORTADA_H__
+#define __SCENE_00_PORTADA_H__
 
 #include "../Module.h"
 #include "../../Utils/Animation.h"
@@ -7,11 +7,11 @@
 
 struct SDL_Texture;
 
-class Scene0Portada : public Module {
+class Scene_00_Portada : public Module {
 
 public:
-	Scene0Portada(bool startEnabled);
-	~Scene0Portada();
+	Scene_00_Portada(bool startEnabled);
+	~Scene_00_Portada();
 
 	bool Start() override;
 	Update_Status Update() override;

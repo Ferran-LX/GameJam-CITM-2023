@@ -1,4 +1,4 @@
-#include "SceneTESTS.h"
+#include "Scene_02_nivel1.h"
 
 #include "../../Application/Application.h"
 #include "../../Modules/Core/ModuleTextures.h"
@@ -8,14 +8,14 @@
 #include "../../Modules/Gameplay/ModulePlayer.h"
 #include "../../Modules/Core/ModuleAudio.h"
 
-SceneTESTS::SceneTESTS(bool startEnabled) : Module(startEnabled) {
+Scene_02_nivel1::Scene_02_nivel1(bool startEnabled) : Module(startEnabled) {
 
 }
 
-SceneTESTS::~SceneTESTS() {
+Scene_02_nivel1::~Scene_02_nivel1() {
 }
 
-bool SceneTESTS::Start()
+bool Scene_02_nivel1::Start()
 {
 
 	textura_fondo = App->textures->Load(FI_Mapa_Level1.c_str());
@@ -84,7 +84,7 @@ bool SceneTESTS::Start()
 	return true;
 }
 
-Update_Status SceneTESTS::Update() {
+Update_Status Scene_02_nivel1::Update() {
 
 
 	if (App->player->position.x <= 10)
@@ -104,12 +104,12 @@ Update_Status SceneTESTS::Update() {
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-Update_Status SceneTESTS::PostUpdate() {
+Update_Status Scene_02_nivel1::PostUpdate() {
 	App->render->Blit(textura_fondo, 0, 0, &rectFondo);
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-bool SceneTESTS::CleanUp() {
+bool Scene_02_nivel1::CleanUp() {
 	App->player->Disable();
 	App->enemies->Disable();
 	App->collisions->Disable();

@@ -1,4 +1,4 @@
-#include "Scene_0_Portada.h"
+#include "Scene_00_Portada.h"
 #include <SDL_timer.h>
 #include <SDL_image.h>
 
@@ -9,13 +9,13 @@
 #include "../../Modules/Core/ModuleInput.h"
 #include "../../Modules/Core/ModuleAudio.h"
 
-Scene0Portada::Scene0Portada(bool startEnabled) : Module(startEnabled) {
+Scene_00_Portada::Scene_00_Portada(bool startEnabled) : Module(startEnabled) {
 }
 
-Scene0Portada::~Scene0Portada() {
+Scene_00_Portada::~Scene_00_Portada() {
 }
 
-bool Scene0Portada::Start() {
+bool Scene_00_Portada::Start() {
 	textura = App->textures->Load(FI_Animacio_Portada.c_str());
 
 	startTime = SDL_GetTicks();
@@ -37,15 +37,15 @@ bool Scene0Portada::Start() {
 	return true;
 }
 
-Update_Status Scene0Portada::Update() {
+Update_Status Scene_00_Portada::Update() {
 	if (App->input->controlP1.dash == Key_State::KEY_DOWN) {
-		App->fade->FadeToBlack(this, (Module*)App->sceneTests, 60);
+		App->fade->FadeToBlack(this, (Module*)App->scene_02_nivel1, 60);
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-Update_Status Scene0Portada::PostUpdate() {
+Update_Status Scene_00_Portada::PostUpdate() {
 	
 	Uint32 currentTime = SDL_GetTicks() - startTime;
 
@@ -58,13 +58,13 @@ Update_Status Scene0Portada::PostUpdate() {
 	}
 
 	if (currentTime >= 13000) {
-		App->fade->FadeToBlack(this, (Module*)App->sceneTests, 60);//canviar Tests
+		App->fade->FadeToBlack(this, (Module*)App->scene_02_nivel1, 60);//canviar Tests
 
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-bool Scene0Portada::CleanUp() {
+bool Scene_00_Portada::CleanUp() {
 	return true;
 }

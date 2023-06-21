@@ -16,7 +16,7 @@ const std::string FI_Fondo_Test = "_Assets/Imagenes/FondoTest.png";
 
 // Player
 const std::string FI_Player_moveset = "_Assets/Imagenes/main_character/spritesheet_character.png";
-const std::string FI_Player_Eco = "_Assets/Imagenes/UI/Eco.png";
+const std::string FI_Player_Eco = "_Assets/Imagenes/UI/EchoDefinitiu.png";
 
 // Escenes
 const std::string FI_Animacio_Portada = "_Assets/Imagenes/UI/intro_spritesheet.png";

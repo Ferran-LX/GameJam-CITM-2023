@@ -1,5 +1,5 @@
-#ifndef __SCENE_TESTS_H__
-#define __SCENE_TESTS_H__
+#ifndef __SCENE_02_NIVEL1_H__
+#define __SCENE_02_NIVEL1_H__
 
 #include "../Module.h"
 #include "../../Utils/Animation.h"
@@ -7,11 +7,11 @@
 
 struct SDL_Texture;
 
-class SceneTESTS : public Module {
+class Scene_02_nivel1 : public Module {
 
 public:
-	SceneTESTS(bool startEnabled);
-	~SceneTESTS();
+	Scene_02_nivel1(bool startEnabled);
+	~Scene_02_nivel1();
 
 	bool Start() override;
 	Update_Status Update() override;
@@ -29,6 +29,9 @@ public:
 	bool stopGame = false;
 	int start_time;
 	int velocitatNivell = 0;
+
+private:
+	Animation _deathAnim;
 
 	int weigthNivell = 1920;
 	int heightNivell = 2688;

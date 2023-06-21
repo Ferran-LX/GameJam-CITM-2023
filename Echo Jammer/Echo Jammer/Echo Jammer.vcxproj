@@ -153,9 +153,9 @@
     <ClInclude Include="Application\MemLeaks.h" />
     <ClInclude Include="Entities\Enemies\TransitionConditionsBasic.h" />
     <ClInclude Include="Modules\Core\ModuleOscuridad.h" />
-    <ClInclude Include="Modules\Levels\SceneTESTS.h" />
+    <ClInclude Include="Modules\Levels\Scene_02_nivel1.h" />
     <ClInclude Include="Modules\Levels\Scene_01_tutorial.h" />
-    <ClInclude Include="Modules\Levels\Scene_0_Portada.h" />
+    <ClInclude Include="Modules\Levels\Scene_00_Portada.h" />
     <ClInclude Include="Utils\DirectionHelper.h" />
     <ClInclude Include="Utils\Directions.h" />
     <ClInclude Include="Modules\Levels\SceneTestArea.h" />
@@ -174,9 +174,6 @@
     <ClInclude Include="Modules\Core\ModuleWindow.h" />
     <ClInclude Include="Modules\Gameplay\ModuleEnemies.h" />
     <ClInclude Include="Modules\Gameplay\ModulePlayer.h" />
-    <ClInclude Include="Modules\Levels\SceneEscoger.h" />
-    <ClInclude Include="Modules\Levels\SceneIntro.h" />
-    <ClInclude Include="Modules\Levels\ScenePreintro.h" />
     <ClInclude Include="Modules\Levels\SceneStart.h" />
     <ClInclude Include="Modules\Module.h" />
     <ClInclude Include="Entities\Enemies\EnemyBasic.h" />
@@ -192,10 +189,10 @@
     <ClCompile Include="Application\Globals.cpp" />
     <ClCompile Include="Application\Main.cpp" />
     <ClCompile Include="Modules\Core\ModuleOscuridad.cpp" />
-    <ClCompile Include="Modules\Levels\SceneTESTS.cpp" />
+    <ClCompile Include="Modules\Levels\Scene_02_nivel1.cpp" />
     <ClCompile Include="Modules\Levels\SceneTestArea.cpp" />
     <ClCompile Include="Modules\Levels\Scene_01_tutorial.cpp" />
-    <ClCompile Include="Modules\Levels\Scene_0_Portada.cpp" />
+    <ClCompile Include="Modules\Levels\Scene_00_Portada.cpp" />
     <ClCompile Include="Utils\DirectionHelper.cpp" />
     <ClCompile Include="Utils\EnemyStateMachine.cpp" />
     <ClCompile Include="Entities\Enemies\Enemy.cpp" />
@@ -212,9 +209,6 @@
     <ClCompile Include="Modules\Core\ModuleWindow.cpp" />
     <ClCompile Include="Modules\Gameplay\ModuleEnemies.cpp" />
     <ClCompile Include="Modules\Gameplay\ModulePlayer.cpp" />
-    <ClCompile Include="Modules\Levels\SceneEscoger.cpp" />
-    <ClCompile Include="Modules\Levels\SceneIntro.cpp" />
-    <ClCompile Include="Modules\Levels\ScenePreintro.cpp" />
     <ClCompile Include="Modules\Levels\SceneStart.cpp" />
     <ClCompile Include="Modules\Module.cpp" />
     <ClCompile Include="Entities\Enemies\EnemyBasic.cpp" />
