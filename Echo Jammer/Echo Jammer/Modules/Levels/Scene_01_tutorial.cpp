@@ -50,6 +50,10 @@ bool Scene_01_tutorial::Start()
 	App->collisions->AddCollider({ 0, 796, 1920 * 2,476 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 0, 0, 1920 * 2,476}, Collider::Type::WALL);
 
+
+
+	App->collisions->AddCollider({ 0, 0, 12, 220 }, Collider::Type::TR_NIVELL_T1);
+
 	return true;
 }
 

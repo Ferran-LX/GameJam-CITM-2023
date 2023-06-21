@@ -14,22 +14,14 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled) {
 	matrix[Collider::Type::WALL][Collider::Type::WALL] = false;
 	matrix[Collider::Type::WALL][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::WALL][Collider::Type::ENEMY] = true;
-	matrix[Collider::Type::WALL][Collider::Type::WALL_PLAYER] = false;
 
 	matrix[Collider::Type::PLAYER][Collider::Type::WALL] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY] = true;
-	matrix[Collider::Type::PLAYER][Collider::Type::WALL_PLAYER] = false;
 
 	matrix[Collider::Type::ENEMY][Collider::Type::WALL] = true;
 	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::ENEMY][Collider::Type::ENEMY] = false;
-	matrix[Collider::Type::ENEMY][Collider::Type::WALL_PLAYER] = false;
-
-	matrix[Collider::Type::WALL_PLAYER][Collider::Type::WALL] = false;
-	matrix[Collider::Type::WALL_PLAYER][Collider::Type::PLAYER] = true;
-	matrix[Collider::Type::WALL_PLAYER][Collider::Type::ENEMY] = false;
-	matrix[Collider::Type::WALL_PLAYER][Collider::Type::WALL_PLAYER] = false;
 
 }
 
@@ -112,16 +104,15 @@ void ModuleCollisions::DebugDraw() {
 			continue;
 
 		switch (colliders[i]->type) {
-		case Collider::Type::NONE: // white
-			App->render->DrawQuad(colliders[i]->rect, 255, 255, 255, alpha); break;
-		case Collider::Type::WALL: // blue
-			App->render->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha); break;
-		case Collider::Type::PLAYER: // green
-			App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha); break;
-		case Collider::Type::ENEMY: // red
-			App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha); break;
-		case Collider::Type::WALL_PLAYER: // magenta
-			App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha); break;
+		case Collider::Type::NONE: App->render->DrawQuad(colliders[i]->rect, 255, 255, 255, alpha); break;// white
+		case Collider::Type::WALL: App->render->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha); break;// blue
+		case Collider::Type::PLAYER: App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha); break;// green
+		case Collider::Type::ENEMY: App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha); break;// red
+
+		case Collider::Type::TR_NIVELL_T1: App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha); break; // yellow
+		case Collider::Type::TR_NIVELL_12: App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha); break; // yellow
+		case Collider::Type::TR_NIVELL_23: App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha); break; // yellow
+		case Collider::Type::TR_NIVELL_3F: App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha); break; // yellow
 
 		}
 	}

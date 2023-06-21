@@ -13,8 +13,12 @@ struct Collider {
 		NONE = -1,
 		WALL,
 		PLAYER,
-		ENEMY,		
-		WALL_PLAYER,
+		ENEMY,
+		// TRIGGERS
+		TR_NIVELL_T1, // Tutorial -> Nivel 1
+		TR_NIVELL_12, // Nivel 1 -> Nivel 2
+		TR_NIVELL_23, // Nivel 2 -> Nivel 3
+		TR_NIVELL_3F, // Nivel 3 -> FINAL
 		MAX
 	};
 

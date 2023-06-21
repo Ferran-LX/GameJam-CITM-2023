@@ -168,14 +168,40 @@ Update_Status ModulePlayer::PostUpdate() {
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 
-	if (c1->rect.x < c2->rect.x + c2->rect.w
-		&& c1->rect.x + c1->rect.w > c2->rect.x
-		&& c1->rect.y < c2->rect.y + c2->rect.h
-		&& c1->rect.y + c1->rect.h > c2->rect.y) {
+	if (c2->type == Collider::WALL) {
+		if (c1->rect.x < c2->rect.x + c2->rect.w
+			&& c1->rect.x + c1->rect.w > c2->rect.x
+			&& c1->rect.y < c2->rect.y + c2->rect.h
+			&& c1->rect.y + c1->rect.h > c2->rect.y) {
 
-		position = positionAnterior;
-		//LOG("Hay superposici�n");
+			position = positionAnterior;
+			//LOG("Hay superposici�n");
+		}
 	}
+
+	if (c2->type == Collider::TR_NIVELL_T1) {
+		App->player->Disable();
+		App->enemies->Disable();
+		App->collisions->Disable();
+
+		// TODO: Disable scene tutorial, ascensor, and enable scene level 1
+		// TODO: En la escena fer un enable de los apartados anteriores
+	}
+
+	if (c2->type == Collider::TR_NIVELL_12) {
+
+	}
+
+	if (c2->type == Collider::TR_NIVELL_23) {
+
+	}
+
+	if (c2->type == Collider::TR_NIVELL_3F) {
+
+	}
+
+
+
 
 	//iPoint enemyCenter = { position.x + (c1->rect.w >> 1), position.y + (c1->rect.h >> 1) };
 	//iPoint colCenter = { c2->rect.x + (c2->rect.w >> 1), c2->rect.y + (c2->rect.h >> 1) };

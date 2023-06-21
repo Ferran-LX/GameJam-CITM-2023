@@ -36,9 +36,11 @@ bool SceneTESTS::Start()
 	App->enemies->Enable();
 	App->collisions->Enable();
 
- 	App->player->position.x = 400;
+	// TODO: Poner en la posicion inical / puerta del nivel
+	App->player->position.x = 400;
 	App->player->position.y = 500;
 	App->player->collider->SetPos(400, 500);
+
 
 
 	App->enemies->AddEnemy(Enemy_Type::BASIC, 1500, 1500);
@@ -62,6 +64,22 @@ bool SceneTESTS::Start()
 	App->collisions->AddCollider({ 128, 2528, 256,128 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 448, 1184, 256,96 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 704, 832, 128,448 }, Collider::Type::WALL);
+  
+	App->collisions->AddCollider({ 1088, 1600, 576, 64 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 1088, 1664, 320, 128 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 1088, 1792, 64, 448 }, Collider::Type::WALL);
+
+	App->collisions->AddCollider({ 1088, 2496, 64, 192 }, Collider::Type::WALL);
+	
+	App->collisions->AddCollider({ 1792, 1600, 128, 512 }, Collider::Type::WALL);
+
+	App->collisions->AddCollider({ 1152, 960, 128, 360 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 1280, 1088, 128, 232 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 1408 , 1216 , 128, 103  }, Collider::Type::WALL);
+
+	App->collisions->AddCollider({ 1536 , 572+236 +32 , 128 , 100 }, Collider::Type::WALL);
+  
+  	App->enemies->AddEnemy(Enemy_Type::BASIC, 10, 100);
 
 	return true;
 }
@@ -71,8 +89,8 @@ Update_Status SceneTESTS::Update() {
 
 	if (App->player->position.x <= 10)
 		App->player->position.x = 10;
-	if (App->player->position.x >= weigthNivell - 10 -128)
-		App->player->position.x = weigthNivell - 10-128;
+	if (App->player->position.x >= weigthNivell - 10 - 128)
+		App->player->position.x = weigthNivell - 10 - 128;
 
 	if (App->player->position.y <= 10)
 		App->player->position.y = 10;
