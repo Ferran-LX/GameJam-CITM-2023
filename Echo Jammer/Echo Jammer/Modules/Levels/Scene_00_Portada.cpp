@@ -38,7 +38,8 @@ bool Scene_00_Portada::Start() {
 }
 
 Update_Status Scene_00_Portada::Update() {
-	if (App->input->controlP1.dash == Key_State::KEY_DOWN) {
+	if (App->input-> keys[SDL_SCANCODE_C] == Key_State::KEY_DOWN || controlP1.dash == Key_State::KEY_DOWN) {
+
 		App->fade->FadeToBlack(this, (Module*)App->scene_01_tutorial, 60);
 	}
 

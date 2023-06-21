@@ -45,7 +45,7 @@ Application::Application() {
 	modules.push_back(scene_02_nivel1 = new Scene_02_nivel1(false));
 
 	modules.push_back(enemies = new ModuleEnemies(false));
-	modules.push_back(oscuridad = new ModuleOscuridad(true));
+	modules.push_back(oscuridad = new ModuleOscuridad(false));
 	modules.push_back(player = new ModulePlayer(false));
 
 	modules.push_back(particles = new ModuleParticles(true));
