@@ -75,7 +75,8 @@ void EnemyBasic::UpdateBehaviour(const ModulePlayer* player)
 	switch (_currState)
 	{
 	case PATRULLANT: {
-		_currDirection = Directions::NONE;
+		patrolPath.CheckReached(position);
+		_currDirection = DirectionHelper::GetDirection(position, patrolPath.GetNext());
 		if (position.DistanceTo(App->player->position) < _visionRange) {
 			_aggro++;
 		}

@@ -25,6 +25,7 @@ Enemy::Enemy(int x_, int y_, Enemy_Type type_, Collider* collider_) : position(x
 	_currState = Enemy_State::PATRULLANT;
 	_currDirection = Directions::NONE;
 	_spawnPos = position;
+	patrolPath.PushBack(_spawnPos);
 }
 
 Enemy::~Enemy() {
@@ -63,6 +64,9 @@ void Enemy::Draw() {
 }
 
 void Enemy::OnCollision(Collider* otherCol) {
+	//Si està patrullant ignora colisions
+	if (_currState == Enemy_State::PATRULLANT) return;
+
 	iPoint enemyCenter = { position.x + (_collider->rect.w >> 1), position.y + (_collider->rect.h >> 1) };
 	iPoint colCenter = { otherCol->rect.x + (otherCol->rect.w >> 1), otherCol->rect.y + (otherCol->rect.h >> 1) };
 	iPoint distVector = colCenter - position;
