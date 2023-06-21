@@ -11,10 +11,18 @@
 
 #pragma region IMAGES -> FI
 
-const std::string FI_Player_moveset = "_Assets/Imagenes/main_character/spritesheet_character.png";
+// Proves
 const std::string FI_Fondo_Test = "_Assets/Imagenes/FondoTest.png";
+
+// Player
+const std::string FI_Player_moveset = "_Assets/Imagenes/main_character/spritesheet_character.png";
+const std::string FI_Player_Eco = "_Assets/Imagenes/UI/Eco.png";
+
+// Escenes
 const std::string FI_Animacio_Portada = "_Assets/Imagenes/UI/intro_spritesheet.png";
 const std::string FI_Animacio_Start = "_Assets/Imagenes/UI/espacio_sprite.png";
+
+// Mapes
 const std::string FI_Mapa_Level1 = "_Assets/Imagenes/mapas/level_01.png";
 const std::string FI_Mapa_Tutorial = "_Assets/Imagenes/mapas/tutorial_level.png";
 
@@ -37,14 +45,6 @@ const std::string FA_Music_Ambient = "_Assets/Musica_FX/Ambient.ogg";
 // Level 2
 
 // Level 3
-
-// Level 4
-
-// Level 5
-
-// Level 6
-
-// Level 7
 
 #pragma endregion
 

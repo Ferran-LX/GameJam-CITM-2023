@@ -31,7 +31,7 @@ bool Scene_01_tutorial::Start()
 	//// POSITION INITIAL CAMERA
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
-	
+
 
 	App->player->Enable();
 	App->enemies->Enable();
@@ -48,18 +48,18 @@ bool Scene_01_tutorial::Start()
 	App->enemies->AddEnemy(Enemy_Type::BASIC, 64 * 10, 732);
 
 	App->collisions->AddCollider({ 0, 796, 1920 * 2,476 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 0, 0, 1920 * 2,476}, Collider::Type::WALL);
+	App->collisions->AddCollider({ 0, 0, 1920 * 2,476 }, Collider::Type::WALL);
 
 
 
-	App->collisions->AddCollider({ 0, 0, 12, 220 }, Collider::Type::TR_NIVELL_T1);
+	App->collisions->AddCollider({ widthNivell - 50, heightNivell/4, 50, 700 }, Collider::Type::TR_NIVELL_T1);
 
 	return true;
 }
 
 Update_Status Scene_01_tutorial::Update() {
 
-	
+
 
 	if (App->player->position.x <= 10)
 		App->player->position.x = 10;

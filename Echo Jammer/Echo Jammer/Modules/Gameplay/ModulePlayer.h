@@ -34,7 +34,8 @@ public:
 	iPoint positionAnterior;
 	bool stopGame = false;
 	int speed = 5;
-	SDL_Texture* texture = nullptr;
+	SDL_Texture* texturePlayer = nullptr;
+	SDL_Texture* textureEco = nullptr;
 	Collider* collider = nullptr;
 	Collider* secCollider = nullptr;
 
@@ -46,6 +47,7 @@ private:
 	Animation* _currentAnimation = nullptr;
 
 	Animation _deathAnim;
+	Animation _ecoAnim;
 
 	Animation _northAnim;
 	Animation _northEastAnim;
@@ -64,6 +66,11 @@ private:
 	Animation _idleSouthWeastAnim;
 	Animation _idleWeastAnim;
 	Animation _idleNorthWeastAnim;
+
+	int delayEco;
+	int tempsCooldownEco = 5 * 1000; // 10 segons de cc
+	bool ecoActive = true; // L'habilitat es pot utlitzar o no
+	bool ecoAnimActive = false; // Per pintar l'eco
 };
 
 #endif 
